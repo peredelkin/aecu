@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="libs">
+        <in>44780.c</in>
+        <in>adc.c</in>
+        <in>cordic10_6.c</in>
+        <in>cordic16.c</in>
+        <in>cordic32.c</in>
+        <in>delay.c</in>
+        <in>ecu_capt.c</in>
+        <in>ext_int.c</in>
+        <in>font.c</in>
+        <in>graphics.c</in>
+        <in>lcd0108.c</in>
+        <in>one_wire.c</in>
+        <in>pin_state.c</in>
+        <in>ports.c</in>
+        <in>spi.c</in>
+        <in>timers.c</in>
+        <in>two_wire.c</in>
+        <in>usart.c</in>
+        <in>vfd128x64.c</in>
+        <in>vfd_graphics.c</in>
+      </df>
+      <in>main.c</in>
+      <in>timer.c</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Важные файлы"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-Os"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+      </makefileType>
+      <item path="libs/44780.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/adc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/cordic10_6.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/cordic16.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/cordic32.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/delay.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/ecu_capt.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/ext_int.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/font.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=8000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/graphics.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=8000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/lcd0108.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=8000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/one_wire.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/pin_state.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=8000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/ports.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/spi.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/timers.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/two_wire.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/usart.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="libs/vfd128x64.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/vfd_graphics.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="timer.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
