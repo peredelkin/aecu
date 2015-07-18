@@ -71,5 +71,10 @@ typedef struct {
     .ti_register = &TIC \
 }
 
+extern void timer16_interrupt_enable(tmr16_int_ctrl_t* tic_type);
+extern void timer16_interrupt_disable(tmr16_int_ctrl_t* tic_type);
+extern void timer16_event_set(tmr16_int_ctrl_t* tic_type, void* event);
+extern void timer16_event_call(tmr16_int_ctrl_t* tic_type);
+
 #endif	/* TIMERS_H */
 
