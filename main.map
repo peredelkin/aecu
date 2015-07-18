@@ -14,24 +14,24 @@ Discarded input sections
  .text          0x0000000000000000        0x0 timers.o
  .data          0x0000000000000000        0x0 timers.o
  .bss           0x0000000000000000        0x0 timers.o
- .text.timer16_interrupt_enable
-                0x0000000000000000       0x34 timers.o
- .text.timer16_interrupt_disable
+ .text.tmr16_int_disable
                 0x0000000000000000       0x22 timers.o
- .text.timer16_event_set
-                0x0000000000000000        0x8 timers.o
- .text.timer16_event_call
-                0x0000000000000000        0xe timers.o
- .comment       0x0000000000000000       0x2b timers.o
+ .text.tmr16_read_cr
+                0x0000000000000000       0x10 timers.o
+ .text.tmr16_write_cr
+                0x0000000000000000       0x10 timers.o
+ .text.tmr16_set_clk
+                0x0000000000000000       0x12 timers.o
+ .text.tmr16_reset_clk
+                0x0000000000000000       0x14 timers.o
  .text          0x0000000000000000        0x0 timer.o
  .data          0x0000000000000000        0x0 timer.o
  .bss           0x0000000000000000        0x0 timer.o
- .data.tov5     0x0000000000000000        0x6 timer.o
- .data.chc5     0x0000000000000000        0x6 timer.o
- .data.chb5     0x0000000000000000        0x6 timer.o
- .data.cha5     0x0000000000000000        0x6 timer.o
- .data.cap5     0x0000000000000000        0x6 timer.o
- .data.tic5     0x0000000000000000        0x4 timer.o
+ .data.tcr5     0x0000000000000000        0x8 timer.o
+ .data.chc5     0x0000000000000000        0x8 timer.o
+ .data.chb5     0x0000000000000000        0x8 timer.o
+ .data.cha5     0x0000000000000000        0x8 timer.o
+ .data.cap5     0x0000000000000000        0x8 timer.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
  .bss           0x0000000000000000        0x0 ports.o
@@ -39,11 +39,8 @@ Discarded input sections
  .text.bit_off  0x0000000000000000       0x18 ports.o
  .text.bit_toggle
                 0x0000000000000000       0x16 ports.o
- .text.pin_toggle
-                0x0000000000000000       0x14 ports.o
  .text.port_mask
                 0x0000000000000000       0x34 ports.o
- .comment       0x0000000000000000       0x2b ports.o
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
@@ -207,7 +204,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x1b2
+.text           0x0000000000000000      0x2aa
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -217,39 +214,39 @@ END GROUP
                 0x00000000000000e4                . = ALIGN (0x2)
                 0x00000000000000e4                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000000000000e4        0x0 linker stubs
+ .trampolines   0x00000000000000e4        0x4 linker stubs
  *(.trampolines*)
-                0x00000000000000e4                __trampolines_end = .
+                0x00000000000000e8                __trampolines_end = .
  *(.progmem*)
-                0x00000000000000e4                . = ALIGN (0x2)
+                0x00000000000000e8                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000000000000e4                __ctors_start = .
+                0x00000000000000e8                __ctors_start = .
  *(.ctors)
-                0x00000000000000e4                __ctors_end = .
-                0x00000000000000e4                __dtors_start = .
+                0x00000000000000e8                __ctors_end = .
+                0x00000000000000e8                __dtors_start = .
  *(.dtors)
-                0x00000000000000e4                __dtors_end = .
+                0x00000000000000e8                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000000000000e4        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-                0x00000000000000e4                __init
+ .init0         0x00000000000000e8        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+                0x00000000000000e8                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000000000000e4       0x10 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+ .init2         0x00000000000000e8       0x10 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000000000000f4       0x1a /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
-                0x00000000000000f4                __do_copy_data
- .init4         0x000000000000010e       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
-                0x000000000000010e                __do_clear_bss
+ .init4         0x00000000000000f8       0x1a /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
+                0x00000000000000f8                __do_copy_data
+ .init4         0x0000000000000112       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
+                0x0000000000000112                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -260,77 +257,94 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000000000011e        0x8 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+ .init9         0x0000000000000122        0x8 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init9)
  *(.text)
- .text          0x0000000000000126        0x4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-                0x0000000000000126                __vector_38
-                0x0000000000000126                __vector_22
-                0x0000000000000126                __vector_28
-                0x0000000000000126                __vector_1
-                0x0000000000000126                __vector_32
-                0x0000000000000126                __vector_34
-                0x0000000000000126                __vector_24
-                0x0000000000000126                __vector_12
-                0x0000000000000126                __vector_55
-                0x0000000000000126                __vector_46
-                0x0000000000000126                __bad_interrupt
-                0x0000000000000126                __vector_6
-                0x0000000000000126                __vector_31
-                0x0000000000000126                __vector_35
-                0x0000000000000126                __vector_39
-                0x0000000000000126                __vector_3
-                0x0000000000000126                __vector_23
-                0x0000000000000126                __vector_30
-                0x0000000000000126                __vector_45
-                0x0000000000000126                __vector_25
-                0x0000000000000126                __vector_11
-                0x0000000000000126                __vector_54
-                0x0000000000000126                __vector_13
-                0x0000000000000126                __vector_17
-                0x0000000000000126                __vector_19
-                0x0000000000000126                __vector_56
-                0x0000000000000126                __vector_7
-                0x0000000000000126                __vector_49
-                0x0000000000000126                __vector_41
-                0x0000000000000126                __vector_43
-                0x0000000000000126                __vector_27
-                0x0000000000000126                __vector_5
-                0x0000000000000126                __vector_33
-                0x0000000000000126                __vector_47
-                0x0000000000000126                __vector_52
-                0x0000000000000126                __vector_37
-                0x0000000000000126                __vector_4
-                0x0000000000000126                __vector_44
-                0x0000000000000126                __vector_51
-                0x0000000000000126                __vector_9
-                0x0000000000000126                __vector_2
-                0x0000000000000126                __vector_21
-                0x0000000000000126                __vector_15
-                0x0000000000000126                __vector_36
-                0x0000000000000126                __vector_29
-                0x0000000000000126                __vector_40
-                0x0000000000000126                __vector_8
-                0x0000000000000126                __vector_26
-                0x0000000000000126                __vector_48
-                0x0000000000000126                __vector_14
-                0x0000000000000126                __vector_53
-                0x0000000000000126                __vector_10
-                0x0000000000000126                __vector_50
-                0x0000000000000126                __vector_16
-                0x0000000000000126                __vector_18
-                0x0000000000000126                __vector_20
-                0x0000000000000126                __vector_42
-                0x000000000000012a                . = ALIGN (0x2)
+ .text          0x000000000000012a        0x4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+                0x000000000000012a                __vector_38
+                0x000000000000012a                __vector_22
+                0x000000000000012a                __vector_28
+                0x000000000000012a                __vector_1
+                0x000000000000012a                __vector_32
+                0x000000000000012a                __vector_34
+                0x000000000000012a                __vector_24
+                0x000000000000012a                __vector_12
+                0x000000000000012a                __vector_55
+                0x000000000000012a                __vector_46
+                0x000000000000012a                __bad_interrupt
+                0x000000000000012a                __vector_6
+                0x000000000000012a                __vector_31
+                0x000000000000012a                __vector_35
+                0x000000000000012a                __vector_39
+                0x000000000000012a                __vector_3
+                0x000000000000012a                __vector_23
+                0x000000000000012a                __vector_30
+                0x000000000000012a                __vector_45
+                0x000000000000012a                __vector_25
+                0x000000000000012a                __vector_11
+                0x000000000000012a                __vector_54
+                0x000000000000012a                __vector_13
+                0x000000000000012a                __vector_17
+                0x000000000000012a                __vector_19
+                0x000000000000012a                __vector_56
+                0x000000000000012a                __vector_7
+                0x000000000000012a                __vector_49
+                0x000000000000012a                __vector_41
+                0x000000000000012a                __vector_43
+                0x000000000000012a                __vector_27
+                0x000000000000012a                __vector_5
+                0x000000000000012a                __vector_33
+                0x000000000000012a                __vector_47
+                0x000000000000012a                __vector_52
+                0x000000000000012a                __vector_37
+                0x000000000000012a                __vector_4
+                0x000000000000012a                __vector_44
+                0x000000000000012a                __vector_51
+                0x000000000000012a                __vector_9
+                0x000000000000012a                __vector_2
+                0x000000000000012a                __vector_21
+                0x000000000000012a                __vector_15
+                0x000000000000012a                __vector_36
+                0x000000000000012a                __vector_29
+                0x000000000000012a                __vector_40
+                0x000000000000012a                __vector_8
+                0x000000000000012a                __vector_26
+                0x000000000000012a                __vector_48
+                0x000000000000012a                __vector_14
+                0x000000000000012a                __vector_53
+                0x000000000000012a                __vector_10
+                0x000000000000012a                __vector_16
+                0x000000000000012a                __vector_18
+                0x000000000000012a                __vector_20
+                0x000000000000012a                __vector_42
+                0x000000000000012e                . = ALIGN (0x2)
  *(.text.*)
+ .text.tmr16_int_enable
+                0x000000000000012e       0x34 timers.o
+                0x000000000000012e                tmr16_int_enable
+ .text.tmr16_event_set
+                0x0000000000000162        0x8 timers.o
+                0x0000000000000162                tmr16_event_set
+ .text.tmr16_event_call
+                0x000000000000016a        0xe timers.o
+                0x000000000000016a                tmr16_event_call
+ .text.test_toggle
+                0x0000000000000178        0x8 timer.o
+                0x0000000000000178                test_toggle
+ .text.__vector_50
+                0x0000000000000180       0x54 timer.o
+                0x0000000000000180                __vector_50
  .text.startup.main
-                0x000000000000012a       0x84 timer.o
-                0x000000000000012a                main
-                0x00000000000001ae                . = ALIGN (0x2)
+                0x00000000000001d4       0xbe timer.o
+                0x00000000000001d4                main
+ .text.pin_toggle
+                0x0000000000000292       0x14 ports.o
+                0x0000000000000292                pin_toggle
+                0x00000000000002a6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000001ae        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x00000000000001ae                exit
-                0x00000000000001ae                _exit
+ .fini9         0x00000000000002a6        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x00000000000002a6                exit
+                0x00000000000002a6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -349,41 +363,47 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000001ae        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x00000000000002a6        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000001b2                _etext = .
+                0x00000000000002aa                _etext = .
 
-.data           0x0000000000800200        0x8 load address 0x00000000000001b2
+.data           0x0000000000800200       0x1c load address 0x00000000000002aa
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.b6       0x0000000000800200        0x8 timer.o
-                0x0000000000800200                b6
+ .data.ovf5     0x0000000000800200        0x8 timer.o
+                0x0000000000800200                ovf5
+ .data.tir5     0x0000000000800208        0x4 timer.o
+                0x0000000000800208                tir5
+ .data.b7       0x000000000080020c        0x8 timer.o
+                0x000000000080020c                b7
+ .data.b6       0x0000000000800214        0x8 timer.o
+                0x0000000000800214                b6
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x0000000000800208                . = ALIGN (0x2)
-                0x0000000000800208                _edata = .
-                0x0000000000800208                PROVIDE (__data_end, .)
+                0x000000000080021c                . = ALIGN (0x2)
+                0x000000000080021c                _edata = .
+                0x000000000080021c                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800208        0x1
-                0x0000000000800208                PROVIDE (__bss_start, .)
+.bss            0x000000000080021c        0x1
+                0x000000000080021c                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.emu_tooth
-                0x0000000000800208        0x1 timer.o
-                0x0000000000800208                emu_tooth
+                0x000000000080021c        0x1 timer.o
+                0x000000000080021c                emu_tooth
  *(COMMON)
-                0x0000000000800209                PROVIDE (__bss_end, .)
-                0x00000000000001b2                __data_load_start = LOADADDR (.data)
-                0x00000000000001ba                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000000000080021d                PROVIDE (__bss_end, .)
+                0x00000000000002aa                __data_load_start = LOADADDR (.data)
+                0x00000000000002c6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800209        0x0
-                0x0000000000800209                PROVIDE (__noinit_start, .)
+.noinit         0x000000000080021d        0x0
+                0x000000000080021d                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0000000000800209                PROVIDE (__noinit_end, .)
-                0x0000000000800209                _end = .
-                0x0000000000800209                PROVIDE (__heap_start, .)
+                0x000000000080021d                PROVIDE (__noinit_end, .)
+                0x000000000080021d                _end = .
+                0x000000000080021d                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -421,8 +441,10 @@ END GROUP
 
 .comment        0x0000000000000000       0x2a
  *(.comment)
- .comment       0x0000000000000000       0x2a timer.o
+ .comment       0x0000000000000000       0x2a timers.o
                                          0x2b (size before relaxing)
+ .comment       0x000000000000002a       0x2b timer.o
+ .comment       0x000000000000002a       0x2b ports.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -550,7 +572,8 @@ __vector_47                                       /usr/lib/gcc/avr/4.9.3/../../.
 __vector_48                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_49                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_5                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_50                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_50                                       timer.o
+                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_51                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_52                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_53                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -565,6 +588,7 @@ __vector_default                                  /usr/lib/gcc/avr/4.9.3/../../.
 __vectors                                         /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 _exit                                             /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
 b6                                                timer.o
+b7                                                timer.o
 bit_off                                           ports.o
 bit_on                                            ports.o
 bit_toggle                                        ports.o
@@ -577,11 +601,21 @@ exit                                              /usr/lib/gcc/avr/4.9.3/avr6/li
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 main                                              timer.o
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+ovf5                                              timer.o
 pin_toggle                                        ports.o
+                                                  timer.o
 port_mask                                         ports.o
-tic5                                              timer.o
-timer16_event_call                                timers.o
-timer16_event_set                                 timers.o
-timer16_interrupt_disable                         timers.o
-timer16_interrupt_enable                          timers.o
-tov5                                              timer.o
+tcr5                                              timer.o
+test_toggle                                       timer.o
+tir5                                              timer.o
+tmr16_event_call                                  timers.o
+                                                  timer.o
+tmr16_event_set                                   timers.o
+                                                  timer.o
+tmr16_int_disable                                 timers.o
+tmr16_int_enable                                  timers.o
+                                                  timer.o
+tmr16_read_cr                                     timers.o
+tmr16_reset_clk                                   timers.o
+tmr16_set_clk                                     timers.o
+tmr16_write_cr                                    timers.o
