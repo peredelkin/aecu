@@ -31,6 +31,7 @@ typedef struct {
     volatile uint8_t* tccra;
     volatile uint8_t* tccrb;
     volatile uint8_t* tccrc;
+    volatile uint16_t* tcnt;
 } tmr16_ctrl_reg_t;
 
 typedef struct {
@@ -50,8 +51,43 @@ typedef struct {
 #define TIMER_COM_TOGGLE(N_CH) (1<<TIMER_CONCAT_3(COM,N_CH,0))
 #define TIMER_COM_CLEAR(N_CH) (1<<TIMER_CONCAT_3(COM,N_CH,1))
 #define TIMER_COM_SET(N_CH) (1<<TIMER_CONCAT_3(COM,N_CH,1))|(1<<TIMER_CONCAT_3(COM,N_CH,0))
+#define TIMER_CS_1(N) (1<<TIMER_CONCAT_3(CS,N,0))
+#define TIMER_CS_8(N) (1<<TIMER_CONCAT_3(CS,N,1))
+#define TIMER_CS_64(N) (1<<TIMER_CONCAT_3(CS,N,1))|(1<<TIMER_CONCAT_3(CS,N,0))
+#define TIMER_CS_256(N) (1<<TIMER_CONCAT_3(CS,N,2))
+#define TIMER_CS_1024(N) (1<<TIMER_CONCAT_3(CS,N,2))|(1<<TIMER_CONCAT_3(CS,N,0))
+#define TIMER_TCCRA(N) TIMER_CONCAT_3(TCCR,N,A)
+#define TIMER_TCCRB(N) TIMER_CONCAT_3(TCCR,N,B)
+#define TIMER_TCCRC(N) TIMER_CONCAT_3(TCCR,N,C)
+#define TIMER_TCNT(N) TIMER_CONCAT_2(TCNT,N)
 
-#define make_tic(N) { \
+#define make_tcr(N) { \
+    .tccra = &TIMER_TCCRA(N), \
+    .tccrb = &TIMER_TCCRB(N), \
+    .tccrc = &TIMER_TCCRC(N), \
+    .tcnt = &TIMER_TCNT(N) \
+}
+#define make_cs1_mask(N,TCR) { \
+    .ctrl_reg = &TCR, \
+    .mask = TIMER_CS_1(N) \
+}
+#define make_cs8_mask(N,TCR) { \
+    .ctrl_reg = &TCR, \
+    .mask = TIMER_CS_8(N) \
+}
+#define make_cs64_mask(N,TCR) { \
+    .ctrl_reg = &TCR, \
+    .mask = TIMER_CS_64(N) \
+}
+#define make_cs256_mask(N,TCR) { \
+    .ctrl_reg = &TCR, \
+    .mask = TIMER_CS_256(N) \
+}
+#define make_cs1024_mask(N,TCR) { \
+    .ctrl_reg = &TCR, \
+    .mask = TIMER_CS_1024(N) \
+}
+#define make_tir(N) { \
     .tifr = &TIMER_TIFR(N), \
     .timsk = &TIMER_TIMSK(N) \
 }
@@ -83,6 +119,9 @@ extern void tmr16_event_set(tmr16_int_ctrl_t* tic_type, void (*timer_event) ());
 extern void tmr16_event_call(tmr16_int_ctrl_t* tic_type);
 extern uint16_t tmr16_read_cr(tmr16_int_ctrl_t* tic_type);
 extern void tmr16_write_cr(tmr16_int_ctrl_t* tic_type, uint16_t val);
+extern void tmr16_set_cs(tmr16_ctrl_mask_t* cs_mask);
+extern void tmr16_reset_cs(tmr16_ctrl_mask_t* cs_mask);
+extern void tmr16_counter_set(tmr16_ctrl_mask_t* tcnt_mask);
 
 #endif	/* TIMERS_H */
 
