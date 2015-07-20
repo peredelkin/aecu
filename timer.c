@@ -56,14 +56,17 @@ void test_off(void) {
 
 ISR(TIMER4_COMPA_vect) {
     tmr16_event_call(&cha4);
+    tmr16_int_disable(&cha4);
 }
 
 ISR(TIMER4_COMPB_vect) {
     tmr16_event_call(&chb4);
+    tmr16_int_disable(&chb4);
 }
 
 ISR(TIMER4_COMPC_vect) {
     tmr16_event_call(&chc4);
+    tmr16_int_disable(&chc4);
 }
 
 ISR(TIMER5_CAPT_vect) {
@@ -114,14 +117,12 @@ static void capture_handler(void) {
 }
 
 static void tooth_59_handler(void) {
-    
     test_on();
     main_handler();
 }
 
 static void tooth_60_handler(void) {
     main_handler();
-    
 }
 
 static void mark_handler(void) {
