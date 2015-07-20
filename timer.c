@@ -36,7 +36,7 @@ tmr16_int_ctrl_t chc5 = make_ch(5C, tir5);
 tmr16_int_ctrl_t ovf5 = make_ovf(5, tir5);
 tmr16_ctrl_reg_t tcr5 = make_tcr(5);
 tmr16_ctrl_mask_t tcs5 = make_cs8_mask(5, tcr5);
-tmr16_ctrl_mask_t tcnt5_mask = {
+tmr16_ctrl_mask_t tcnt_mask = {
     .ctrl_reg = &tcr5,
     .mask = 0
 };
@@ -94,13 +94,15 @@ ISR(TIMER5_OVF_vect) {
 
 uint8_t tooth_counter = 0;
 bool tooth_counter_flag = 0;
+timer_event tooth_event[60];
 
 static void main_handler(void) {
     if (tooth_counter_flag == true) tooth_counter++;
+    if(tooth_event[tooth_counter]) tooth_event[tooth_counter]();
 }
 
 static void capture_handler(void) {
-    tmr16_counter_set(&tcnt5_mask);
+    tmr16_counter_set(&tcnt_mask);
     tmr16_counter_set(&tcnt4_mask);
     uint16_t capture = tmr16_read_cr(&cap5);
     tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
@@ -143,12 +145,12 @@ int main() {
     tmr16_set_cs(&tcs4);
     tmr16_capture_setup(&cap_pos_mask);
     tmr16_event_set(&cap5, capture_handler);
-    tmr16_int_enable(&cap5);
     tmr16_event_set(&cha5, tooth_59_handler);
     tmr16_event_set(&chb5, tooth_60_handler);
     tmr16_event_set(&chc5, mark_handler);
     tmr16_event_set(&ovf5, stop_handler);
-    tmr16_int_enable(&ovf5);
+    tmr16_int_enable(&cap5); //constant enabled interrupt
+    tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
         _delay_us(100);
