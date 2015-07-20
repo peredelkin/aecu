@@ -96,28 +96,26 @@ uint8_t tooth_counter = 0;
 bool tooth_counter_flag = 0;
 
 static void main_handler(void) {
-    
+    if (tooth_counter_flag == true) tooth_counter++;
 }
 
 static void capture_handler(void) {
-    if (tooth_counter_flag == true) tooth_counter++;
     tmr16_counter_set(&tcnt5_mask);
     tmr16_counter_set(&tcnt4_mask);
+    main_handler();
     uint16_t capture = tmr16_read_cr(&cap5);
-    tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2)));
+    tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
     tmr16_int_enable(&chc5);
     if(tooth_counter == 58) {
-        tmr16_write_cr(&cha5,capture);
+        tmr16_write_cr(&cha5,capture); //59 tooth
         tmr16_int_enable(&cha5);
-        tmr16_write_cr(&chb5,capture*2);
+        tmr16_write_cr(&chb5,capture*2); //60 tooth
         tmr16_int_enable(&chb5);
     }
     test_off();
-    main_handler();
 }
 
 static void tooth_59_handler(void) {
-    test_on();
     main_handler();
 }
 
@@ -128,7 +126,7 @@ static void tooth_60_handler(void) {
 static void mark_handler(void) {
     tooth_counter = 0;
     tooth_counter_flag = true;
-    
+    test_on();
 }
 
 static void stop_handler(void) {
