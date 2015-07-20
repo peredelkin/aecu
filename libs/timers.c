@@ -1,5 +1,7 @@
 #include "timers.h"
 
+#ifndef TIMER_STATIC
+
 void tmr16_int_enable(tmr16_int_ctrl_t* tic_type) {
     if (tic_type->flag == false) {
         *tic_type->ti_register->tifr |= tic_type->mask;
@@ -42,3 +44,9 @@ void tmr16_reset_cs(tmr16_ctrl_mask_t* cs_mask) {
 void tmr16_counter_set(tmr16_ctrl_mask_t* tcnt_mask) {
     *tcnt_mask->ctrl_reg->tcnt = tcnt_mask->mask;
 }
+
+void tmr16_capture_setup(tmr16_ctrl_mask_t* cap_mask) {
+    *cap_mask->ctrl_reg->tccrb |= cap_mask->mask;
+}
+
+#endif
