@@ -102,11 +102,11 @@ static void main_handler(void) {
 static void capture_handler(void) {
     tmr16_counter_set(&tcnt5_mask);
     tmr16_counter_set(&tcnt4_mask);
-    main_handler();
     uint16_t capture = tmr16_read_cr(&cap5);
     tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
     tmr16_int_enable(&chc5);
-    if(tooth_counter == 58) {
+    main_handler();
+    if(tooth_counter == 58) { //last tooth
         tmr16_write_cr(&cha5,capture); //59 tooth
         tmr16_int_enable(&cha5);
         tmr16_write_cr(&chb5,capture*2); //60 tooth
