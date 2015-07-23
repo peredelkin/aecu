@@ -144,11 +144,11 @@ int main() {
     tmr16_set_cs(&tcs5);
     tmr16_set_cs(&tcs4);
     tmr16_capture_setup(&cap_pos_mask);
-    tmr16_event_set(&cap5, capture_handler);
-    tmr16_event_set(&cha5, tooth_59_handler);
-    tmr16_event_set(&chb5, tooth_60_handler);
-    tmr16_event_set(&chc5, mark_handler);
-    tmr16_event_set(&ovf5, stop_handler);
+    tmr16_event_set(&cap5, capture_handler); //constant event
+    tmr16_event_set(&cha5, tooth_59_handler); //constant event
+    tmr16_event_set(&chb5, tooth_60_handler); //constant event
+    tmr16_event_set(&chc5, mark_handler); //constant event
+    tmr16_event_set(&ovf5, stop_handler); //constant event
     tmr16_int_enable(&cap5); //constant enabled interrupt
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
