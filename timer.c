@@ -92,22 +92,49 @@ ISR(TIMER5_OVF_vect) {
     tmr16_event_call(&ovf5);
 }
 
+uint16_t capture=0;
 uint8_t tooth_counter = 0;
 bool tooth_counter_flag = 0;
 timer_event tooth_event[60];
 
-void main_handler(void) {
-    if (tooth_counter_flag == true) tooth_counter++;
+typedef void (*coil_event) (pin_t* pin);
+
+typedef struct {
+    uint16_t cur_angle;
+    uint16_t old_angle;
+    coil_event action;
+}coil_action_t;
+
+typedef struct {
+    coil_action_t on;
+    coil_action_t off;
+    pin_t pin;
+}coil_t;
+
+coil_t coil_14 = {
+    .off.action = &pin_off,
+    .on.action = &pin_on,
+    .pin = make_pin(B, 5)
+};
+
+coil_t coil_23 = {
+    .off.action = &pin_off,
+    .on.action = &pin_on,
+    .pin = make_pin(B, 4)
+};
+
+void main_handler() {
     if(tooth_event[tooth_counter]) tooth_event[tooth_counter]();
+    tooth_counter++;
 }
 
 void capture_handler(void) {
     tmr16_counter_set(&tcnt_mask);
     tmr16_counter_set(&tcnt4_mask);
-    uint16_t capture = tmr16_read_cr(&cap5);
+    capture = tmr16_read_cr(&cap5);
     tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
     tmr16_int_enable(&chc5);
-    main_handler();
+    if (tooth_counter_flag == true) main_handler();
     if(tooth_counter == 58) { //last tooth
         tmr16_write_cr(&cha5,capture); //59 tooth
         tmr16_int_enable(&cha5);
@@ -138,6 +165,8 @@ void stop_handler(void) {
 
 int main() {
     sei();
+    pin_out(&coil_14.pin);
+    pin_out(&coil_23.pin);
     pin_out(&b6);
     pin_out(&b7);
     pin_in_pu(&l1);
