@@ -337,42 +337,48 @@ END GROUP
  .text.tmr16_capture_setup
                 0x00000000000001fe       0x1a timers.o
                 0x00000000000001fe                tmr16_capture_setup
- .text.main_handler
-                0x0000000000000218       0x2a timer.o
- .text.tooth_59_handler
-                0x0000000000000242        0x4 timer.o
- .text.tooth_60_handler
-                0x0000000000000246        0x4 timer.o
  .text.mark_handler
-                0x000000000000024a       0x20 timer.o
+                0x0000000000000218       0x20 timer.o
+                0x0000000000000218                mark_handler
  .text.stop_handler
-                0x000000000000026a        0xa timer.o
- .text.capture_handler
-                0x0000000000000274       0x92 timer.o
+                0x0000000000000238        0xa timer.o
+                0x0000000000000238                stop_handler
  .text.__vector_42
-                0x0000000000000306       0x5c timer.o
-                0x0000000000000306                __vector_42
+                0x0000000000000242       0x5c timer.o
+                0x0000000000000242                __vector_42
  .text.__vector_43
-                0x0000000000000362       0x5c timer.o
-                0x0000000000000362                __vector_43
+                0x000000000000029e       0x5c timer.o
+                0x000000000000029e                __vector_43
  .text.__vector_44
-                0x00000000000003be       0x5c timer.o
-                0x00000000000003be                __vector_44
+                0x00000000000002fa       0x5c timer.o
+                0x00000000000002fa                __vector_44
  .text.__vector_46
-                0x000000000000041a       0x54 timer.o
-                0x000000000000041a                __vector_46
+                0x0000000000000356       0x54 timer.o
+                0x0000000000000356                __vector_46
  .text.__vector_47
-                0x000000000000046e       0x5c timer.o
-                0x000000000000046e                __vector_47
+                0x00000000000003aa       0x5c timer.o
+                0x00000000000003aa                __vector_47
  .text.__vector_48
-                0x00000000000004ca       0x5c timer.o
-                0x00000000000004ca                __vector_48
+                0x0000000000000406       0x5c timer.o
+                0x0000000000000406                __vector_48
  .text.__vector_49
-                0x0000000000000526       0x5c timer.o
-                0x0000000000000526                __vector_49
+                0x0000000000000462       0x5c timer.o
+                0x0000000000000462                __vector_49
  .text.__vector_50
-                0x0000000000000582       0x54 timer.o
-                0x0000000000000582                __vector_50
+                0x00000000000004be       0x54 timer.o
+                0x00000000000004be                __vector_50
+ .text.main_handler
+                0x0000000000000512       0x2a timer.o
+                0x0000000000000512                main_handler
+ .text.capture_handler
+                0x000000000000053c       0x92 timer.o
+                0x000000000000053c                capture_handler
+ .text.tooth_59_handler
+                0x00000000000005ce        0x4 timer.o
+                0x00000000000005ce                tooth_59_handler
+ .text.tooth_60_handler
+                0x00000000000005d2        0x4 timer.o
+                0x00000000000005d2                tooth_60_handler
  .text.startup.main
                 0x00000000000005d6      0x13c timer.o
                 0x00000000000005d6                main
@@ -680,6 +686,7 @@ bit_on                                            ports.o
 bit_toggle                                        ports.o
 cap5                                              timer.o
 cap_pos_mask                                      timer.o
+capture_handler                                   timer.o
 cha4                                              timer.o
 cha5                                              timer.o
 chb4                                              timer.o
@@ -692,9 +699,12 @@ exit                                              /usr/lib/gcc/avr/4.9.3/avr6/li
 l1                                                timer.o
 main                                              timer.o
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+main_handler                                      timer.o
+mark_handler                                      timer.o
 ovf5                                              timer.o
 pin_toggle                                        ports.o
 port_mask                                         ports.o
+stop_handler                                      timer.o
 tcnt4_mask                                        timer.o
 tcnt_mask                                         timer.o
 tcr4                                              timer.o
@@ -724,6 +734,8 @@ tmr16_set_cs                                      timers.o
                                                   timer.o
 tmr16_write_cr                                    timers.o
                                                   timer.o
+tooth_59_handler                                  timer.o
+tooth_60_handler                                  timer.o
 tooth_counter                                     timer.o
 tooth_counter_flag                                timer.o
 tooth_event                                       timer.o

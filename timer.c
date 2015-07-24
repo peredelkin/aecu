@@ -96,12 +96,12 @@ uint8_t tooth_counter = 0;
 bool tooth_counter_flag = 0;
 timer_event tooth_event[60];
 
-static void main_handler(void) {
+void main_handler(void) {
     if (tooth_counter_flag == true) tooth_counter++;
     if(tooth_event[tooth_counter]) tooth_event[tooth_counter]();
 }
 
-static void capture_handler(void) {
+void capture_handler(void) {
     tmr16_counter_set(&tcnt_mask);
     tmr16_counter_set(&tcnt4_mask);
     uint16_t capture = tmr16_read_cr(&cap5);
@@ -117,21 +117,21 @@ static void capture_handler(void) {
     test_off();
 }
 
-static void tooth_59_handler(void) {
+void tooth_59_handler(void) {
     main_handler();
 }
 
-static void tooth_60_handler(void) {
+void tooth_60_handler(void) {
     main_handler();
 }
 
-static void mark_handler(void) {
+void mark_handler(void) {
     tooth_counter = 0;
     tooth_counter_flag = true;
     test_on();
 }
 
-static void stop_handler(void) {
+void stop_handler(void) {
     tooth_counter = 0;
     tooth_counter_flag = false;
 }
