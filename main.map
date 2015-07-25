@@ -375,11 +375,11 @@ END GROUP
                 0x0000000000000510       0x54 timer.o
                 0x0000000000000510                __vector_50
  .text.coil_action_handler
-                0x0000000000000564       0x30 timer.o
+                0x0000000000000564       0x34 timer.o
                 0x0000000000000564                coil_action_handler
  .text.main_handler
-                0x0000000000000594       0x18 timer.o
-                0x0000000000000594                main_handler
+                0x0000000000000598       0x14 timer.o
+                0x0000000000000598                main_handler
  .text.capture_handler
                 0x00000000000005ac       0x88 timer.o
                 0x00000000000005ac                capture_handler
