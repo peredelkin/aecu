@@ -128,10 +128,6 @@ coil_action_t* coil14_state;
 void coil_action_handler(coil_action_t* coil) {
     if(coil->tooth == tooth_counter) {
         if(coil->action) coil->action();
-        if(coil->new_angle != coil->old_angle) {
-            
-        }
-        coil->old_angle = coil->new_angle;
         coil = coil->next;
     }
 }

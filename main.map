@@ -24,11 +24,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 timer.o
  .data          0x0000000000000000        0x0 timer.o
  .bss           0x0000000000000000        0x0 timer.o
- .text.test_on  0x0000000000000000       0x16 timer.o
- .text.test_off
-                0x0000000000000000       0x18 timer.o
- .text.coil_action_handler
-                0x0000000000000000       0x32 timer.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
  .bss           0x0000000000000000        0x0 ports.o
@@ -39,7 +34,7 @@ Discarded input sections
  .text.pin_toggle
                 0x0000000000000000       0x14 ports.o
  .text.port_mask
-                0x0000000000000000       0x3c ports.o
+                0x0000000000000000       0x34 ports.o
  .comment       0x0000000000000000       0x2b ports.o
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
@@ -204,7 +199,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x7c0
+.text           0x0000000000000000      0x7aa
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -344,56 +339,64 @@ END GROUP
  .text.coil_off
                 0x0000000000000236       0x18 timer.o
                 0x0000000000000236                coil_off
- .text.mark_handler
-                0x000000000000024e       0x20 timer.o
-                0x000000000000024e                mark_handler
  .text.stop_handler
-                0x000000000000026e        0xa timer.o
-                0x000000000000026e                stop_handler
+                0x000000000000024e        0xa timer.o
+                0x000000000000024e                stop_handler
+ .text.test_on  0x0000000000000258       0x16 timer.o
+                0x0000000000000258                test_on
+ .text.mark_handler
+                0x000000000000026e        0xe timer.o
+                0x000000000000026e                mark_handler
+ .text.test_off
+                0x000000000000027c       0x18 timer.o
+                0x000000000000027c                test_off
  .text.__vector_42
-                0x0000000000000278       0x5c timer.o
-                0x0000000000000278                __vector_42
+                0x0000000000000294       0x5c timer.o
+                0x0000000000000294                __vector_42
  .text.__vector_43
-                0x00000000000002d4       0x5c timer.o
-                0x00000000000002d4                __vector_43
+                0x00000000000002f0       0x5c timer.o
+                0x00000000000002f0                __vector_43
  .text.__vector_44
-                0x0000000000000330       0x5c timer.o
-                0x0000000000000330                __vector_44
+                0x000000000000034c       0x5c timer.o
+                0x000000000000034c                __vector_44
  .text.__vector_46
-                0x000000000000038c       0x54 timer.o
-                0x000000000000038c                __vector_46
+                0x00000000000003a8       0x54 timer.o
+                0x00000000000003a8                __vector_46
  .text.__vector_47
-                0x00000000000003e0       0x5c timer.o
-                0x00000000000003e0                __vector_47
+                0x00000000000003fc       0x5c timer.o
+                0x00000000000003fc                __vector_47
  .text.__vector_48
-                0x000000000000043c       0x5c timer.o
-                0x000000000000043c                __vector_48
+                0x0000000000000458       0x5c timer.o
+                0x0000000000000458                __vector_48
  .text.__vector_49
-                0x0000000000000498       0x5c timer.o
-                0x0000000000000498                __vector_49
+                0x00000000000004b4       0x5c timer.o
+                0x00000000000004b4                __vector_49
  .text.__vector_50
-                0x00000000000004f4       0x54 timer.o
-                0x00000000000004f4                __vector_50
+                0x0000000000000510       0x54 timer.o
+                0x0000000000000510                __vector_50
+ .text.coil_action_handler
+                0x0000000000000564       0x20 timer.o
+                0x0000000000000564                coil_action_handler
  .text.main_handler
-                0x0000000000000548       0x44 timer.o
-                0x0000000000000548                main_handler
+                0x0000000000000584       0x18 timer.o
+                0x0000000000000584                main_handler
  .text.capture_handler
-                0x000000000000058c       0xa6 timer.o
-                0x000000000000058c                capture_handler
+                0x000000000000059c       0x88 timer.o
+                0x000000000000059c                capture_handler
  .text.tooth_59_handler
-                0x0000000000000632        0x4 timer.o
-                0x0000000000000632                tooth_59_handler
+                0x0000000000000624        0x4 timer.o
+                0x0000000000000624                tooth_59_handler
  .text.tooth_60_handler
-                0x0000000000000636        0x4 timer.o
-                0x0000000000000636                tooth_60_handler
+                0x0000000000000628        0x4 timer.o
+                0x0000000000000628                tooth_60_handler
  .text.startup.main
-                0x000000000000063a      0x182 timer.o
-                0x000000000000063a                main
-                0x00000000000007bc                . = ALIGN (0x2)
+                0x000000000000062c      0x17a timer.o
+                0x000000000000062c                main
+                0x00000000000007a6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000007bc        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x00000000000007bc                exit
-                0x00000000000007bc                _exit
+ .fini9         0x00000000000007a6        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x00000000000007a6                exit
+                0x00000000000007a6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -412,11 +415,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000007bc        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x00000000000007a6        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000007c0                _etext = .
+                0x00000000000007aa                _etext = .
 
-.data           0x0000000000800200       0x9a load address 0x00000000000007c0
+.data           0x0000000000800200       0x9a load address 0x00000000000007aa
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -498,8 +501,8 @@ END GROUP
  COMMON         0x000000000080029f        0x2 timer.o
                 0x000000000080029f                coil14_state
                 0x00000000008002a1                PROVIDE (__bss_end, .)
-                0x00000000000007c0                __data_load_start = LOADADDR (.data)
-                0x000000000000085a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000000000007aa                __data_load_start = LOADADDR (.data)
+                0x0000000000000844                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00000000008002a1        0x0
                 0x00000000008002a1                PROVIDE (__noinit_start, .)
