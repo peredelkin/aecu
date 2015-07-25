@@ -199,7 +199,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x7aa
+.text           0x0000000000000000      0x7ba
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -375,28 +375,28 @@ END GROUP
                 0x0000000000000510       0x54 timer.o
                 0x0000000000000510                __vector_50
  .text.coil_action_handler
-                0x0000000000000564       0x20 timer.o
+                0x0000000000000564       0x30 timer.o
                 0x0000000000000564                coil_action_handler
  .text.main_handler
-                0x0000000000000584       0x18 timer.o
-                0x0000000000000584                main_handler
+                0x0000000000000594       0x18 timer.o
+                0x0000000000000594                main_handler
  .text.capture_handler
-                0x000000000000059c       0x88 timer.o
-                0x000000000000059c                capture_handler
+                0x00000000000005ac       0x88 timer.o
+                0x00000000000005ac                capture_handler
  .text.tooth_59_handler
-                0x0000000000000624        0x4 timer.o
-                0x0000000000000624                tooth_59_handler
+                0x0000000000000634        0x4 timer.o
+                0x0000000000000634                tooth_59_handler
  .text.tooth_60_handler
-                0x0000000000000628        0x4 timer.o
-                0x0000000000000628                tooth_60_handler
+                0x0000000000000638        0x4 timer.o
+                0x0000000000000638                tooth_60_handler
  .text.startup.main
-                0x000000000000062c      0x17a timer.o
-                0x000000000000062c                main
-                0x00000000000007a6                . = ALIGN (0x2)
+                0x000000000000063c      0x17a timer.o
+                0x000000000000063c                main
+                0x00000000000007b6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000007a6        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x00000000000007a6                exit
-                0x00000000000007a6                _exit
+ .fini9         0x00000000000007b6        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x00000000000007b6                exit
+                0x00000000000007b6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -415,11 +415,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000007a6        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x00000000000007b6        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000007aa                _etext = .
+                0x00000000000007ba                _etext = .
 
-.data           0x0000000000800200       0x9a load address 0x00000000000007aa
+.data           0x0000000000800200       0x9a load address 0x00000000000007ba
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -501,8 +501,8 @@ END GROUP
  COMMON         0x000000000080029f        0x2 timer.o
                 0x000000000080029f                coil14_state
                 0x00000000008002a1                PROVIDE (__bss_end, .)
-                0x00000000000007aa                __data_load_start = LOADADDR (.data)
-                0x0000000000000844                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000000000007ba                __data_load_start = LOADADDR (.data)
+                0x0000000000000854                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00000000008002a1        0x0
                 0x00000000008002a1                PROVIDE (__noinit_start, .)

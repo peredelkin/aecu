@@ -115,7 +115,7 @@ typedef struct Coil_action{
 
 coil_action_t coil14_on = {
     .action = coil_on,
-    .tooth = 2
+    .tooth = 1
 };
 
 coil_action_t coil14_off = {
@@ -128,7 +128,7 @@ coil_action_t* coil14_state;
 void coil_action_handler(coil_action_t* coil) {
     if(coil->tooth == tooth_counter) {
         if(coil->action) coil->action();
-        coil = coil->next;
+        coil14_state = coil->next; // !
     }
 }
 
