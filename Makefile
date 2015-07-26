@@ -8,7 +8,7 @@ DEV_DEF=__AVR_AT$(MCU_NAME)$(MCU_NUMBER)__
 
 MCUFLAGS=-mmcu=$(MMCU)
 
-CFLAGS=-Os $(MCUFLAGS) -D$(DEV_DEF) -DF_CPU=$(F_CPU) -ffunction-sections -fdata-sections
+CFLAGS=-O2 $(MCUFLAGS) -D$(DEV_DEF) -DF_CPU=$(F_CPU) -ffunction-sections -fdata-sections
 
 LDFLAGS=-Wl,-Map=$(TARGET).map,--cref $(MCUFLAGS) -Wl,--gc-sections
 

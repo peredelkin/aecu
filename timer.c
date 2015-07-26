@@ -48,11 +48,11 @@ tmr16_ctrl_mask_t cap_pos_mask = {
     .mask = (1 << ICES5),
 };
 
-void test_on(void) {
+static void test_on(void) {
     pin_on(&b7);
 }
 
-void test_off(void) {
+static void test_off(void) {
     pin_off(&b7);
 }
 
@@ -101,27 +101,27 @@ uint16_t capture = 0;
 uint8_t tooth_counter = 0;
 bool tooth_counter_flag = 0;
 
-void coil14on(void) {
+static void coil14on(void) {
     pin_on(&b5);
 }
 
-void coil14off(void) {
+static void coil14off(void) {
     pin_off(&b5);
 }
 
-void coil23on(void) {
+static void coil23on(void) {
     pin_on(&b4);
 }
 
-void coil23off(void) {
+static void coil23off(void) {
     pin_off(&b4);
 }
 
 typedef struct Coil_action {
     uint16_t new_angle;
     uint16_t old_angle;
-    uint8_t tooth;
-    uint8_t tooth_angle;
+    uint16_t tooth;
+    uint16_t tooth_angle;
     timer_event action;
     struct Coil_action* next;
 } coil_action_t;
@@ -159,7 +159,7 @@ coil_action_t coil23_off = {
 
 coil_action_t* coil_state;
 
-void coil_action_handler(coil_action_t** coil) {
+static void coil_action_handler(coil_action_t** coil) {
     if ((*coil)->tooth == tooth_counter) {
         if((*coil)->tooth_angle == 0) (*coil)->action();
         else {
@@ -176,13 +176,13 @@ void coil_action_handler(coil_action_t** coil) {
     }
 }
 
-void main_handler() {
+static void main_handler() {
     tmr16_counter_set(&tcnt4_mask);
     coil_action_handler(&coil_state);
     tooth_counter++;
 }
 
-void capture_handler(void) {
+static void capture_handler(void) {
     tmr16_counter_set(&tcnt_mask);
     capture = tmr16_read_cr(&cap5);
     tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
@@ -197,21 +197,21 @@ void capture_handler(void) {
     test_off();
 }
 
-void tooth_59_handler(void) {
+static void tooth_59_handler(void) {
     main_handler();
 }
 
-void tooth_60_handler(void) {
+static void tooth_60_handler(void) {
     main_handler();
 }
 
-void mark_handler(void) {
+static void mark_handler(void) {
     tooth_counter = 0;
     tooth_counter_flag = true;
     test_on();
 }
 
-void stop_handler(void) {
+static void stop_handler(void) {
     tooth_counter = 0;
     tooth_counter_flag = false;
 }
@@ -240,19 +240,19 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(100);
+        _delay_us(200);
         pin_off(&b6);
-        _delay_us(100);
+        _delay_us(200);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             coil14_on.new_angle++;
             coil14_off.new_angle++;
             coil23_on.new_angle++;
             coil23_off.new_angle++;
-            if(coil14_on.new_angle==359) coil14_on.new_angle=0;
-            if(coil14_off.new_angle==359) coil14_off.new_angle=0;
-            if(coil23_on.new_angle==359) coil23_on.new_angle=0;
-            if(coil23_off.new_angle==359) coil23_off.new_angle=0;
+            if(coil14_on.new_angle==359) coil14_on.new_angle=1;
+            if(coil14_off.new_angle==359) coil14_off.new_angle=1;
+            if(coil23_on.new_angle==359) coil23_on.new_angle=1;
+            if(coil23_off.new_angle==359) coil23_off.new_angle=1;
             emu_tooth = 0;
         }
     }
