@@ -58,16 +58,19 @@ void test_off(void) {
 
 ISR(TIMER4_COMPA_vect) {
     tmr16_event_call(&cha4);
+    tmr16_event_set(&cha4,NULL);
     tmr16_int_disable(&cha4);
 }
 
 ISR(TIMER4_COMPB_vect) {
     tmr16_event_call(&chb4);
+    tmr16_event_set(&chb4,NULL);
     tmr16_int_disable(&chb4);
 }
 
 ISR(TIMER4_COMPC_vect) {
     tmr16_event_call(&chc4);
+    tmr16_event_set(&chc4,NULL);
     tmr16_int_disable(&chc4);
 }
 
@@ -116,55 +119,71 @@ void coil23off(void) {
 
 typedef struct Coil_action {
     uint16_t new_angle;
-    uint8_t new_tooth;
     uint16_t old_angle;
-    uint8_t old_tooth;
+    uint8_t tooth;
+    uint8_t tooth_angle;
     timer_event action;
     struct Coil_action* next;
 } coil_action_t;
 
 coil_action_t coil14_on = {
     .action = coil14on,
-    .old_tooth = 0,
-    .new_tooth = 0
+    .tooth = 0,
+    .tooth_angle = 0,
+    .new_angle = 0,
+    .old_angle = 0
 };
 
 coil_action_t coil14_off = {
     .action = coil14off,
-    .old_tooth = 20,
-    .new_tooth = 20
+    .tooth = 20,
+    .new_angle = 120,
+    .old_angle = 120
 };
 
 coil_action_t coil23_on = {
     .action = coil23on,
-    .old_tooth = 30,
-    .new_tooth = 30
+    .tooth = 30,
+    .tooth_angle = 0,
+    .new_angle = 180,
+    .old_angle = 180
 };
 
 coil_action_t coil23_off = {
     .action = coil23off,
-    .old_tooth = 50,
-    .new_tooth = 50
+    .tooth = 50,
+    .tooth_angle = 0,
+    .new_angle = 300,
+    .old_angle = 300
 };
 
 coil_action_t* coil_state;
 
 void coil_action_handler(coil_action_t** coil) {
-    if ((*coil)->old_tooth == tooth_counter) {
-        if ((*coil)->action) (*coil)->action();
-        (*coil)->old_tooth = (*coil)->new_tooth;
+    if ((*coil)->tooth == tooth_counter) {
+        if((*coil)->tooth_angle == 0) (*coil)->action();
+        else {
+            tmr16_write_cr(&cha4,(capture*((*coil)->tooth_angle))/6);
+            tmr16_event_set(&cha4,(*coil)->action);
+            tmr16_int_enable(&cha4);
+        }
+        if ((*coil)->old_angle != (*coil)->new_angle) {
+            (*coil)->tooth = (*coil)->new_angle/6;
+            (*coil)->tooth_angle = (*coil)->new_angle%6;
+        }
+        (*coil)->old_angle = (*coil)->new_angle;
         *coil = (*coil)->next;
     }
 }
 
 void main_handler() {
+    tmr16_counter_set(&tcnt4_mask);
     coil_action_handler(&coil_state);
     tooth_counter++;
 }
 
 void capture_handler(void) {
     tmr16_counter_set(&tcnt_mask);
-    tmr16_counter_set(&tcnt4_mask);
     capture = tmr16_read_cr(&cap5);
     tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
     tmr16_int_enable(&chc5);
@@ -226,14 +245,14 @@ int main() {
         _delay_us(100);
         if (emu_tooth <= 58) emu_tooth++;
         else {
-            coil14_off.new_tooth++;
-            if(coil14_off.new_tooth>=60) coil14_off.new_tooth=0;
-            coil14_on.new_tooth++;
-            if(coil14_on.new_tooth>=60) coil14_on.new_tooth=0;
-            coil23_off.new_tooth++;
-            if(coil23_off.new_tooth>=60) coil23_off.new_tooth=0;
-            coil23_on.new_tooth++;
-            if(coil23_on.new_tooth>=60) coil23_on.new_tooth=0;
+            coil14_on.new_angle++;
+            coil14_off.new_angle++;
+            coil23_on.new_angle++;
+            coil23_off.new_angle++;
+            if(coil14_on.new_angle==359) coil14_on.new_angle=0;
+            if(coil14_off.new_angle==359) coil14_off.new_angle=0;
+            if(coil23_on.new_angle==359) coil23_on.new_angle=0;
+            if(coil23_off.new_angle==359) coil23_off.new_angle=0;
             emu_tooth = 0;
         }
     }

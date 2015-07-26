@@ -1,5 +1,7 @@
 Archive member included to satisfy reference by file (symbol)
 
+/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+                              timer.o (__udivmodhi4)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o (exit)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
@@ -36,6 +38,20 @@ Discarded input sections
  .text.port_mask
                 0x0000000000000000       0x34 ports.o
  .comment       0x0000000000000000       0x2b ports.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
@@ -199,7 +215,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x886
+.text           0x0000000000000000      0x976
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -358,52 +374,55 @@ END GROUP
                 0x00000000000002b2       0x18 timer.o
                 0x00000000000002b2                test_off
  .text.__vector_42
-                0x00000000000002ca       0x5c timer.o
+                0x00000000000002ca       0x68 timer.o
                 0x00000000000002ca                __vector_42
  .text.__vector_43
-                0x0000000000000326       0x5c timer.o
-                0x0000000000000326                __vector_43
+                0x0000000000000332       0x68 timer.o
+                0x0000000000000332                __vector_43
  .text.__vector_44
-                0x0000000000000382       0x5c timer.o
-                0x0000000000000382                __vector_44
+                0x000000000000039a       0x68 timer.o
+                0x000000000000039a                __vector_44
  .text.__vector_46
-                0x00000000000003de       0x54 timer.o
-                0x00000000000003de                __vector_46
+                0x0000000000000402       0x54 timer.o
+                0x0000000000000402                __vector_46
  .text.__vector_47
-                0x0000000000000432       0x5c timer.o
-                0x0000000000000432                __vector_47
+                0x0000000000000456       0x5c timer.o
+                0x0000000000000456                __vector_47
  .text.__vector_48
-                0x000000000000048e       0x5c timer.o
-                0x000000000000048e                __vector_48
+                0x00000000000004b2       0x5c timer.o
+                0x00000000000004b2                __vector_48
  .text.__vector_49
-                0x00000000000004ea       0x5c timer.o
-                0x00000000000004ea                __vector_49
+                0x000000000000050e       0x5c timer.o
+                0x000000000000050e                __vector_49
  .text.__vector_50
-                0x0000000000000546       0x54 timer.o
-                0x0000000000000546                __vector_50
+                0x000000000000056a       0x54 timer.o
+                0x000000000000056a                __vector_50
  .text.coil_action_handler
-                0x000000000000059a       0x3c timer.o
-                0x000000000000059a                coil_action_handler
+                0x00000000000005be       0xaa timer.o
+                0x00000000000005be                coil_action_handler
  .text.main_handler
-                0x00000000000005d6       0x14 timer.o
-                0x00000000000005d6                main_handler
+                0x0000000000000668       0x1c timer.o
+                0x0000000000000668                main_handler
  .text.capture_handler
-                0x00000000000005ea       0x88 timer.o
-                0x00000000000005ea                capture_handler
+                0x0000000000000684       0x80 timer.o
+                0x0000000000000684                capture_handler
  .text.tooth_59_handler
-                0x0000000000000672        0x4 timer.o
-                0x0000000000000672                tooth_59_handler
+                0x0000000000000704        0x4 timer.o
+                0x0000000000000704                tooth_59_handler
  .text.tooth_60_handler
-                0x0000000000000676        0x4 timer.o
-                0x0000000000000676                tooth_60_handler
+                0x0000000000000708        0x4 timer.o
+                0x0000000000000708                tooth_60_handler
  .text.startup.main
-                0x000000000000067a      0x208 timer.o
-                0x000000000000067a                main
-                0x0000000000000882                . = ALIGN (0x2)
+                0x000000000000070c      0x23e timer.o
+                0x000000000000070c                main
+ .text.libgcc.div
+                0x000000000000094a       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+                0x000000000000094a                __udivmodhi4
+                0x0000000000000972                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000882        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x0000000000000882                exit
-                0x0000000000000882                _exit
+ .fini9         0x0000000000000972        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x0000000000000972                exit
+                0x0000000000000972                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -422,11 +441,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000882        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x0000000000000972        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000000886                _etext = .
+                0x0000000000000976                _etext = .
 
-.data           0x0000000000800200       0xb8 load address 0x0000000000000886
+.data           0x0000000000800200       0xb8 load address 0x0000000000000976
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -516,8 +535,8 @@ END GROUP
  COMMON         0x00000000008002bd        0x2 timer.o
                 0x00000000008002bd                coil_state
                 0x00000000008002bf                PROVIDE (__bss_end, .)
-                0x0000000000000886                __data_load_start = LOADADDR (.data)
-                0x000000000000093e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000000976                __data_load_start = LOADADDR (.data)
+                0x0000000000000a2e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00000000008002bf        0x0
                 0x00000000008002bf                PROVIDE (__noinit_start, .)
@@ -647,6 +666,8 @@ __do_copy_data                                    /usr/lib/gcc/avr/4.9.3/avr6/li
 __heap_end                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __init                                            /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __stack                                           /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__udivmodhi4                                      /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+                                                  timer.o
 __vector_1                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_10                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_11                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
