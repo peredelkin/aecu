@@ -203,6 +203,9 @@ static void tooth_59_handler(void) {
 
 static void tooth_60_handler(void) {
     main_handler();
+    tooth_counter = 0; //!!!
+    tmr16_counter_set(&tcnt_mask); //!!!
+    test_on(); //!!!
 }
 
 static void mark_handler(void) {
@@ -249,10 +252,10 @@ int main() {
             coil14_off.new_angle++;
             coil23_on.new_angle++;
             coil23_off.new_angle++;
-            if(coil14_on.new_angle==359) coil14_on.new_angle=1;
-            if(coil14_off.new_angle==359) coil14_off.new_angle=1;
-            if(coil23_on.new_angle==359) coil23_on.new_angle=1;
-            if(coil23_off.new_angle==359) coil23_off.new_angle=1;
+            if(coil14_on.new_angle==359) coil14_on.new_angle=0;
+            if(coil14_off.new_angle==359) coil14_off.new_angle=0;
+            if(coil23_on.new_angle==359) coil23_on.new_angle=0;
+            if(coil23_off.new_angle==359) coil23_off.new_angle=0;
             emu_tooth = 0;
         }
     }
