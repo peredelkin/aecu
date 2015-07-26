@@ -177,7 +177,7 @@ static void coil_action_handler(coil_action_t** coil) {
 }
 
 static void main_handler() {
-    tmr16_counter_set(&tcnt4_mask);
+    tmr16_counter_set(&tcnt4_mask); //!!!
     coil_action_handler(&coil_state);
     tooth_counter++;
 }
