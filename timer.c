@@ -12,6 +12,7 @@
 #include "libs/ports.h"
 #include "libs/font.h"
 
+pin_t b4 = make_pin(B, 4); //coil out
 pin_t b5 = make_pin(B, 5); //coil out
 pin_t b6 = make_pin(B, 6); //emu out
 pin_t b7 = make_pin(B, 7); //test out
@@ -97,43 +98,67 @@ uint16_t capture = 0;
 uint8_t tooth_counter = 0;
 bool tooth_counter_flag = 0;
 
-void coil_on(void) {
+void coil14on(void) {
     pin_on(&b5);
 }
 
-void coil_off(void) {
+void coil14off(void) {
     pin_off(&b5);
+}
+
+void coil23on(void) {
+    pin_on(&b4);
+}
+
+void coil23off(void) {
+    pin_off(&b4);
 }
 
 typedef struct Coil_action {
     uint16_t new_angle;
+    uint8_t new_tooth;
     uint16_t old_angle;
-    uint8_t tooth;
+    uint8_t old_tooth;
     timer_event action;
     struct Coil_action* next;
 } coil_action_t;
 
 coil_action_t coil14_on = {
-    .action = coil_on,
-    .tooth = 0
+    .action = coil14on,
+    .old_tooth = 0,
+    .new_tooth = 0
 };
 
 coil_action_t coil14_off = {
-    .action = coil_off,
-    .tooth = 20
+    .action = coil14off,
+    .old_tooth = 20,
+    .new_tooth = 20
 };
 
-coil_action_t* coil14_state;
+coil_action_t coil23_on = {
+    .action = coil23on,
+    .old_tooth = 30,
+    .new_tooth = 30
+};
+
+coil_action_t coil23_off = {
+    .action = coil23off,
+    .old_tooth = 50,
+    .new_tooth = 50
+};
+
+coil_action_t* coil_state;
 
 void coil_action_handler(coil_action_t** coil) {
-    if((*coil)->tooth == tooth_counter) {
-        if((*coil)->action) (*coil)->action();
+    if ((*coil)->old_tooth == tooth_counter) {
+        if ((*coil)->action) (*coil)->action();
+        (*coil)->old_tooth = (*coil)->new_tooth;
         *coil = (*coil)->next;
     }
 }
 
 void main_handler() {
-    coil_action_handler(&coil14_state);
+    coil_action_handler(&coil_state);
     tooth_counter++;
 }
 
@@ -174,9 +199,12 @@ void stop_handler(void) {
 
 int main() {
     sei();
-    coil14_state = &coil14_on;
+    coil_state = &coil14_on;
     coil14_on.next = &coil14_off;
-    coil14_off.next = &coil14_on;
+    coil14_off.next = &coil23_on;
+    coil23_on.next = &coil23_off;
+    coil23_off.next = &coil14_on;
+    pin_out(&b4);
     pin_out(&b5);
     pin_out(&b6);
     pin_out(&b7);
@@ -197,7 +225,16 @@ int main() {
         pin_off(&b6);
         _delay_us(100);
         if (emu_tooth <= 58) emu_tooth++;
-        else emu_tooth = 0;
+        else {
+            coil14_off.new_tooth++;
+            if(coil14_off.new_tooth>=60) coil14_off.new_tooth=0;
+            coil14_on.new_tooth++;
+            if(coil14_on.new_tooth>=60) coil14_on.new_tooth=0;
+            coil23_off.new_tooth++;
+            if(coil23_off.new_tooth>=60) coil23_off.new_tooth=0;
+            coil23_on.new_tooth++;
+            if(coil23_on.new_tooth>=60) coil23_on.new_tooth=0;
+            emu_tooth = 0;
+        }
     }
 }
-
