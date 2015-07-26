@@ -220,15 +220,17 @@ static void stop_handler(void) {
 
 int main() {
     sei();
+    pin_out(&b4);
+    pin_out(&b5);
+    pin_out(&b6);
+    pin_out(&b7);
+    pin_on(&b7);
+    _delay_ms(1000);
     coil_state = &coil14_on;
     coil14_on.next = &coil14_off;
     coil14_off.next = &coil23_on;
     coil23_on.next = &coil23_off;
     coil23_off.next = &coil14_on;
-    pin_out(&b4);
-    pin_out(&b5);
-    pin_out(&b6);
-    pin_out(&b7);
     pin_in_pu(&l1);
     tmr16_set_cs(&tcs5);
     tmr16_set_cs(&tcs4);
