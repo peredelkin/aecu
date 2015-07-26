@@ -10,7 +10,6 @@
 #include <util/delay.h>
 #include "libs/timers.h"
 #include "libs/ports.h"
-#include "libs/font.h"
 
 pin_t b4 = make_pin(B, 4); //coil out
 pin_t b5 = make_pin(B, 5); //coil out
@@ -243,9 +242,9 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(200);
+        _delay_us(100);
         pin_off(&b6);
-        _delay_us(200);
+        _delay_us(100);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             coil14_on.new_angle++;

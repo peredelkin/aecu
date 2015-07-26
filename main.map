@@ -21,8 +21,7 @@ Discarded input sections
  .text          0x0000000000000000        0x0 timers.o
  .data          0x0000000000000000        0x0 timers.o
  .bss           0x0000000000000000        0x0 timers.o
- .text.tmr16_reset_cs
-                0x0000000000000000       0x1c timers.o
+ .comment       0x0000000000000000       0x2b timers.o
  .text          0x0000000000000000        0x0 timer.o
  .data          0x0000000000000000        0x0 timer.o
  .bss           0x0000000000000000        0x0 timer.o
@@ -215,7 +214,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x9d0
+.text           0x0000000000000000      0xa42
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -323,88 +322,65 @@ END GROUP
                 0x000000000000014a                __vector_20
                 0x000000000000014e                . = ALIGN (0x2)
  *(.text.*)
- .text.tmr16_int_enable
-                0x000000000000014e       0x34 timers.o
-                0x000000000000014e                tmr16_int_enable
- .text.tmr16_int_disable
-                0x0000000000000182       0x22 timers.o
-                0x0000000000000182                tmr16_int_disable
- .text.tmr16_event_set
-                0x00000000000001a4        0x8 timers.o
-                0x00000000000001a4                tmr16_event_set
- .text.tmr16_event_call
-                0x00000000000001ac        0xe timers.o
-                0x00000000000001ac                tmr16_event_call
- .text.tmr16_read_cr
-                0x00000000000001ba       0x10 timers.o
-                0x00000000000001ba                tmr16_read_cr
- .text.tmr16_write_cr
-                0x00000000000001ca       0x10 timers.o
-                0x00000000000001ca                tmr16_write_cr
- .text.tmr16_set_cs
-                0x00000000000001da       0x1a timers.o
-                0x00000000000001da                tmr16_set_cs
- .text.tmr16_counter_set
-                0x00000000000001f4       0x1a timers.o
-                0x00000000000001f4                tmr16_counter_set
- .text.tmr16_capture_setup
-                0x000000000000020e       0x1a timers.o
-                0x000000000000020e                tmr16_capture_setup
  .text.coil14on
-                0x0000000000000228       0x16 timer.o
+                0x000000000000014e       0x16 timer.o
  .text.coil14off
-                0x000000000000023e       0x18 timer.o
+                0x0000000000000164       0x18 timer.o
  .text.coil23on
-                0x0000000000000256       0x16 timer.o
+                0x000000000000017c       0x16 timer.o
  .text.coil23off
-                0x000000000000026c       0x18 timer.o
+                0x0000000000000192       0x18 timer.o
  .text.mark_handler
-                0x0000000000000284       0x20 timer.o
+                0x00000000000001aa       0x20 timer.o
  .text.stop_handler
-                0x00000000000002a4        0xa timer.o
+                0x00000000000001ca        0xa timer.o
+ .text.tmr16_int_enable.part.0
+                0x00000000000001d4       0x2e timer.o
+ .text.tmr16_int_disable.part.1
+                0x0000000000000202       0x1c timer.o
  .text.main_handler
-                0x00000000000002ae       0xea timer.o
- .text.tooth_60_handler
-                0x0000000000000398       0x26 timer.o
- .text.tooth_59_handler
-                0x00000000000003be        0x4 timer.o
+                0x000000000000021e      0x108 timer.o
  .text.capture_handler
-                0x00000000000003c2       0x9e timer.o
+                0x0000000000000326       0xd4 timer.o
+ .text.tooth_59_handler
+                0x00000000000003fa        0x4 timer.o
+ .text.tooth_60_handler
+                0x00000000000003fe       0x38 timer.o
  .text.__vector_42
-                0x0000000000000460       0x68 timer.o
-                0x0000000000000460                __vector_42
+                0x0000000000000436       0x72 timer.o
+                0x0000000000000436                __vector_42
  .text.__vector_43
-                0x00000000000004c8       0x68 timer.o
-                0x00000000000004c8                __vector_43
+                0x00000000000004a8       0x72 timer.o
+                0x00000000000004a8                __vector_43
  .text.__vector_44
-                0x0000000000000530       0x68 timer.o
-                0x0000000000000530                __vector_44
+                0x000000000000051a       0x72 timer.o
+                0x000000000000051a                __vector_44
  .text.__vector_46
-                0x0000000000000598       0x54 timer.o
-                0x0000000000000598                __vector_46
+                0x000000000000058c       0x5a timer.o
+                0x000000000000058c                __vector_46
  .text.__vector_47
-                0x00000000000005ec       0x5c timer.o
-                0x00000000000005ec                __vector_47
+                0x00000000000005e6       0x6a timer.o
+                0x00000000000005e6                __vector_47
  .text.__vector_48
-                0x0000000000000648       0x5c timer.o
-                0x0000000000000648                __vector_48
+                0x0000000000000650       0x6a timer.o
+                0x0000000000000650                __vector_48
  .text.__vector_49
-                0x00000000000006a4       0x5c timer.o
-                0x00000000000006a4                __vector_49
+                0x00000000000006ba       0x6a timer.o
+                0x00000000000006ba                __vector_49
  .text.__vector_50
-                0x0000000000000700       0x54 timer.o
-                0x0000000000000700                __vector_50
+                0x0000000000000724       0x5a timer.o
+                0x0000000000000724                __vector_50
  .text.startup.main
-                0x0000000000000754      0x25a timer.o
-                0x0000000000000754                main
+                0x000000000000077e      0x2a2 timer.o
+                0x000000000000077e                main
  .text.libgcc.mul
-                0x00000000000009ae       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
-                0x00000000000009ae                __umulhisi3
-                0x00000000000009cc                . = ALIGN (0x2)
+                0x0000000000000a20       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
+                0x0000000000000a20                __umulhisi3
+                0x0000000000000a3e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000009cc        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x00000000000009cc                exit
-                0x00000000000009cc                _exit
+ .fini9         0x0000000000000a3e        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x0000000000000a3e                exit
+                0x0000000000000a3e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -423,11 +399,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000009cc        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x0000000000000a3e        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000009d0                _etext = .
+                0x0000000000000a42                _etext = .
 
-.data           0x0000000000800200       0xc0 load address 0x00000000000009d0
+.data           0x0000000000800200       0xc0 load address 0x0000000000000a42
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -517,8 +493,8 @@ END GROUP
  COMMON         0x00000000008002c5        0x2 timer.o
                 0x00000000008002c5                coil_state
                 0x00000000008002c7                PROVIDE (__bss_end, .)
-                0x00000000000009d0                __data_load_start = LOADADDR (.data)
-                0x0000000000000a90                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000000a42                __data_load_start = LOADADDR (.data)
+                0x0000000000000b02                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00000000008002c7        0x0
                 0x00000000008002c7                PROVIDE (__noinit_start, .)
@@ -563,9 +539,8 @@ END GROUP
 
 .comment        0x0000000000000000       0x2a
  *(.comment)
- .comment       0x0000000000000000       0x2a timers.o
+ .comment       0x0000000000000000       0x2a timer.o
                                          0x2b (size before relaxing)
- .comment       0x000000000000002a       0x2b timer.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -755,24 +730,5 @@ tcs4                                              timer.o
 tcs5                                              timer.o
 tir4                                              timer.o
 tir5                                              timer.o
-tmr16_capture_setup                               timers.o
-                                                  timer.o
-tmr16_counter_set                                 timers.o
-                                                  timer.o
-tmr16_event_call                                  timers.o
-                                                  timer.o
-tmr16_event_set                                   timers.o
-                                                  timer.o
-tmr16_int_disable                                 timers.o
-                                                  timer.o
-tmr16_int_enable                                  timers.o
-                                                  timer.o
-tmr16_read_cr                                     timers.o
-                                                  timer.o
-tmr16_reset_cs                                    timers.o
-tmr16_set_cs                                      timers.o
-                                                  timer.o
-tmr16_write_cr                                    timers.o
-                                                  timer.o
 tooth_counter                                     timer.o
 tooth_counter_flag                                timer.o

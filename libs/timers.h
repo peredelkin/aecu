@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-//#define TIMER_STATIC //TURBO "BUTTON"
+#define TIMER_STATIC //TURBO "BUTTON"
 
 typedef void (*timer_event) ();
 
