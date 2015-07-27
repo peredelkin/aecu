@@ -119,39 +119,40 @@ static void coil23off(void) {
 typedef struct Coil_action {
     uint16_t new_angle;
     uint16_t old_angle;
-    uint16_t angle;
     uint16_t tooth_angle;
+    uint16_t action_angle;
     timer_event action;
     struct Coil_action* next;
 } coil_action_t;
 
 coil_action_t coil14_on = {
     .action = coil14on,
-    .angle = 0,
     .tooth_angle = 0,
+    .action_angle = 0,
     .new_angle = 0,
     .old_angle = 0
 };
 
 coil_action_t coil14_off = {
     .action = coil14off,
-    .angle = 120,
+    .tooth_angle = 120,
+    .action_angle = 0,
     .new_angle = 120,
     .old_angle = 120
 };
 
 coil_action_t coil23_on = {
     .action = coil23on,
-    .angle = 180,
-    .tooth_angle = 0,
+    .tooth_angle = 180,
+    .action_angle = 0,
     .new_angle = 180,
     .old_angle = 180
 };
 
 coil_action_t coil23_off = {
     .action = coil23off,
-    .angle = 300,
-    .tooth_angle = 0,
+    .tooth_angle = 300,
+    .action_angle = 0,
     .new_angle = 300,
     .old_angle = 300
 };
@@ -159,16 +160,16 @@ coil_action_t coil23_off = {
 coil_action_t* coil_state;
 
 static void coil_action_handler(coil_action_t** coil) {
-    if ((*coil)->angle == angle_counter) {
-        if ((*coil)->tooth_angle == 0) (*coil)->action();
+    if ((*coil)->tooth_angle == angle_counter) {
+        if ((*coil)->action_angle == 0) (*coil)->action();
         else {
-            tmr16_write_cr(&cha4, (capture * ((*coil)->tooth_angle)) / 6);
+            tmr16_write_cr(&cha4, (capture * ((*coil)->action_angle)) / 6);
             tmr16_event_set(&cha4, (*coil)->action);
             tmr16_int_enable(&cha4);
         }
         if ((*coil)->old_angle != (*coil)->new_angle) {
-            (*coil)->tooth_angle = (*coil)->new_angle % 6;
-            (*coil)->angle = (*coil)->new_angle - (*coil)->tooth_angle;
+            (*coil)->action_angle = (*coil)->new_angle % 6;
+            (*coil)->tooth_angle = (*coil)->new_angle - (*coil)->action_angle;
         }
         (*coil)->old_angle = (*coil)->new_angle;
         *coil = (*coil)->next;
