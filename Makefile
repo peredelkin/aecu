@@ -1,14 +1,14 @@
 OBJECTS=timers.o timer.o ports.o
 MCU_NAME=mega
 MCU_NUMBER=2560
-F_CPU=16000000UL
+F_CPU=16000000
 
 MMCU=at$(MCU_NAME)$(MCU_NUMBER)
 DEV_DEF=__AVR_AT$(MCU_NAME)$(MCU_NUMBER)__
 
 MCUFLAGS=-mmcu=$(MMCU)
 
-CFLAGS=-Os $(MCUFLAGS) -D$(DEV_DEF) -DF_CPU=$(F_CPU) -ffunction-sections -fdata-sections
+CFLAGS=-O2 $(MCUFLAGS) -D$(DEV_DEF) -DF_CPU=$(F_CPU) -ffunction-sections -fdata-sections
 
 LDFLAGS=-Wl,-Map=$(TARGET).map,--cref $(MCUFLAGS) -Wl,--gc-sections
 

@@ -41,8 +41,8 @@ void tmr16_reset_cs(tmr16_ctrl_mask_t* cs_mask) {
     *cs_mask->ctrl_reg->tccrb &= ~cs_mask->mask;
 }
 
-void tmr16_counter_set(tmr16_ctrl_mask_t* tcnt_mask) {
-    *tcnt_mask->ctrl_reg->tcnt = tcnt_mask->mask;
+void tmr16_counter_set(tmr16_ctrl_mask_t* tcnt5_mask) {
+    *tcnt5_mask->ctrl_reg->tcnt = tcnt5_mask->mask;
 }
 
 void tmr16_capture_setup(tmr16_ctrl_mask_t* cap_mask) {

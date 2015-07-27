@@ -174,7 +174,7 @@ extern uint16_t tmr16_read_cr(tmr16_int_ctrl_t* tic_type);
 extern void tmr16_write_cr(tmr16_int_ctrl_t* tic_type, uint16_t val);
 extern void tmr16_set_cs(tmr16_ctrl_mask_t* cs_mask);
 extern void tmr16_reset_cs(tmr16_ctrl_mask_t* cs_mask);
-extern void tmr16_counter_set(tmr16_ctrl_mask_t* tcnt_mask);
+extern void tmr16_counter_set(tmr16_ctrl_mask_t* tcnt5_mask);
 extern void tmr16_capture_setup(tmr16_ctrl_mask_t* cap_mask);
 
 #endif

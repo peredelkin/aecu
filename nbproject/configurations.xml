@@ -137,7 +137,7 @@
             <pElem>.</pElem>
           </incDir>
           <preprocessorList>
-            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>F_CPU=16000000</Elem>
             <Elem>__AVR_ATmega2560__</Elem>
           </preprocessorList>
         </cTool>
@@ -150,7 +150,7 @@
             <pElem>.</pElem>
           </incDir>
           <preprocessorList>
-            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>F_CPU=16000000</Elem>
             <Elem>__AVR_ATmega2560__</Elem>
           </preprocessorList>
         </cTool>
@@ -183,7 +183,7 @@
       <item path="timer.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
           <preprocessorList>
-            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>F_CPU=16000000</Elem>
             <Elem>__AVR_ATmega2560__</Elem>
           </preprocessorList>
         </cTool>
