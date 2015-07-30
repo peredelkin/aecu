@@ -57,19 +57,19 @@ static void test_off(void) {
 
 ISR(TIMER4_COMPA_vect) {
     tmr16_event_call(&cha4);
-    //tmr16_event_set(&cha4,NULL);
+    tmr16_event_set(&cha4, NULL);
     tmr16_int_disable(&cha4);
 }
 
 ISR(TIMER4_COMPB_vect) {
     tmr16_event_call(&chb4);
-    //tmr16_event_set(&chb4,NULL);
+    tmr16_event_set(&chb4, NULL);
     tmr16_int_disable(&chb4);
 }
 
 ISR(TIMER4_COMPC_vect) {
     tmr16_event_call(&chc4);
-    //tmr16_event_set(&chc4,NULL);
+    tmr16_event_set(&chc4, NULL);
     tmr16_int_disable(&chc4);
 }
 
@@ -219,6 +219,42 @@ static void stop_handler(void) {
     tooth_counter_flag = false;
 }
 
+int8_t ignition_map[40][40];
+
+#define LERP_MAX 256
+
+int16_t lerp(int16_t a, int16_t b, uint16_t t) {
+    return a + ((b - a) * t) / LERP_MAX;
+}
+
+int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t x, uint16_t y) {
+    int16_t a = a1 + ((b1 - a1) * x) / LERP_MAX;
+    int16_t b = a2 + ((b2 - a2) * x) / LERP_MAX;
+    return a + ((b - a) * y) / LERP_MAX;
+}
+
+int16_t bilerp_ignition_map(uint16_t rpm, uint16_t load) {
+    uint8_t x1 = rpm / LERP_MAX;
+    uint8_t x2 = rpm % LERP_MAX;
+    uint8_t y1 = load / LERP_MAX;
+    uint8_t y2 = load % LERP_MAX;
+    return bilerp(
+            ignition_map[x1][y1],
+            ignition_map[x1 + 1][y1],
+            ignition_map[x1][y1 + 1],
+            ignition_map[x1 + 1][y1 + 1], x2, y2);
+}
+
+void map_init() {
+    uint8_t i = 32;
+    while (i) {
+        ignition_map[i][0] = i;
+        ignition_map[i][1] = i - 5;
+        ignition_map[i][2] = i - 10;
+        i--;
+    }
+}
+
 int main() {
     sei();
     pin_out(&b4);
@@ -241,6 +277,8 @@ int main() {
     tmr16_event_set(&ovf5, stop_handler); //constant event
     tmr16_int_enable(&cap5); //constant enabled interrupt
     tmr16_int_enable(&ovf5); //constant enabled interrupt
+    int16_t calc_angle;
+    map_init();
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
         _delay_us(100);
@@ -248,14 +286,11 @@ int main() {
         _delay_us(100);
         if (emu_tooth <= 58) emu_tooth++;
         else {
-            coil14_on.new_angle++;
-            coil14_off.new_angle++;
-            coil23_on.new_angle++;
-            coil23_off.new_angle++;
-            if (coil14_on.new_angle == 359) coil14_on.new_angle = 0;
-            if (coil14_off.new_angle == 359) coil14_off.new_angle = 0;
-            if (coil23_on.new_angle == 359) coil23_on.new_angle = 0;
-            if (coil23_off.new_angle == 359) coil23_off.new_angle = 0;
+            calc_angle = bilerp_ignition_map(2000000 / capture, 0);
+            coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
+            coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
+            coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
+            coil23_off.new_angle = (coil14_off.new_angle + 180) % 360; //!!!
             emu_tooth = 0;
         }
     }
