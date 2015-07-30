@@ -251,6 +251,7 @@ void map_init() {
         ignition_map[i][0] = i;
         ignition_map[i][1] = i - 5;
         ignition_map[i][2] = i - 10;
+        ignition_map[i][3] = i - 15;
         i--;
     }
 }

@@ -39,7 +39,7 @@ Discarded input sections
  .text.lerp     0x0000000000000000       0x1c timer.o
  .text.bilerp   0x0000000000000000       0x64 timer.o
  .text.map_init
-                0x0000000000000000       0x24 timer.o
+                0x0000000000000000       0x2c timer.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
  .bss           0x0000000000000000        0x0 ports.o
@@ -299,7 +299,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0xc76
+.text           0x0000000000000000      0xc7e
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -459,32 +459,32 @@ END GROUP
                 0x00000000000007a4       0xe2 timer.o
                 0x00000000000007a4                bilerp_ignition_map
  .text.startup.main
-                0x0000000000000886      0x2fc timer.o
+                0x0000000000000886      0x304 timer.o
                 0x0000000000000886                main
  .text.libgcc.mul
-                0x0000000000000b82       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
-                0x0000000000000b82                __umulhisi3
+                0x0000000000000b8a       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
+                0x0000000000000b8a                __umulhisi3
  .text.libgcc.div
-                0x0000000000000ba0       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
-                0x0000000000000ba0                __divmodhi4
-                0x0000000000000ba0                _div
+                0x0000000000000ba8       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
+                0x0000000000000ba8                __divmodhi4
+                0x0000000000000ba8                _div
  .text.libgcc.div
-                0x0000000000000bc8       0x2e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
-                0x0000000000000bc8                __divmodsi4
+                0x0000000000000bd0       0x2e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
+                0x0000000000000bd0                __divmodsi4
  .text.libgcc.div
-                0x0000000000000bf6       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
-                0x0000000000000bf6                __negsi2
+                0x0000000000000bfe       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
+                0x0000000000000bfe                __negsi2
  .text.libgcc.div
-                0x0000000000000c06       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                0x0000000000000c06                __udivmodhi4
+                0x0000000000000c0e       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+                0x0000000000000c0e                __udivmodhi4
  .text.libgcc.div
-                0x0000000000000c2e       0x44 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
-                0x0000000000000c2e                __udivmodsi4
-                0x0000000000000c72                . = ALIGN (0x2)
+                0x0000000000000c36       0x44 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
+                0x0000000000000c36                __udivmodsi4
+                0x0000000000000c7a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000c72        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x0000000000000c72                exit
-                0x0000000000000c72                _exit
+ .fini9         0x0000000000000c7a        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x0000000000000c7a                exit
+                0x0000000000000c7a                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -503,11 +503,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000c72        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x0000000000000c7a        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000000c76                _etext = .
+                0x0000000000000c7e                _etext = .
 
-.data           0x0000000000800200       0xc0 load address 0x0000000000000c76
+.data           0x0000000000800200       0xc0 load address 0x0000000000000c7e
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -598,8 +598,8 @@ END GROUP
                 0x00000000008002c6                ignition_map
                 0x0000000000800906                coil_state
                 0x0000000000800908                PROVIDE (__bss_end, .)
-                0x0000000000000c76                __data_load_start = LOADADDR (.data)
-                0x0000000000000d36                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000000c7e                __data_load_start = LOADADDR (.data)
+                0x0000000000000d3e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0000000000800908        0x0
                 0x0000000000800908                PROVIDE (__noinit_start, .)
