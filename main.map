@@ -22,7 +22,7 @@ Archive member included to satisfy reference by file (symbol)
 Allocating common symbols
 Common symbol       size              file
 
-ignition_map        0x320             timer.o
+ignition_map        0x640             timer.o
 coil_state          0x2               timer.o
 
 Discarded input sections
@@ -39,7 +39,7 @@ Discarded input sections
  .text.lerp     0x0000000000000000       0x1c timer.o
  .text.bilerp   0x0000000000000000       0x64 timer.o
  .text.map_init
-                0x0000000000000000       0x22 timer.o
+                0x0000000000000000       0x26 timer.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
  .bss           0x0000000000000000        0x0 ports.o
@@ -299,7 +299,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0xcbe
+.text           0x0000000000000000      0xcc2
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -459,32 +459,32 @@ END GROUP
                 0x00000000000007ee       0xe2 timer.o
                 0x00000000000007ee                bilerp_ignition_map
  .text.startup.main
-                0x00000000000008d0      0x2fa timer.o
+                0x00000000000008d0      0x2fe timer.o
                 0x00000000000008d0                main
  .text.libgcc.mul
-                0x0000000000000bca       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
-                0x0000000000000bca                __umulhisi3
+                0x0000000000000bce       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
+                0x0000000000000bce                __umulhisi3
  .text.libgcc.div
-                0x0000000000000be8       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
-                0x0000000000000be8                __divmodhi4
-                0x0000000000000be8                _div
+                0x0000000000000bec       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
+                0x0000000000000bec                __divmodhi4
+                0x0000000000000bec                _div
  .text.libgcc.div
-                0x0000000000000c10       0x2e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
-                0x0000000000000c10                __divmodsi4
+                0x0000000000000c14       0x2e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
+                0x0000000000000c14                __divmodsi4
  .text.libgcc.div
-                0x0000000000000c3e       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
-                0x0000000000000c3e                __negsi2
+                0x0000000000000c42       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
+                0x0000000000000c42                __negsi2
  .text.libgcc.div
-                0x0000000000000c4e       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                0x0000000000000c4e                __udivmodhi4
+                0x0000000000000c52       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+                0x0000000000000c52                __udivmodhi4
  .text.libgcc.div
-                0x0000000000000c76       0x44 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
-                0x0000000000000c76                __udivmodsi4
-                0x0000000000000cba                . = ALIGN (0x2)
+                0x0000000000000c7a       0x44 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
+                0x0000000000000c7a                __udivmodsi4
+                0x0000000000000cbe                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000cba        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x0000000000000cba                exit
-                0x0000000000000cba                _exit
+ .fini9         0x0000000000000cbe        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x0000000000000cbe                exit
+                0x0000000000000cbe                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -503,11 +503,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000cba        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x0000000000000cbe        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000000cbe                _etext = .
+                0x0000000000000cc2                _etext = .
 
-.data           0x0000000000800200       0xc0 load address 0x0000000000000cbe
+.data           0x0000000000800200       0xc0 load address 0x0000000000000cc2
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -578,7 +578,7 @@ END GROUP
                 0x00000000008002c0                _edata = .
                 0x00000000008002c0                PROVIDE (__data_end, .)
 
-.bss            0x00000000008002c0      0x328
+.bss            0x00000000008002c0      0x648
                 0x00000000008002c0                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -594,19 +594,19 @@ END GROUP
                 0x00000000008002c5        0x1 timer.o
                 0x00000000008002c5                emu_tooth
  *(COMMON)
- COMMON         0x00000000008002c6      0x322 timer.o
+ COMMON         0x00000000008002c6      0x642 timer.o
                 0x00000000008002c6                ignition_map
-                0x00000000008005e6                coil_state
-                0x00000000008005e8                PROVIDE (__bss_end, .)
-                0x0000000000000cbe                __data_load_start = LOADADDR (.data)
-                0x0000000000000d7e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000800906                coil_state
+                0x0000000000800908                PROVIDE (__bss_end, .)
+                0x0000000000000cc2                __data_load_start = LOADADDR (.data)
+                0x0000000000000d82                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00000000008005e8        0x0
-                0x00000000008005e8                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000800908        0x0
+                0x0000000000800908                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00000000008005e8                PROVIDE (__noinit_end, .)
-                0x00000000008005e8                _end = .
-                0x00000000008005e8                PROVIDE (__heap_start, .)
+                0x0000000000800908                PROVIDE (__noinit_end, .)
+                0x0000000000800908                _end = .
+                0x0000000000800908                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)

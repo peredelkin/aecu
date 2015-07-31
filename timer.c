@@ -205,7 +205,7 @@ static void stop_handler(void) {
     test_on();
 }
 
-int8_t ignition_map[40][20];
+int8_t ignition_map[40][40];
 
 #define LERP_MAX 256
 
@@ -213,31 +213,31 @@ int16_t lerp(int16_t a, int16_t b, uint16_t t) {
     return a + ((b - a) * t) / LERP_MAX;
 }
 
-int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t x, uint16_t y) {
-    int16_t a = a1 + ((b1 - a1) * x) / LERP_MAX;
-    int16_t b = a2 + ((b2 - a2) * x) / LERP_MAX;
-    return a + ((b - a) * y) / LERP_MAX;
+int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t t1, uint16_t t2) {
+    int16_t a = a1 + ((b1 - a1) * t1) / LERP_MAX;
+    int16_t b = a2 + ((b2 - a2) * t1) / LERP_MAX;
+    return a + ((b - a) * t2) / LERP_MAX;
 }
 
 int16_t bilerp_ignition_map(uint16_t rpm, uint16_t load) {
-    uint8_t x1 = rpm / LERP_MAX;
-    uint8_t x2 = rpm % LERP_MAX;
-    uint8_t y1 = load / LERP_MAX;
-    uint8_t y2 = load % LERP_MAX;
+    uint8_t x = rpm / 256;
+    uint8_t tx = rpm % 256;
+    uint8_t y = load / 256;
+    uint8_t ty = load % 256;
     return bilerp(
-            ignition_map[x1][y1],
-            ignition_map[x1 + 1][y1],
-            ignition_map[x1][y1 + 1],
-            ignition_map[x1 + 1][y1 + 1], x2, y2);
+            ignition_map[x][y],
+            ignition_map[x + 1][y],
+            ignition_map[x][y + 1],
+            ignition_map[x + 1][y + 1], tx, ty);
 }
 
 void map_init() {
     uint8_t i = 39;
     while (i) {
+        i--;
         ignition_map[i][0] = i;
         ignition_map[i][1] = i-1;
-        ignition_map[i][2] = i-2;
-        i--;
+        ignition_map[i][2] = i-3;
     }
 }
 
@@ -274,9 +274,9 @@ int main() {
     map_init();
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(100);
+        _delay_us(500);
         pin_off(&b6);
-        _delay_us(100);
+        _delay_us(500);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             calc_ignition_angle();
