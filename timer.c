@@ -42,7 +42,7 @@ tmr16_ctrl_mask_t tcnt5_mask = {
     .mask = 0
 };
 
-tmr16_ctrl_mask_t cap_pos_mask = {
+tmr16_ctrl_mask_t cap5_pos_mask = {
     .ctrl_reg = &tcr5,
     .mask = (1 << ICES5),
 };
@@ -125,37 +125,18 @@ typedef struct Coil_action {
     struct Coil_action* next;
 } coil_action_t;
 
-coil_action_t coil14_on = {
-    .action = coil14on,
-    .tooth_angle = 0,
-    .action_angle = 0,
-    .new_angle = 0,
-    .old_angle = 0
-};
+#define make_coil(ANGLE,ACTION) { \
+    .action = ACTION, \
+    .action_angle = ANGLE%6, \
+    .tooth_angle = ANGLE - ANGLE%6, \
+    .new_angle = ANGLE, \
+    .old_angle = ANGLE \
+}
 
-coil_action_t coil14_off = {
-    .action = coil14off,
-    .tooth_angle = 120,
-    .action_angle = 0,
-    .new_angle = 120,
-    .old_angle = 120
-};
-
-coil_action_t coil23_on = {
-    .action = coil23on,
-    .tooth_angle = 180,
-    .action_angle = 0,
-    .new_angle = 180,
-    .old_angle = 180
-};
-
-coil_action_t coil23_off = {
-    .action = coil23off,
-    .tooth_angle = 300,
-    .action_angle = 0,
-    .new_angle = 300,
-    .old_angle = 300
-};
+coil_action_t coil14_on = make_coil(0,coil14on);
+coil_action_t coil14_off = make_coil(114,coil14off);
+coil_action_t coil23_on = make_coil(180,coil23on);
+coil_action_t coil23_off = make_coil(294,coil23off);
 
 coil_action_t* coil_state;
 
@@ -177,49 +158,54 @@ static void coil_action_handler(coil_action_t** coil) {
 }
 
 static void main_handler() {
-    tmr16_counter_set(&tcnt4_mask); //!!!
     coil_action_handler(&coil_state);
     angle_counter += 6;
 }
 
 static void capture_handler(void) {
     tmr16_counter_set(&tcnt5_mask);
+    tmr16_counter_set(&tcnt4_mask);
     capture = tmr16_read_cr(&cap5);
     tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
     tmr16_int_enable(&chc5);
-    if (tooth_counter_flag == true) main_handler();
-    if (angle_counter == 348) { //last tooth 58*6
-        tmr16_write_cr(&cha5, capture); //59 tooth
-        tmr16_int_enable(&cha5);
-        tmr16_write_cr(&chb5, capture * 2); //60 tooth
-        tmr16_int_enable(&chb5);
+    if (tooth_counter_flag == true) {
+        main_handler();
+        if (angle_counter == 348) { //last tooth 58*6
+            tmr16_write_cr(&cha5, capture); //59 tooth
+            tmr16_int_enable(&cha5);
+            tmr16_write_cr(&chb5, capture * 2); //60 tooth
+            tmr16_int_enable(&chb5);
+        }
     }
     test_off();
 }
 
 static void tooth_59_handler(void) {
+    tmr16_counter_set(&tcnt4_mask);
     main_handler();
 }
 
 static void tooth_60_handler(void) {
+    tmr16_counter_set(&tcnt5_mask);
+    tmr16_counter_set(&tcnt4_mask);
     main_handler();
-    angle_counter = 0; //!!!
-    tmr16_counter_set(&tcnt5_mask); //!!!
-    test_on(); //!!!
+    angle_counter = 0;
+    test_on();
 }
 
 static void mark_handler(void) {
     angle_counter = 0;
-    tooth_counter_flag = true;
+    tooth_counter_flag = true; //start
     test_on();
 }
 
 static void stop_handler(void) {
     angle_counter = 0;
-    tooth_counter_flag = false;
+    tooth_counter_flag = false; //stop
+    test_on();
 }
 
-int8_t ignition_map[40][40];
+int8_t ignition_map[40][20];
 
 #define LERP_MAX 256
 
@@ -246,14 +232,21 @@ int16_t bilerp_ignition_map(uint16_t rpm, uint16_t load) {
 }
 
 void map_init() {
-    uint8_t i = 32;
+    uint8_t i = 39;
     while (i) {
         ignition_map[i][0] = i;
-        ignition_map[i][1] = i - 5;
-        ignition_map[i][2] = i - 10;
-        ignition_map[i][3] = i - 15;
+        ignition_map[i][1] = i-1;
+        ignition_map[i][2] = i-2;
         i--;
     }
+}
+
+static void calc_ignition_angle(void) {
+    int16_t calc_angle = bilerp_ignition_map(2000000 / capture, 0);
+    coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
+    coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
+    coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
+    coil23_off.new_angle = (coil14_off.new_angle + 180) % 360; //!!!
 }
 
 int main() {
@@ -270,7 +263,7 @@ int main() {
     pin_in_pu(&l1);
     tmr16_set_cs(&tcs5);
     tmr16_set_cs(&tcs4);
-    tmr16_capture_setup(&cap_pos_mask);
+    tmr16_capture_setup(&cap5_pos_mask);
     tmr16_event_set(&cap5, capture_handler); //constant event
     tmr16_event_set(&cha5, tooth_59_handler); //constant event
     tmr16_event_set(&chb5, tooth_60_handler); //constant event
@@ -278,7 +271,6 @@ int main() {
     tmr16_event_set(&ovf5, stop_handler); //constant event
     tmr16_int_enable(&cap5); //constant enabled interrupt
     tmr16_int_enable(&ovf5); //constant enabled interrupt
-    int16_t calc_angle;
     map_init();
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
@@ -287,11 +279,7 @@ int main() {
         _delay_us(100);
         if (emu_tooth <= 58) emu_tooth++;
         else {
-            calc_angle = bilerp_ignition_map(2000000 / capture, 0);
-            coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
-            coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
-            coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
-            coil23_off.new_angle = (coil14_off.new_angle + 180) % 360; //!!!
+            calc_ignition_angle();
             emu_tooth = 0;
         }
     }
