@@ -205,8 +205,9 @@ static void stop_handler(void) {
     test_on();
 }
 
-int8_t ignition_map[40][40] = {
+int16_t ignition_map[10][40] = {
     {5,10,15,20,25,30,35,40,45,50,55},
+    {0,5,10,15,20,25,30,35,40,45,50},
     {0,5,10,15,20,25,30,35,40,45,50}
 };
 
@@ -220,7 +221,7 @@ int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t t1, uint
     return lerp(a, b, t2);
 }
 
-int16_t bilerp_map(int8_t (*map)[40], uint16_t x_val, uint16_t y_val) {
+int16_t bilerp_map(int16_t (*map)[40], uint16_t x_val, uint16_t y_val) {
     uint16_t x = x_val / 256;
     uint16_t y = y_val / 256;
     uint16_t tx = x_val % 256;
@@ -230,12 +231,13 @@ int16_t bilerp_map(int8_t (*map)[40], uint16_t x_val, uint16_t y_val) {
             map[y][x+1],
             map[y+1][x],
             map[y+1][x+1],
-            tx, ty
+            tx,
+            ty
             );
 }
 
 static void calc_ignition_angle(void) {
-    int16_t calc_angle = bilerp_map(ignition_map,2000000/capture,0);
+    int16_t calc_angle = bilerp_map(ignition_map,capture,1);
     coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
     coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
@@ -266,9 +268,9 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(100);
+        _delay_us(500);
         pin_off(&b6);
-        _delay_us(100);
+        _delay_us(500);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             calc_ignition_angle();
