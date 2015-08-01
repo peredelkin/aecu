@@ -206,12 +206,36 @@ static void stop_handler(void) {
 }
 
 int8_t ignition_map[40][40] = {
-    {10,20,30,40,50,60,70,80,90,100},
-    {-100,-90,-80,-70,-60,-50,-40,-30,-20,-10}
+    {5,10,15,20,25,30,35,40,45,50,55},
+    {0,5,10,15,20,25,30,35,40,45,50}
 };
 
+int16_t lerp(int16_t a, int16_t b, uint16_t t) {
+    return a + ((b - a) * t) / 256;
+}
+
+int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t t1, uint16_t t2) {
+    int16_t a = lerp(a1, b1, t1);
+    int16_t b = lerp(a2, b2, t1);
+    return lerp(a, b, t2);
+}
+
+int16_t bilerp_map(int8_t (*map)[40], uint16_t x_val, uint16_t y_val) {
+    uint16_t x = x_val / 256;
+    uint16_t y = y_val / 256;
+    uint16_t tx = x_val % 256;
+    uint16_t ty = y_val % 256;
+    return bilerp(
+            map[y][x],
+            map[y][x+1],
+            map[y+1][x],
+            map[y+1][x+1],
+            tx, ty
+            );
+}
+
 static void calc_ignition_angle(void) {
-    int16_t calc_angle = 0;
+    int16_t calc_angle = bilerp_map(ignition_map,2000000/capture,0);
     coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
     coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
