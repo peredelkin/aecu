@@ -236,8 +236,10 @@ int16_t bilerp_map(int16_t (*map)[40], uint16_t x_val, uint16_t y_val) {
             );
 }
 
+volatile uint16_t load=0;
+
 static void calc_ignition_angle(void) {
-    int16_t calc_angle = bilerp_map(ignition_map,capture,1);
+    int16_t calc_angle = bilerp_map(ignition_map,2000000/capture,load);
     coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
     coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
