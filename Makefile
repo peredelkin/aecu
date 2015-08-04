@@ -1,7 +1,7 @@
-OBJECTS=timers.o timer.o ports.o
+OBJECTS=timers.o timer.o ports.o usart.o
 MCU_NAME=mega
 MCU_NUMBER=2560
-F_CPU=16000000
+F_CPU=16000000UL
 
 MMCU=at$(MCU_NAME)$(MCU_NUMBER)
 DEV_DEF=__AVR_AT$(MCU_NAME)$(MCU_NUMBER)__

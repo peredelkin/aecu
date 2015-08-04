@@ -47,8 +47,7 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <flagsDictionary>
-        <element flagsID="0" commonFlags="-O2"/>
-        <element flagsID="1" commonFlags="-Os"/>
+        <element flagsID="0" commonFlags="-Os"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
@@ -73,7 +72,7 @@
       <item path="libs/delay.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="libs/ecu_capt.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
+        <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
           </incDir>
@@ -86,7 +85,7 @@
       <item path="libs/ext_int.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="libs/font.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
+        <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
           </incDir>
@@ -97,7 +96,7 @@
         </cTool>
       </item>
       <item path="libs/graphics.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
+        <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
           </incDir>
@@ -108,7 +107,7 @@
         </cTool>
       </item>
       <item path="libs/lcd0108.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
+        <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
           </incDir>
@@ -121,7 +120,7 @@
       <item path="libs/one_wire.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="libs/pin_state.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
+        <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
           </incDir>
@@ -137,7 +136,7 @@
             <pElem>.</pElem>
           </incDir>
           <preprocessorList>
-            <Elem>F_CPU=16000000</Elem>
+            <Elem>F_CPU=16000000UL</Elem>
             <Elem>__AVR_ATmega2560__</Elem>
           </preprocessorList>
         </cTool>
@@ -150,7 +149,7 @@
             <pElem>.</pElem>
           </incDir>
           <preprocessorList>
-            <Elem>F_CPU=16000000</Elem>
+            <Elem>F_CPU=16000000UL</Elem>
             <Elem>__AVR_ATmega2560__</Elem>
           </preprocessorList>
         </cTool>
@@ -158,7 +157,7 @@
       <item path="libs/two_wire.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="libs/usart.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
+        <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
           </incDir>
@@ -173,7 +172,7 @@
       <item path="libs/vfd_graphics.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
+        <cTool flags="0">
           <preprocessorList>
             <Elem>F_CPU=16000000UL</Elem>
             <Elem>__AVR_ATmega2560__</Elem>
@@ -183,7 +182,7 @@
       <item path="timer.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
           <preprocessorList>
-            <Elem>F_CPU=16000000</Elem>
+            <Elem>F_CPU=16000000UL</Elem>
             <Elem>__AVR_ATmega2560__</Elem>
           </preprocessorList>
         </cTool>

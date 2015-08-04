@@ -10,6 +10,26 @@
 #include <util/delay.h>
 #include "libs/timers.h"
 #include "libs/ports.h"
+#include "libs/usart.h"
+#include <stdio.h>
+
+#define UART_BAUD 76800
+#define UART_UBRR_VALUE (F_CPU / 16 / UART_BAUD - 1)
+
+uart_t uart0 = UART_init(0);
+uint8_t done=0;
+
+ISR(USART0_UDRE_vect)
+{
+    uart_udre_handler(&uart0);
+}
+
+ISR(USART0_RX_vect)
+{
+    uart_rx_handler(&uart0);
+}
+
+//===================================== usart
 
 pin_t b4 = make_pin(B, 4); //coil out
 pin_t b5 = make_pin(B, 5); //coil out
@@ -206,7 +226,8 @@ static void stop_handler(void) {
 }
 
 int16_t lerp(int16_t a, int16_t b, uint16_t t) {
-    return a + ((b - a) * t) / 256;
+    int16_t c = (b - a) * t;
+    return a + c / 256;
 }
 
 int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t t1, uint16_t t2) {
@@ -215,26 +236,29 @@ int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t t1, uint
     return lerp(a, b, t2);
 }
 
-int16_t bilerp_map(int16_t *map, uint16_t x_val, uint16_t y_val) {
+int16_t bilerp_map(int8_t (*map)[40], uint16_t x_val, uint16_t y_val) {
     uint16_t x = x_val / 256;
     uint16_t y = y_val / 256;
     uint16_t tx = x_val % 256;
     uint16_t ty = y_val % 256;
     return bilerp(
-            map[2*y+x],
-            map[2*y+(x+1)],
-            map[2*(y+1)+x],
-            map[2*(y+1)+(x+1)],
+            (int16_t)map[y][x],
+            (int16_t)map[y][x+1],
+            (int16_t)map[y+1][x],
+            (int16_t)map[y+1][x+1],
             tx, ty
             );
 }
 
-int16_t lerp_map[4] = {
-    5,10,0,5
+int8_t lerp_map[40][40] = {
+    {5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100},
+    {-5,0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95}
 };
+char data[30];
 
 static void calc_ignition_angle(void) {
-    int16_t calc_angle = bilerp_map(lerp_map, 128,1);
+    int16_t calc_angle = bilerp_map(lerp_map, 2000000/capture,128);
+    sprintf(data,"Angle %d \n",calc_angle);
     coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
     coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
@@ -242,6 +266,13 @@ static void calc_ignition_angle(void) {
 }
 
 int main() {
+    //uart
+    uart_init(&uart0);
+    uart_baud_rate(&uart0,UART_UBRR_VALUE);
+    uart_character_size(&uart0,8);
+    uart_parity_mode(&uart0,UPM_DIS);
+    uart_stop_bit(&uart0,1);
+    //uart
     sei();
     pin_out(&b4);
     pin_out(&b5);
@@ -265,12 +296,13 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(500);
+        _delay_us(800);
         pin_off(&b6);
-        _delay_us(500);
+        _delay_us(800);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             calc_ignition_angle();
+            if(uart_tx_done(&uart0)) uart_tx(&uart0, data, 30);
             emu_tooth = 0;
         }
     }
