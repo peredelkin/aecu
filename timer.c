@@ -133,10 +133,10 @@ typedef struct Coil_action {
     .old_angle = ANGLE \
 }
 
-coil_action_t coil14_on = make_coil(0,coil14on);
-coil_action_t coil14_off = make_coil(114,coil14off);
-coil_action_t coil23_on = make_coil(180,coil23on);
-coil_action_t coil23_off = make_coil(294,coil23off);
+coil_action_t coil14_on = make_coil(0, coil14on);
+coil_action_t coil14_off = make_coil(114, coil14off);
+coil_action_t coil23_on = make_coil(180, coil23on);
+coil_action_t coil23_off = make_coil(294, coil23off);
 
 coil_action_t* coil_state;
 
@@ -205,12 +205,6 @@ static void stop_handler(void) {
     test_on();
 }
 
-int16_t ignition_map[10][40] = {
-    {5,10,15,20,25,30,35,40,45,50,55},
-    {0,5,10,15,20,25,30,35,40,45,50},
-    {0,5,10,15,20,25,30,35,40,45,50}
-};
-
 int16_t lerp(int16_t a, int16_t b, uint16_t t) {
     return a + ((b - a) * t) / 256;
 }
@@ -221,25 +215,26 @@ int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t t1, uint
     return lerp(a, b, t2);
 }
 
-int16_t bilerp_map(int16_t (*map)[40], uint16_t x_val, uint16_t y_val) {
+int16_t bilerp_map(int16_t *map, uint16_t x_val, uint16_t y_val) {
     uint16_t x = x_val / 256;
     uint16_t y = y_val / 256;
     uint16_t tx = x_val % 256;
     uint16_t ty = y_val % 256;
     return bilerp(
-            map[y][x],
-            map[y][x+1],
-            map[y+1][x],
-            map[y+1][x+1],
-            tx,
-            ty
+            map[2*y+x],
+            map[2*y+(x+1)],
+            map[2*(y+1)+x],
+            map[2*(y+1)+(x+1)],
+            tx, ty
             );
 }
 
-volatile uint16_t load=0;
+int16_t lerp_map[4] = {
+    5,10,0,5
+};
 
 static void calc_ignition_angle(void) {
-    int16_t calc_angle = bilerp_map(ignition_map,2000000/capture,load);
+    int16_t calc_angle = bilerp_map(lerp_map, 128,1);
     coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
     coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
