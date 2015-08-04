@@ -226,8 +226,7 @@ static void stop_handler(void) {
 }
 
 int16_t lerp(int16_t a, int16_t b, uint16_t t) {
-    int16_t c = (b - a) * t;
-    return a + c / 256;
+    return a+(int16_t)((((int32_t)b - (int32_t)a) * (int32_t)t)/256);
 }
 
 int16_t bilerp(int16_t a1, int16_t b1, int16_t a2, int16_t b2, uint16_t t1, uint16_t t2) {
