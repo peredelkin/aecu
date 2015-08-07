@@ -256,7 +256,7 @@ int8_t lerp_map[40][40] = {
 char data[30];
 
 static void calc_ignition_angle(void) {
-    int16_t calc_angle = bilerp_map(lerp_map, 2000000/capture,128);
+    int16_t calc_angle = bilerp_map(lerp_map, 2000000/capture,0);
     sprintf(data,"Angle %d \n",calc_angle);
     coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
     coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
@@ -295,9 +295,9 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(800);
+        _delay_us(1000);
         pin_off(&b6);
-        _delay_us(800);
+        _delay_us(1000);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             calc_ignition_angle();
