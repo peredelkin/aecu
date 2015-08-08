@@ -39,9 +39,11 @@ pin_t l1 = make_pin(L, 1); //capture in
 uint8_t emu_tooth = 0;
 
 tmr16_int_reg_t tir4 = make_tir(4);
-tmr16_int_ctrl_t cha4 = make_ch(4A, tir4);
-tmr16_int_ctrl_t chb4 = make_ch(4B, tir4);
-tmr16_int_ctrl_t chc4 = make_ch(4C, tir4);
+tmr16_int_ctrl_t ch4[3] = {
+    make_mass_ch(4A, tir4),
+    make_mass_ch(4B, tir4),
+    make_mass_ch(4C, tir4)
+};
 tmr16_ctrl_reg_t tcr4 = make_tcr(4);
 tmr16_ctrl_mask_t tcs4 = make_cs8_mask(4, tcr4);
 tmr16_ctrl_mask_t tcnt4_mask = {
@@ -76,21 +78,21 @@ static void test_off(void) {
 }
 
 ISR(TIMER4_COMPA_vect) {
-    tmr16_event_call(&cha4);
-    tmr16_event_set(&cha4, NULL);
-    tmr16_int_disable(&cha4);
+    tmr16_event_call(&ch4[0]);
+    tmr16_event_set(&ch4[0], NULL);
+    tmr16_int_disable(&ch4[0]);
 }
 
 ISR(TIMER4_COMPB_vect) {
-    tmr16_event_call(&chb4);
-    tmr16_event_set(&chb4, NULL);
-    tmr16_int_disable(&chb4);
+    tmr16_event_call(&ch4[1]);
+    tmr16_event_set(&ch4[1], NULL);
+    tmr16_int_disable(&ch4[1]);
 }
 
 ISR(TIMER4_COMPC_vect) {
-    tmr16_event_call(&chc4);
-    tmr16_event_set(&chc4, NULL);
-    tmr16_int_disable(&chc4);
+    tmr16_event_call(&ch4[2]);
+    tmr16_event_set(&ch4[2], NULL);
+    tmr16_int_disable(&ch4[2]);
 }
 
 ISR(TIMER5_CAPT_vect) {
@@ -161,12 +163,14 @@ coil_action_t coil23_off = make_coil(294, coil23off);
 coil_action_t* coil_state;
 
 static void coil_action_handler(coil_action_t** coil) {
-    if ((*coil)->tooth_angle == angle_counter) {
+    while ((*coil)->tooth_angle == angle_counter) {
         if ((*coil)->action_angle == 0) (*coil)->action();
         else {
-            tmr16_write_cr(&cha4, (capture * ((*coil)->action_angle)) / 6);
-            tmr16_event_set(&cha4, (*coil)->action);
-            tmr16_int_enable(&cha4);
+            uint8_t ch_n = 0;
+            while(ch4[ch_n].event) ch_n++;
+            tmr16_write_cr(&ch4[ch_n], (capture * ((*coil)->action_angle)) / 6);
+            tmr16_event_set(&ch4[ch_n], (*coil)->action);
+            tmr16_int_enable(&ch4[ch_n]);
         }
         if ((*coil)->old_angle != (*coil)->new_angle) {
             (*coil)->action_angle = (*coil)->new_angle % 6;
@@ -258,7 +262,7 @@ char data[30];
 static void calc_ignition_angle(void) {
     int16_t calc_angle = bilerp_map(lerp_map, 2000000/capture,0);
     sprintf(data,"Angle %d \n",calc_angle);
-    coil14_on.new_angle = (360 - calc_angle) % 360; //!!!
+    coil14_on.new_angle = (473 - calc_angle) % 360; //!!!
     coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
     coil23_off.new_angle = (coil14_off.new_angle + 180) % 360; //!!!

@@ -107,6 +107,13 @@ typedef struct {
     .mask = (1 << TIMER_OCIE(N_CH)), \
     .ti_register = &TIR \
 }
+#define make_mass_ch(N_CH,TIR) { \
+    NULL, \
+    (1 << TIMER_OCIE(N_CH)), \
+    0, \
+    &TIR, \
+    &TIMER_OCR(N_CH), \
+}
 #define make_ovf(N,TIR) { \
     .cr = NULL, \
     .event = NULL, \
