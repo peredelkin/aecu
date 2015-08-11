@@ -38,8 +38,10 @@ Archive member included to satisfy reference by file (symbol)
 Allocating common symbols
 Common symbol       size              file
 
+off_angle           0x2               timer.o
 data                0x1e              timer.o
 coil_state          0x2               timer.o
+on_angle            0x2               timer.o
 
 Discarded input sections
 
@@ -368,7 +370,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x14a6
+.text           0x0000000000000000     0x1500
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -494,125 +496,125 @@ END GROUP
  .text.tmr16_event_call.isra.3
                 0x0000000000000238        0xa timer.o
  .text.main_handler
-                0x0000000000000242       0xda timer.o
+                0x0000000000000242       0xea timer.o
  .text.tooth_59_handler
-                0x000000000000031c       0x1e timer.o
+                0x000000000000032c       0x1e timer.o
  .text.tooth_60_handler
-                0x000000000000033a       0x44 timer.o
+                0x000000000000034a       0x44 timer.o
  .text.capture_handler
-                0x000000000000037e       0xd2 timer.o
+                0x000000000000038e       0xd2 timer.o
  .text.__vector_26
-                0x0000000000000450       0x54 timer.o
-                0x0000000000000450                __vector_26
+                0x0000000000000460       0x54 timer.o
+                0x0000000000000460                __vector_26
  .text.__vector_25
-                0x00000000000004a4       0x54 timer.o
-                0x00000000000004a4                __vector_25
+                0x00000000000004b4       0x54 timer.o
+                0x00000000000004b4                __vector_25
  .text.__vector_42
-                0x00000000000004f8       0x6a timer.o
-                0x00000000000004f8                __vector_42
+                0x0000000000000508       0x6a timer.o
+                0x0000000000000508                __vector_42
  .text.__vector_43
-                0x0000000000000562       0x6c timer.o
-                0x0000000000000562                __vector_43
+                0x0000000000000572       0x6c timer.o
+                0x0000000000000572                __vector_43
  .text.__vector_44
-                0x00000000000005ce       0x6c timer.o
-                0x00000000000005ce                __vector_44
+                0x00000000000005de       0x6c timer.o
+                0x00000000000005de                __vector_44
  .text.__vector_46
-                0x000000000000063a       0x58 timer.o
-                0x000000000000063a                __vector_46
+                0x000000000000064a       0x58 timer.o
+                0x000000000000064a                __vector_46
  .text.__vector_47
-                0x0000000000000692       0x60 timer.o
-                0x0000000000000692                __vector_47
+                0x00000000000006a2       0x60 timer.o
+                0x00000000000006a2                __vector_47
  .text.__vector_48
-                0x00000000000006f2       0x60 timer.o
-                0x00000000000006f2                __vector_48
+                0x0000000000000702       0x60 timer.o
+                0x0000000000000702                __vector_48
  .text.__vector_49
-                0x0000000000000752       0x60 timer.o
-                0x0000000000000752                __vector_49
+                0x0000000000000762       0x60 timer.o
+                0x0000000000000762                __vector_49
  .text.__vector_50
-                0x00000000000007b2       0x58 timer.o
-                0x00000000000007b2                __vector_50
- .text.bilerp   0x000000000000080a       0xf2 timer.o
-                0x000000000000080a                bilerp
+                0x00000000000007c2       0x58 timer.o
+                0x00000000000007c2                __vector_50
+ .text.bilerp   0x000000000000081a       0xf2 timer.o
+                0x000000000000081a                bilerp
  .text.bilerp_map
-                0x00000000000008fc       0x90 timer.o
-                0x00000000000008fc                bilerp_map
+                0x000000000000090c       0x90 timer.o
+                0x000000000000090c                bilerp_map
  .text.startup.main
-                0x000000000000098c      0x2fc timer.o
-                0x000000000000098c                main
+                0x000000000000099c      0x346 timer.o
+                0x000000000000099c                main
  .text.uart_init
-                0x0000000000000c88       0x12 usart.o
-                0x0000000000000c88                uart_init
+                0x0000000000000ce2       0x12 usart.o
+                0x0000000000000ce2                uart_init
  .text.uart_baud_rate
-                0x0000000000000c9a       0x18 usart.o
-                0x0000000000000c9a                uart_baud_rate
+                0x0000000000000cf4       0x18 usart.o
+                0x0000000000000cf4                uart_baud_rate
  .text.uart_character_size
-                0x0000000000000cb2       0x48 usart.o
-                0x0000000000000cb2                uart_character_size
+                0x0000000000000d0c       0x48 usart.o
+                0x0000000000000d0c                uart_character_size
  .text.uart_parity_mode
-                0x0000000000000cfa       0x28 usart.o
-                0x0000000000000cfa                uart_parity_mode
+                0x0000000000000d54       0x28 usart.o
+                0x0000000000000d54                uart_parity_mode
  .text.uart_stop_bit
-                0x0000000000000d22       0x1a usart.o
-                0x0000000000000d22                uart_stop_bit
- .text.uart_tx  0x0000000000000d3c       0x1c usart.o
-                0x0000000000000d3c                uart_tx
+                0x0000000000000d7c       0x1a usart.o
+                0x0000000000000d7c                uart_stop_bit
+ .text.uart_tx  0x0000000000000d96       0x1c usart.o
+                0x0000000000000d96                uart_tx
  .text.uart_udre_handler
-                0x0000000000000d58       0x38 usart.o
-                0x0000000000000d58                uart_udre_handler
+                0x0000000000000db2       0x38 usart.o
+                0x0000000000000db2                uart_udre_handler
  .text.uart_rx_handler
-                0x0000000000000d90       0x30 usart.o
-                0x0000000000000d90                uart_rx_handler
+                0x0000000000000dea       0x30 usart.o
+                0x0000000000000dea                uart_rx_handler
  .text.uart_tx_done
-                0x0000000000000dc0        0xe usart.o
-                0x0000000000000dc0                uart_tx_done
+                0x0000000000000e1a        0xe usart.o
+                0x0000000000000e1a                uart_tx_done
  .text.libgcc.mul
-                0x0000000000000dce       0x16 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
-                0x0000000000000dce                __muluhisi3
+                0x0000000000000e28       0x16 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
+                0x0000000000000e28                __muluhisi3
  .text.libgcc.mul
-                0x0000000000000de4       0x20 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
-                0x0000000000000de4                __mulsi3
+                0x0000000000000e3e       0x20 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
+                0x0000000000000e3e                __mulsi3
  .text.libgcc.div
-                0x0000000000000e04       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                0x0000000000000e04                __udivmodhi4
+                0x0000000000000e5e       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+                0x0000000000000e5e                __udivmodhi4
  .text.libgcc.div
-                0x0000000000000e2c       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
-                0x0000000000000e2c                __divmodhi4
-                0x0000000000000e2c                _div
+                0x0000000000000e86       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
+                0x0000000000000e86                __divmodhi4
+                0x0000000000000e86                _div
  .text.libgcc.div
-                0x0000000000000e54       0x2e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
-                0x0000000000000e54                __divmodsi4
+                0x0000000000000eae       0x2e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
+                0x0000000000000eae                __divmodsi4
  .text.libgcc.div
-                0x0000000000000e82       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
-                0x0000000000000e82                __negsi2
+                0x0000000000000edc       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
+                0x0000000000000edc                __negsi2
  .text.libgcc.mul
-                0x0000000000000e92       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
-                0x0000000000000e92                __umulhisi3
+                0x0000000000000eec       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
+                0x0000000000000eec                __umulhisi3
  .text.libgcc.div
-                0x0000000000000eb0       0x44 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
-                0x0000000000000eb0                __udivmodsi4
+                0x0000000000000f0a       0x44 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
+                0x0000000000000f0a                __udivmodsi4
  .text.avr-libc
-                0x0000000000000ef4       0x60 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
-                0x0000000000000ef4                sprintf
+                0x0000000000000f4e       0x60 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
+                0x0000000000000f4e                sprintf
  .text.avr-libc
-                0x0000000000000f54      0x3f6 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
-                0x0000000000000f54                vfprintf
+                0x0000000000000fae      0x3f6 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
+                0x0000000000000fae                vfprintf
  .text.avr-libc
-                0x000000000000134a       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen_P.o)
-                0x000000000000134a                strnlen_P
+                0x00000000000013a4       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen_P.o)
+                0x00000000000013a4                strnlen_P
  .text.avr-libc
-                0x0000000000001360       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen.o)
-                0x0000000000001360                strnlen
+                0x00000000000013ba       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen.o)
+                0x00000000000013ba                strnlen
  .text.avr-libc
-                0x0000000000001376       0x70 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(fputc.o)
-                0x0000000000001376                fputc
+                0x00000000000013d0       0x70 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(fputc.o)
+                0x00000000000013d0                fputc
  .text.avr-libc
-                0x00000000000013e6       0xbc /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(ultoa_invert.o)
-                0x00000000000013e6                __ultoa_invert
-                0x00000000000014a2                . = ALIGN (0x2)
+                0x0000000000001440       0xbc /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(ultoa_invert.o)
+                0x0000000000001440                __ultoa_invert
+                0x00000000000014fc                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000014a2        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x00000000000014a2                exit
-                0x00000000000014a2                _exit
+ .fini9         0x00000000000014fc        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x00000000000014fc                exit
+                0x00000000000014fc                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -631,11 +633,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000014a2        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x00000000000014fc        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000014a6                _etext = .
+                0x0000000000001500                _etext = .
 
-.data           0x0000000000800200      0x71e load address 0x00000000000014a6
+.data           0x0000000000800200      0x722 load address 0x0000000000001500
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -702,41 +704,46 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x0000000000800913        0xb timer.o
+                0x0000000000800913        0xe timer.o
  *(.gnu.linkonce.d*)
-                0x000000000080091e                . = ALIGN (0x2)
-                0x000000000080091e                _edata = .
-                0x000000000080091e                PROVIDE (__data_end, .)
+                0x0000000000800922                . = ALIGN (0x2)
+ *fill*         0x0000000000800921        0x1 
+                0x0000000000800922                _edata = .
+                0x0000000000800922                PROVIDE (__data_end, .)
 
-.bss            0x000000000080091e       0x26
-                0x000000000080091e                PROVIDE (__bss_start, .)
+.bss            0x0000000000800922       0x2b
+                0x0000000000800922                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
+ .bss.ch_n      0x0000000000800922        0x1 timer.o
+                0x0000000000800922                ch_n
  .bss.tooth_counter_flag
-                0x000000000080091e        0x1 timer.o
-                0x000000000080091e                tooth_counter_flag
- .bss.angle_counter
-                0x000000000080091f        0x2 timer.o
-                0x000000000080091f                angle_counter
- .bss.capture   0x0000000000800921        0x2 timer.o
-                0x0000000000800921                capture
- .bss.emu_tooth
                 0x0000000000800923        0x1 timer.o
-                0x0000000000800923                emu_tooth
+                0x0000000000800923                tooth_counter_flag
+ .bss.angle_counter
+                0x0000000000800924        0x2 timer.o
+                0x0000000000800924                angle_counter
+ .bss.capture   0x0000000000800926        0x2 timer.o
+                0x0000000000800926                capture
+ .bss.emu_tooth
+                0x0000000000800928        0x1 timer.o
+                0x0000000000800928                emu_tooth
  *(COMMON)
- COMMON         0x0000000000800924       0x20 timer.o
-                0x0000000000800924                data
-                0x0000000000800942                coil_state
-                0x0000000000800944                PROVIDE (__bss_end, .)
-                0x00000000000014a6                __data_load_start = LOADADDR (.data)
-                0x0000000000001bc4                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0000000000800929       0x24 timer.o
+                0x0000000000800929                off_angle
+                0x000000000080092b                data
+                0x0000000000800949                coil_state
+                0x000000000080094b                on_angle
+                0x000000000080094d                PROVIDE (__bss_end, .)
+                0x0000000000001500                __data_load_start = LOADADDR (.data)
+                0x0000000000001c22                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800944        0x0
-                0x0000000000800944                PROVIDE (__noinit_start, .)
+.noinit         0x000000000080094d        0x0
+                0x000000000080094d                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0000000000800944                PROVIDE (__noinit_end, .)
-                0x0000000000800944                _end = .
-                0x0000000000800944                PROVIDE (__heap_start, .)
+                0x000000000080094d                PROVIDE (__noinit_end, .)
+                0x000000000080094d                _end = .
+                0x000000000080094d                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -967,6 +974,7 @@ cap5                                              timer.o
 cap5_pos_mask                                     timer.o
 capture                                           timer.o
 ch4                                               timer.o
+ch_n                                              timer.o
 cha5                                              timer.o
 chb5                                              timer.o
 chc5                                              timer.o
@@ -987,6 +995,8 @@ lerp                                              timer.o
 lerp_map                                          timer.o
 main                                              timer.o
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+off_angle                                         timer.o
+on_angle                                          timer.o
 ovf5                                              timer.o
 pin_toggle                                        ports.o
 port_mask                                         ports.o

@@ -162,11 +162,13 @@ coil_action_t coil23_off = make_coil(294, coil23off);
 
 coil_action_t* coil_state;
 
+uint8_t ch_n = 0;
+
 static void coil_action_handler(coil_action_t** coil) {
+    ch_n = 0;
     while ((*coil)->tooth_angle == angle_counter) {
         if ((*coil)->action_angle == 0) (*coil)->action();
         else {
-            uint8_t ch_n = 0;
             while(ch4[ch_n].event) ch_n++;
             tmr16_write_cr(&ch4[ch_n], (capture * ((*coil)->action_angle)) / 6);
             tmr16_event_set(&ch4[ch_n], (*coil)->action);
@@ -259,11 +261,16 @@ int8_t lerp_map[40][40] = {
 };
 char data[30];
 
+int16_t off_angle,on_angle;
+
+#define ms 5 //charge time in ms
+
 static void calc_ignition_angle(void) {
-    int16_t calc_angle = bilerp_map(lerp_map, 2000000/capture,0);
-    sprintf(data,"Angle %d \n",calc_angle);
-    coil14_on.new_angle = (473 - calc_angle) % 360; //!!!
-    coil14_off.new_angle = (474 - calc_angle) % 360; //!!!
+    on_angle = (ms * 2000) / (capture/6);
+    off_angle = bilerp_map(lerp_map, 2000000/capture,0);
+    if(uart_tx_done(&uart0)) sprintf(data,"on angle %d \n",on_angle);
+    coil14_on.new_angle = (473 - off_angle - on_angle) % 360; //!!!
+    coil14_off.new_angle = (474 - off_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
     coil23_off.new_angle = (coil14_off.new_angle + 180) % 360; //!!!
 }
@@ -299,9 +306,9 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(1000);
+        _delay_us(800);
         pin_off(&b6);
-        _delay_us(1000);
+        _delay_us(800);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             calc_ignition_angle();
