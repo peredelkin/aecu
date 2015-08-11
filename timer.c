@@ -261,14 +261,19 @@ int8_t lerp_map[40][40] = {
 };
 char data[30];
 
-int16_t off_angle,on_angle;
+int16_t off_angle;
+int16_t on_angle;
+uint32_t time;
+uint32_t rpm;
 
-#define ms 5 //charge time in ms
+#define ms 60 // 2.5ms = 25
 
 static void calc_ignition_angle(void) {
-    on_angle = (ms * 2000) / (capture/6);
-    off_angle = bilerp_map(lerp_map, 2000000/capture,0);
-    if(uart_tx_done(&uart0)) sprintf(data,"on angle %d \n",on_angle);
+    time = (uint32_t)ms * 1200;
+    on_angle = time / capture;
+    rpm = 2000000/capture;
+    off_angle = bilerp_map(lerp_map, (uint16_t)rpm,0);
+    if(uart_tx_done(&uart0)) sprintf(data,"RPM %d \n",(uint16_t)rpm);
     coil14_on.new_angle = (473 - off_angle - on_angle) % 360; //!!!
     coil14_off.new_angle = (474 - off_angle) % 360; //!!!
     coil23_on.new_angle = (coil14_on.new_angle + 180) % 360; //!!!
@@ -306,9 +311,9 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(800);
+        _delay_us(610);
         pin_off(&b6);
-        _delay_us(800);
+        _delay_us(610);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             calc_ignition_angle();
