@@ -11,15 +11,6 @@
 #include <stdint.h>
 #include "timers.h"
 
-#define make_coil_ch(N_CH,TIR,NEXT) { \
-    .ch.cr = &TIMER_OCR(N_CH), \
-    .ch.event = NULL, \
-    .ch.flag = 0, \
-    .ch.mask = (1 << TIMER_OCIE(N_CH)), \
-    .ch.ti_register = &TIR, \
-    .next = NEXT \
-}
-
 typedef struct Coil_ch_act {
     struct Coil_ch_act* next;
     tmr16_int_ctrl_t ch;
@@ -34,6 +25,25 @@ typedef struct Coil_act {
     struct Coil_act* next;
     struct Coil_act* prev;
 } coil_act_t;
+
+#define make_coil_ch(N_CH,TIR,NEXT) { \
+    .ch.cr = &TIMER_OCR(N_CH), \
+    .ch.event = NULL, \
+    .ch.flag = 0, \
+    .ch.mask = (1 << TIMER_OCIE(N_CH)), \
+    .ch.ti_register = &TIR, \
+    .next = NEXT \
+}
+
+#define make_coil_act(ACTION,ANGLE) { \
+    .action = ACTION, \
+    .action_angle = ANGLE%6, \
+    .angle = ANGLE, \
+    .angle_buffer = ANGLE, \
+    .next = NULL, \
+    .prev = NULL, \
+    .tooth_angle = ANGLE - ANGLE%6 \
+}
 
 #endif	/* COIL_HANDLER_H */
 

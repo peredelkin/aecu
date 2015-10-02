@@ -6,6 +6,24 @@
 #include "libs/ports.h"
 #include "libs/usart.h"
 
+#define UART_BAUD 76800
+#define UART_UBRR_VALUE (F_CPU / 16 / UART_BAUD - 1)
+
+uart_t uart0 = UART_init(0);
+uint8_t done=0;
+
+ISR(USART0_UDRE_vect)
+{
+    uart_udre_handler(&uart0);
+}
+
+ISR(USART0_RX_vect)
+{
+    uart_rx_handler(&uart0);
+}
+
+//===================================== usart
+
 pin_t b4 = make_pin(B, 4); //coil out
 pin_t b5 = make_pin(B, 5); //coil out
 pin_t b6 = make_pin(B, 6); //emu out
@@ -91,6 +109,31 @@ ISR(TIMER5_COMPC_vect) {
 ISR(TIMER5_OVF_vect) {
     tmr16_event_call(&ovf5);
 }
+
+uint16_t capture = 0;
+uint16_t angle_counter = 0;
+bool tooth_counter_flag = 0;
+
+static void coil14on(void) {
+    pin_on(&b5);
+}
+
+static void coil14off(void) {
+    pin_off(&b5);
+}
+
+static void coil23on(void) {
+    pin_on(&b4);
+}
+
+static void coil23off(void) {
+    pin_off(&b4);
+}
+
+coil_act_t coil14_on = make_coil_act(coil14on,0);
+coil_act_t coil14_off = make_coil_act(coil14off,114);
+coil_act_t coil23_on = make_coil_act(coil23on,180);
+coil_act_t coil23_off = make_coil_act(coil23off,294);
 
 int main() {
     while (1) {

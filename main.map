@@ -20,6 +20,27 @@ Discarded input sections
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
+ .text.coil14on
+                0x0000000000000000       0x16 main.o
+ .text.coil14off
+                0x0000000000000000       0x18 main.o
+ .text.coil23on
+                0x0000000000000000       0x16 main.o
+ .text.coil23off
+                0x0000000000000000       0x18 main.o
+ .data.coil23_off
+                0x0000000000000000        0xe main.o
+ .data.coil23_on
+                0x0000000000000000        0xe main.o
+ .data.coil14_off
+                0x0000000000000000        0xe main.o
+ .data.coil14_on
+                0x0000000000000000        0xe main.o
+ .bss.tooth_counter_flag
+                0x0000000000000000        0x1 main.o
+ .bss.angle_counter
+                0x0000000000000000        0x2 main.o
+ .bss.capture   0x0000000000000000        0x2 main.o
  .data.cap5_pos_mask
                 0x0000000000000000        0x3 main.o
  .data.tcnt5_mask
@@ -37,6 +58,7 @@ Discarded input sections
  .data.b6       0x0000000000000000        0x8 main.o
  .data.b5       0x0000000000000000        0x8 main.o
  .data.b4       0x0000000000000000        0x8 main.o
+ .bss.done      0x0000000000000000        0x1 main.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
  .bss           0x0000000000000000        0x0 ports.o
@@ -63,18 +85,13 @@ Discarded input sections
  .text.uart_stop_bit
                 0x0000000000000000       0x1a usart.o
  .text.uart_tx  0x0000000000000000       0x1c usart.o
- .text.uart_udre_handler
-                0x0000000000000000       0x38 usart.o
  .text.uart_rx  0x0000000000000000       0x1c usart.o
- .text.uart_rx_handler
-                0x0000000000000000       0x30 usart.o
  .text.uart_rx_count
                 0x0000000000000000        0x6 usart.o
  .text.uart_rx_done
                 0x0000000000000000        0xe usart.o
  .text.uart_tx_done
                 0x0000000000000000        0xe usart.o
- .comment       0x0000000000000000       0x2b usart.o
  .text          0x0000000000000000        0x0 coil_handler.o
  .data          0x0000000000000000        0x0 coil_handler.o
  .bss           0x0000000000000000        0x0 coil_handler.o
@@ -274,7 +291,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x470
+.text           0x0000000000000000      0x580
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -349,7 +366,6 @@ END GROUP
                 0x0000000000000126                __vector_23
                 0x0000000000000126                __vector_30
                 0x0000000000000126                __vector_45
-                0x0000000000000126                __vector_25
                 0x0000000000000126                __vector_11
                 0x0000000000000126                __vector_54
                 0x0000000000000126                __vector_13
@@ -373,7 +389,6 @@ END GROUP
                 0x0000000000000126                __vector_29
                 0x0000000000000126                __vector_40
                 0x0000000000000126                __vector_8
-                0x0000000000000126                __vector_26
                 0x0000000000000126                __vector_14
                 0x0000000000000126                __vector_53
                 0x0000000000000126                __vector_10
@@ -386,38 +401,50 @@ END GROUP
                 0x000000000000012a       0x22 main.o
  .text.tmr16_event_call.isra.2
                 0x000000000000014c        0xa main.o
+ .text.__vector_26
+                0x0000000000000156       0x54 main.o
+                0x0000000000000156                __vector_26
+ .text.__vector_25
+                0x00000000000001aa       0x54 main.o
+                0x00000000000001aa                __vector_25
  .text.__vector_42
-                0x0000000000000156       0x6c main.o
-                0x0000000000000156                __vector_42
+                0x00000000000001fe       0x6c main.o
+                0x00000000000001fe                __vector_42
  .text.__vector_43
-                0x00000000000001c2       0x6c main.o
-                0x00000000000001c2                __vector_43
+                0x000000000000026a       0x6c main.o
+                0x000000000000026a                __vector_43
  .text.__vector_44
-                0x000000000000022e       0x6c main.o
-                0x000000000000022e                __vector_44
+                0x00000000000002d6       0x6c main.o
+                0x00000000000002d6                __vector_44
  .text.__vector_46
-                0x000000000000029a       0x58 main.o
-                0x000000000000029a                __vector_46
+                0x0000000000000342       0x58 main.o
+                0x0000000000000342                __vector_46
  .text.__vector_47
-                0x00000000000002f2       0x60 main.o
-                0x00000000000002f2                __vector_47
+                0x000000000000039a       0x60 main.o
+                0x000000000000039a                __vector_47
  .text.__vector_48
-                0x0000000000000352       0x60 main.o
-                0x0000000000000352                __vector_48
+                0x00000000000003fa       0x60 main.o
+                0x00000000000003fa                __vector_48
  .text.__vector_49
-                0x00000000000003b2       0x60 main.o
-                0x00000000000003b2                __vector_49
+                0x000000000000045a       0x60 main.o
+                0x000000000000045a                __vector_49
  .text.__vector_50
-                0x0000000000000412       0x58 main.o
-                0x0000000000000412                __vector_50
+                0x00000000000004ba       0x58 main.o
+                0x00000000000004ba                __vector_50
  .text.startup.main
-                0x000000000000046a        0x2 main.o
-                0x000000000000046a                main
-                0x000000000000046c                . = ALIGN (0x2)
+                0x0000000000000512        0x2 main.o
+                0x0000000000000512                main
+ .text.uart_udre_handler
+                0x0000000000000514       0x38 usart.o
+                0x0000000000000514                uart_udre_handler
+ .text.uart_rx_handler
+                0x000000000000054c       0x30 usart.o
+                0x000000000000054c                uart_rx_handler
+                0x000000000000057c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000000000046c        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x000000000000046c                exit
-                0x000000000000046c                _exit
+ .fini9         0x000000000000057c        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x000000000000057c                exit
+                0x000000000000057c                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -436,11 +463,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000000000046c        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x000000000000057c        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000000470                _etext = .
+                0x0000000000000580                _etext = .
 
-.data           0x0000000000800200       0x4e load address 0x0000000000000470
+.data           0x0000000000800200       0x62 load address 0x0000000000000580
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -467,28 +494,30 @@ END GROUP
                 0x0000000000800240                coil_ch3
  .data.tir4     0x000000000080024a        0x4 main.o
                 0x000000000080024a                tir4
+ .data.uart0    0x000000000080024e       0x14 main.o
+                0x000000000080024e                uart0
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x000000000080024e                . = ALIGN (0x2)
-                0x000000000080024e                _edata = .
-                0x000000000080024e                PROVIDE (__data_end, .)
+                0x0000000000800262                . = ALIGN (0x2)
+                0x0000000000800262                _edata = .
+                0x0000000000800262                PROVIDE (__data_end, .)
 
-.bss            0x000000000080024e        0x0
-                0x000000000080024e                PROVIDE (__bss_start, .)
+.bss            0x0000000000800262        0x0
+                0x0000000000800262                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
-                0x000000000080024e                PROVIDE (__bss_end, .)
-                0x0000000000000470                __data_load_start = LOADADDR (.data)
-                0x00000000000004be                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000800262                PROVIDE (__bss_end, .)
+                0x0000000000000580                __data_load_start = LOADADDR (.data)
+                0x00000000000005e2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x000000000080024e        0x0
-                0x000000000080024e                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000800262        0x0
+                0x0000000000800262                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x000000000080024e                PROVIDE (__noinit_end, .)
-                0x000000000080024e                _end = .
-                0x000000000080024e                PROVIDE (__heap_start, .)
+                0x0000000000800262                PROVIDE (__noinit_end, .)
+                0x0000000000800262                _end = .
+                0x0000000000800262                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -528,6 +557,7 @@ END GROUP
  *(.comment)
  .comment       0x0000000000000000       0x2a main.o
                                          0x2b (size before relaxing)
+ .comment       0x000000000000002a       0x2b usart.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -629,8 +659,10 @@ __vector_21                                       /usr/lib/gcc/avr/4.9.3/../../.
 __vector_22                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_23                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_24                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_25                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_26                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_25                                       main.o
+                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_26                                       main.o
+                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_27                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_28                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_29                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -679,6 +711,7 @@ __vector_9                                        /usr/lib/gcc/avr/4.9.3/../../.
 __vector_default                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vectors                                         /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 _exit                                             /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+angle_counter                                     main.o
 b4                                                main.o
 b5                                                main.o
 b6                                                main.o
@@ -688,9 +721,14 @@ bit_on                                            ports.o
 bit_toggle                                        ports.o
 cap5                                              main.o
 cap5_pos_mask                                     main.o
+capture                                           main.o
 cha5                                              main.o
 chb5                                              main.o
 chc5                                              main.o
+coil14_off                                        main.o
+coil14_on                                         main.o
+coil23_off                                        main.o
+coil23_on                                         main.o
 coil_act_cut                                      coil_handler.o
 coil_act_insert_next                              coil_handler.o
 coil_act_insert_prev                              coil_handler.o
@@ -701,6 +739,7 @@ coil_act_sorting_insert                           coil_handler.o
 coil_ch1                                          main.o
 coil_ch2                                          main.o
 coil_ch3                                          main.o
+done                                              main.o
 emu_tooth                                         main.o
 exit                                              /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -718,6 +757,8 @@ tcs4                                              main.o
 tcs5                                              main.o
 tir4                                              main.o
 tir5                                              main.o
+tooth_counter_flag                                main.o
+uart0                                             main.o
 uart_baud_rate                                    usart.o
 uart_character_size                               usart.o
 uart_init                                         usart.o
@@ -726,7 +767,9 @@ uart_rx                                           usart.o
 uart_rx_count                                     usart.o
 uart_rx_done                                      usart.o
 uart_rx_handler                                   usart.o
+                                                  main.o
 uart_stop_bit                                     usart.o
 uart_tx                                           usart.o
 uart_tx_done                                      usart.o
 uart_udre_handler                                 usart.o
+                                                  main.o
