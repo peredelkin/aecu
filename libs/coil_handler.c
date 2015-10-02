@@ -86,6 +86,7 @@ void coil_act_main_handler(coil_act_t** coil, coil_ch_act_t* timer,uint16_t angl
             (*coil)->tooth_angle = (*coil)->angle - (*coil)->action_angle;
             coil_act_sort_selected((*coil));
         }
-        *coil = (*coil)->next;
+        if((*coil)->next) *coil = (*coil)->next;
+        else while((*coil)->prev) *coil = coil->prev; //костыль "перемотка"
     }
 }
