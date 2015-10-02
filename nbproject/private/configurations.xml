@@ -9,6 +9,8 @@
         <in>adc.h</in>
         <in>bits.h</in>
         <in>byte.h</in>
+        <in>coil_handler.c</in>
+        <in>coil_handler.h</in>
         <in>cordic10_6.c</in>
         <in>cordic10_6.h</in>
         <in>cordic16.c</in>

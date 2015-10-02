@@ -5,6 +5,7 @@
       <df name="libs">
         <in>44780.c</in>
         <in>adc.c</in>
+        <in>coil_handler.c</in>
         <in>cordic10_6.c</in>
         <in>cordic16.c</in>
         <in>cordic32.c</in>
@@ -62,6 +63,17 @@
       <item path="libs/44780.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="libs/adc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="libs/coil_handler.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
       </item>
       <item path="libs/cordic10_6.c" ex="false" tool="0" flavor2="2">
       </item>
@@ -179,7 +191,7 @@
           </preprocessorList>
         </cTool>
       </item>
-      <item path="timer.c" ex="false" tool="0" flavor2="0">
+      <item path="timer.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
           <preprocessorList>
             <Elem>F_CPU=16000000UL</Elem>

@@ -1,4 +1,4 @@
-OBJECTS=timers.o timer.o ports.o usart.o
+OBJECTS=timers.o main.o ports.o usart.o coil_handler.o
 MCU_NAME=mega
 MCU_NUMBER=2560
 F_CPU=16000000UL

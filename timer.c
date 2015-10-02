@@ -266,7 +266,7 @@ int16_t on_angle;
 uint32_t time;
 uint32_t rpm;
 
-#define ms 60 // 2.5ms = 25
+#define ms 25 // 2.5ms = 25
 
 static void calc_ignition_angle(void) {
     time = (uint32_t)ms * 1200;
@@ -311,9 +311,9 @@ int main() {
     tmr16_int_enable(&ovf5); //constant enabled interrupt
     while (1) {
         if (emu_tooth <= 57) pin_on(&b6);
-        _delay_us(610);
+        _delay_us(600);
         pin_off(&b6);
-        _delay_us(610);
+        _delay_us(600);
         if (emu_tooth <= 58) emu_tooth++;
         else {
             calc_ignition_angle();
