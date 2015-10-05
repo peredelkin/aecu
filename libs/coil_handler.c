@@ -71,22 +71,15 @@ void coil_act_sort_selected(coil_act_t* head) {
     }
 }
 
-void coil_act_main_handler(coil_act_t** coil, coil_ch_act_t* timer,uint16_t angle_counter,uint16_t capture) {
-    while ((*coil)->tooth_angle == angle_counter) {
-        if ((*coil)->action_angle == 0) (*coil)->action();
-        else {
-            while ((timer->next) && (timer->ch.event)) timer = timer->next ;
-            tmr16_write_cr(&timer->ch, (capture * ((*coil)->action_angle)) / 6);
-            tmr16_event_set(&timer->ch, (*coil)->action);
-            tmr16_int_enable(&timer->ch);
-        }
-        if ((*coil)->angle != (*coil)->angle_buffer) {
-            (*coil)->angle = (*coil)->angle_buffer;
-            (*coil)->action_angle = (*coil)->angle % 6;
-            (*coil)->tooth_angle = (*coil)->angle - (*coil)->action_angle;
-            coil_act_sort_selected((*coil));
-        }
-        if((*coil)->next) *coil = (*coil)->next;
-        else while((*coil)->prev) *coil = coil->prev; //костыль "перемотка"
-    }
+void coil_call_event_once(coil_ch_act_t* coil_ch) {
+    tmr16_event_call(&coil_ch->ch);
+    tmr16_event_set(&coil_ch->ch, NULL);
+    tmr16_int_disable(&coil_ch->ch);
+}
+
+void coil_event_set(coil_ch_act_t* ch_head, void (*timer_event) (),uint16_t ocr) {
+    while((ch_head->next) && (ch_head->ch.event)) ch_head = ch_head->next;
+    tmr16_write_cr(&ch_head->ch, ocr);
+    tmr16_event_set(&ch_head->ch, timer_event);
+    tmr16_int_enable(&ch_head->ch);
 }

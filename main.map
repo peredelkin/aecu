@@ -1,27 +1,15 @@
 Archive member included to satisfy reference by file (symbol)
 
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
-                              main.o (__muluhisi3)
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
-                              main.o (__mulsi3)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
                               main.o (__udivmodhi4)
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
-                              main.o (__divmodhi4)
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
-                              main.o (__udivmodsi4)
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
-                              main.o (__divmodsi4)
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
-                              /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o) (__negsi2)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o (exit)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
                               main.o (__do_copy_data)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
                               main.o (__do_clear_bss)
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
-                              /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o) (__umulhisi3)
+/usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
+                              main.o (strcpy)
 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
                               main.o (sprintf)
 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
@@ -38,12 +26,8 @@ Archive member included to satisfy reference by file (symbol)
 Allocating common symbols
 Common symbol       size              file
 
-off_angle           0x2               main.o
-rpm                 0x4               main.o
 data                0x1e              main.o
-time                0x4               main.o
-coil_state          0x2               main.o
-on_angle            0x2               main.o
+coil_buffer         0x2               main.o
 
 Discarded input sections
 
@@ -52,11 +36,15 @@ Discarded input sections
  .text          0x0000000000000000        0x0 timers.o
  .data          0x0000000000000000        0x0 timers.o
  .bss           0x0000000000000000        0x0 timers.o
- .comment       0x0000000000000000       0x2b timers.o
+ .text.tmr16_read_cr
+                0x0000000000000000       0x10 timers.o
+ .text.tmr16_reset_cs
+                0x0000000000000000       0x1c timers.o
+ .text.tmr16_capture_setup
+                0x0000000000000000       0x1a timers.o
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
- .text.lerp     0x0000000000000000       0x54 main.o
  .bss.done      0x0000000000000000        0x1 main.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
@@ -81,36 +69,12 @@ Discarded input sections
  .text          0x0000000000000000        0x0 coil_handler.o
  .data          0x0000000000000000        0x0 coil_handler.o
  .bss           0x0000000000000000        0x0 coil_handler.o
+ .text.coil_act_cut
+                0x0000000000000000       0x36 coil_handler.o
  .text.coil_act_insertion_sort
                 0x0000000000000000       0x56 coil_handler.o
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .text.libgcc.div
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .text.libgcc.div
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
+ .text.coil_act_sort_selected
+                0x0000000000000000       0x9c coil_handler.o
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
@@ -125,62 +89,6 @@ Discarded input sections
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
  .text.libgcc.fixed
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .text.libgcc.mul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .text.libgcc.mul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .text.libgcc.mul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .text.libgcc.mul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
@@ -229,20 +137,9 @@ Discarded input sections
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .text.libgcc.div
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
@@ -378,7 +275,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x16fc
+.text           0x0000000000000000      0xee8
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -388,39 +285,39 @@ END GROUP
                 0x00000000000000e4                . = ALIGN (0x2)
                 0x00000000000000e4                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000000000000e4       0x24 linker stubs
+ .trampolines   0x00000000000000e4        0x8 linker stubs
  *(.trampolines*)
-                0x0000000000000108                __trampolines_end = .
+                0x00000000000000ec                __trampolines_end = .
  *(.progmem*)
-                0x0000000000000108                . = ALIGN (0x2)
+                0x00000000000000ec                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000000000000108                __ctors_start = .
+                0x00000000000000ec                __ctors_start = .
  *(.ctors)
-                0x0000000000000108                __ctors_end = .
-                0x0000000000000108                __dtors_start = .
+                0x00000000000000ec                __ctors_end = .
+                0x00000000000000ec                __dtors_start = .
  *(.dtors)
-                0x0000000000000108                __dtors_end = .
+                0x00000000000000ec                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000000000000108        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-                0x0000000000000108                __init
+ .init0         0x00000000000000ec        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+                0x00000000000000ec                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000000000000108       0x10 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+ .init2         0x00000000000000ec       0x10 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x0000000000000118       0x1a /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
-                0x0000000000000118                __do_copy_data
- .init4         0x0000000000000132       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
-                0x0000000000000132                __do_clear_bss
+ .init4         0x00000000000000fc       0x1a /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
+                0x00000000000000fc                __do_copy_data
+ .init4         0x0000000000000116       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
+                0x0000000000000116                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -431,216 +328,196 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000000000000142        0x8 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+ .init9         0x0000000000000126        0x8 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init9)
  *(.text)
- .text          0x000000000000014a        0x4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-                0x000000000000014a                __vector_38
-                0x000000000000014a                __vector_22
-                0x000000000000014a                __vector_28
-                0x000000000000014a                __vector_1
-                0x000000000000014a                __vector_32
-                0x000000000000014a                __vector_34
-                0x000000000000014a                __vector_24
-                0x000000000000014a                __vector_12
-                0x000000000000014a                __vector_55
-                0x000000000000014a                __bad_interrupt
-                0x000000000000014a                __vector_6
-                0x000000000000014a                __vector_31
-                0x000000000000014a                __vector_35
-                0x000000000000014a                __vector_39
-                0x000000000000014a                __vector_3
-                0x000000000000014a                __vector_23
-                0x000000000000014a                __vector_30
-                0x000000000000014a                __vector_45
-                0x000000000000014a                __vector_11
-                0x000000000000014a                __vector_54
-                0x000000000000014a                __vector_13
-                0x000000000000014a                __vector_17
-                0x000000000000014a                __vector_19
-                0x000000000000014a                __vector_56
-                0x000000000000014a                __vector_7
-                0x000000000000014a                __vector_41
-                0x000000000000014a                __vector_27
-                0x000000000000014a                __vector_5
-                0x000000000000014a                __vector_33
-                0x000000000000014a                __vector_52
-                0x000000000000014a                __vector_37
-                0x000000000000014a                __vector_4
-                0x000000000000014a                __vector_51
-                0x000000000000014a                __vector_9
-                0x000000000000014a                __vector_2
-                0x000000000000014a                __vector_21
-                0x000000000000014a                __vector_15
-                0x000000000000014a                __vector_36
-                0x000000000000014a                __vector_29
-                0x000000000000014a                __vector_40
-                0x000000000000014a                __vector_8
-                0x000000000000014a                __vector_14
-                0x000000000000014a                __vector_53
-                0x000000000000014a                __vector_10
-                0x000000000000014a                __vector_16
-                0x000000000000014a                __vector_18
-                0x000000000000014a                __vector_20
-                0x000000000000014e                . = ALIGN (0x2)
+ .text          0x000000000000012e        0x4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+                0x000000000000012e                __vector_38
+                0x000000000000012e                __vector_22
+                0x000000000000012e                __vector_28
+                0x000000000000012e                __vector_1
+                0x000000000000012e                __vector_32
+                0x000000000000012e                __vector_34
+                0x000000000000012e                __vector_24
+                0x000000000000012e                __vector_12
+                0x000000000000012e                __vector_55
+                0x000000000000012e                __vector_46
+                0x000000000000012e                __bad_interrupt
+                0x000000000000012e                __vector_6
+                0x000000000000012e                __vector_31
+                0x000000000000012e                __vector_35
+                0x000000000000012e                __vector_39
+                0x000000000000012e                __vector_3
+                0x000000000000012e                __vector_23
+                0x000000000000012e                __vector_30
+                0x000000000000012e                __vector_45
+                0x000000000000012e                __vector_11
+                0x000000000000012e                __vector_54
+                0x000000000000012e                __vector_13
+                0x000000000000012e                __vector_17
+                0x000000000000012e                __vector_19
+                0x000000000000012e                __vector_56
+                0x000000000000012e                __vector_7
+                0x000000000000012e                __vector_49
+                0x000000000000012e                __vector_41
+                0x000000000000012e                __vector_27
+                0x000000000000012e                __vector_5
+                0x000000000000012e                __vector_33
+                0x000000000000012e                __vector_47
+                0x000000000000012e                __vector_52
+                0x000000000000012e                __vector_37
+                0x000000000000012e                __vector_4
+                0x000000000000012e                __vector_51
+                0x000000000000012e                __vector_9
+                0x000000000000012e                __vector_2
+                0x000000000000012e                __vector_21
+                0x000000000000012e                __vector_15
+                0x000000000000012e                __vector_36
+                0x000000000000012e                __vector_29
+                0x000000000000012e                __vector_40
+                0x000000000000012e                __vector_8
+                0x000000000000012e                __vector_48
+                0x000000000000012e                __vector_14
+                0x000000000000012e                __vector_53
+                0x000000000000012e                __vector_10
+                0x000000000000012e                __vector_50
+                0x000000000000012e                __vector_16
+                0x000000000000012e                __vector_18
+                0x000000000000012e                __vector_20
+                0x0000000000000132                . = ALIGN (0x2)
  *(.text.*)
- .text.test_on  0x000000000000014e       0x16 main.o
- .text.coil14on
-                0x0000000000000164       0x16 main.o
- .text.coil14off
-                0x000000000000017a       0x18 main.o
- .text.coil23on
-                0x0000000000000192       0x16 main.o
- .text.coil23off
-                0x00000000000001a8       0x18 main.o
- .text.mark_handler
-                0x00000000000001c0       0x12 main.o
- .text.stop_handler
-                0x00000000000001d2       0x10 main.o
- .text.main_handler
-                0x00000000000001e2       0x30 main.o
  .text.tmr16_int_enable
-                0x0000000000000212       0x34 main.o
+                0x0000000000000132       0x34 timers.o
+                0x0000000000000132                tmr16_int_enable
  .text.tmr16_int_disable
-                0x0000000000000246       0x22 main.o
- .text.tmr16_event_call.isra.3
-                0x0000000000000268        0xa main.o
- .text.tooth_59_handler
-                0x0000000000000272       0x1e main.o
- .text.tooth_60_handler
-                0x0000000000000290       0x44 main.o
- .text.capture_handler
-                0x00000000000002d4       0xd2 main.o
+                0x0000000000000166       0x22 timers.o
+                0x0000000000000166                tmr16_int_disable
+ .text.tmr16_event_set
+                0x0000000000000188        0x8 timers.o
+                0x0000000000000188                tmr16_event_set
+ .text.tmr16_event_call
+                0x0000000000000190        0xe timers.o
+                0x0000000000000190                tmr16_event_call
+ .text.tmr16_write_cr
+                0x000000000000019e       0x10 timers.o
+                0x000000000000019e                tmr16_write_cr
+ .text.tmr16_set_cs
+                0x00000000000001ae       0x1a timers.o
+                0x00000000000001ae                tmr16_set_cs
+ .text.tmr16_counter_set
+                0x00000000000001c8       0x1a timers.o
+                0x00000000000001c8                tmr16_counter_set
+ .text.test_on  0x00000000000001e2       0x16 main.o
+                0x00000000000001e2                test_on
+ .text.test_off
+                0x00000000000001f8       0x18 main.o
+                0x00000000000001f8                test_off
  .text.__vector_26
-                0x00000000000003a6       0x54 main.o
-                0x00000000000003a6                __vector_26
+                0x0000000000000210       0x54 main.o
+                0x0000000000000210                __vector_26
  .text.__vector_25
-                0x00000000000003fa       0x54 main.o
-                0x00000000000003fa                __vector_25
+                0x0000000000000264       0x54 main.o
+                0x0000000000000264                __vector_25
  .text.__vector_42
-                0x000000000000044e       0x6c main.o
-                0x000000000000044e                __vector_42
+                0x00000000000002b8       0x54 main.o
+                0x00000000000002b8                __vector_42
  .text.__vector_43
-                0x00000000000004ba       0x6c main.o
-                0x00000000000004ba                __vector_43
+                0x000000000000030c       0x54 main.o
+                0x000000000000030c                __vector_43
  .text.__vector_44
-                0x0000000000000526       0x6c main.o
-                0x0000000000000526                __vector_44
- .text.__vector_46
-                0x0000000000000592       0x58 main.o
-                0x0000000000000592                __vector_46
- .text.__vector_47
-                0x00000000000005ea       0x60 main.o
-                0x00000000000005ea                __vector_47
- .text.__vector_48
-                0x000000000000064a       0x60 main.o
-                0x000000000000064a                __vector_48
- .text.__vector_49
-                0x00000000000006aa       0x60 main.o
-                0x00000000000006aa                __vector_49
- .text.__vector_50
-                0x000000000000070a       0x58 main.o
-                0x000000000000070a                __vector_50
- .text.bilerp   0x0000000000000762       0xf2 main.o
-                0x0000000000000762                bilerp
- .text.bilerp_map
-                0x0000000000000854       0x90 main.o
-                0x0000000000000854                bilerp_map
+                0x0000000000000360       0x54 main.o
+                0x0000000000000360                __vector_44
+ .text.uart_main_init
+                0x00000000000003b4       0x62 main.o
+                0x00000000000003b4                uart_main_init
+ .text.timer_main_init
+                0x0000000000000416       0x3e main.o
+                0x0000000000000416                timer_main_init
+ .text.port_main_init
+                0x0000000000000454       0x5c main.o
+                0x0000000000000454                port_main_init
+ .text.action_main_init
+                0x00000000000004b0       0x4e main.o
+                0x00000000000004b0                action_main_init
+ .text.coil_act_calc
+                0x00000000000004fe       0x2c main.o
+                0x00000000000004fe                coil_act_calc
+ .text.coil_act_handler
+                0x000000000000052a      0x116 main.o
+                0x000000000000052a                coil_act_handler
  .text.startup.main
-                0x00000000000008e4      0x354 main.o
-                0x00000000000008e4                main
+                0x0000000000000640       0x62 main.o
+                0x0000000000000640                main
  .text.uart_init
-                0x0000000000000c38       0x12 usart.o
-                0x0000000000000c38                uart_init
+                0x00000000000006a2       0x12 usart.o
+                0x00000000000006a2                uart_init
  .text.uart_baud_rate
-                0x0000000000000c4a       0x18 usart.o
-                0x0000000000000c4a                uart_baud_rate
+                0x00000000000006b4       0x18 usart.o
+                0x00000000000006b4                uart_baud_rate
  .text.uart_character_size
-                0x0000000000000c62       0x48 usart.o
-                0x0000000000000c62                uart_character_size
+                0x00000000000006cc       0x48 usart.o
+                0x00000000000006cc                uart_character_size
  .text.uart_parity_mode
-                0x0000000000000caa       0x28 usart.o
-                0x0000000000000caa                uart_parity_mode
+                0x0000000000000714       0x28 usart.o
+                0x0000000000000714                uart_parity_mode
  .text.uart_stop_bit
-                0x0000000000000cd2       0x1a usart.o
-                0x0000000000000cd2                uart_stop_bit
- .text.uart_tx  0x0000000000000cec       0x1c usart.o
-                0x0000000000000cec                uart_tx
+                0x000000000000073c       0x1a usart.o
+                0x000000000000073c                uart_stop_bit
+ .text.uart_tx  0x0000000000000756       0x1c usart.o
+                0x0000000000000756                uart_tx
  .text.uart_udre_handler
-                0x0000000000000d08       0x38 usart.o
-                0x0000000000000d08                uart_udre_handler
+                0x0000000000000772       0x38 usart.o
+                0x0000000000000772                uart_udre_handler
  .text.uart_rx_handler
-                0x0000000000000d40       0x30 usart.o
-                0x0000000000000d40                uart_rx_handler
+                0x00000000000007aa       0x30 usart.o
+                0x00000000000007aa                uart_rx_handler
  .text.uart_tx_done
-                0x0000000000000d70        0xe usart.o
-                0x0000000000000d70                uart_tx_done
+                0x00000000000007da        0xe usart.o
+                0x00000000000007da                uart_tx_done
  .text.coil_act_insert_next
-                0x0000000000000d7e       0x2e coil_handler.o
-                0x0000000000000d7e                coil_act_insert_next
+                0x00000000000007e8       0x2e coil_handler.o
+                0x00000000000007e8                coil_act_insert_next
  .text.coil_act_insert_prev
-                0x0000000000000dac       0x2e coil_handler.o
-                0x0000000000000dac                coil_act_insert_prev
- .text.coil_act_cut
-                0x0000000000000dda       0x36 coil_handler.o
-                0x0000000000000dda                coil_act_cut
+                0x0000000000000816       0x2e coil_handler.o
+                0x0000000000000816                coil_act_insert_prev
  .text.coil_act_sorting_insert
-                0x0000000000000e10       0x54 coil_handler.o
-                0x0000000000000e10                coil_act_sorting_insert
- .text.coil_act_sort_selected
-                0x0000000000000e64       0x9c coil_handler.o
-                0x0000000000000e64                coil_act_sort_selected
- .text.coil_act_main_handler
-                0x0000000000000f00      0x124 coil_handler.o
-                0x0000000000000f00                coil_act_main_handler
- .text.libgcc.mul
-                0x0000000000001024       0x16 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
-                0x0000000000001024                __muluhisi3
- .text.libgcc.mul
-                0x000000000000103a       0x20 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
-                0x000000000000103a                __mulsi3
+                0x0000000000000844       0x54 coil_handler.o
+                0x0000000000000844                coil_act_sorting_insert
+ .text.coil_call_event_once
+                0x0000000000000898       0x22 coil_handler.o
+                0x0000000000000898                coil_call_event_once
+ .text.coil_event_set
+                0x00000000000008ba       0x46 coil_handler.o
+                0x00000000000008ba                coil_event_set
  .text.libgcc.div
-                0x000000000000105a       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                0x000000000000105a                __udivmodhi4
- .text.libgcc.div
-                0x0000000000001082       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
-                0x0000000000001082                __divmodhi4
-                0x0000000000001082                _div
- .text.libgcc.div
-                0x00000000000010aa       0x44 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
-                0x00000000000010aa                __udivmodsi4
- .text.libgcc.div
-                0x00000000000010ee       0x2e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
-                0x00000000000010ee                __divmodsi4
- .text.libgcc.div
-                0x000000000000111c       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
-                0x000000000000111c                __negsi2
- .text.libgcc.mul
-                0x000000000000112c       0x1e /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
-                0x000000000000112c                __umulhisi3
+                0x0000000000000900       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
+                0x0000000000000900                __udivmodhi4
  .text.avr-libc
-                0x000000000000114a       0x60 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
-                0x000000000000114a                sprintf
+                0x0000000000000928        0xe /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
+                0x0000000000000928                strcpy
  .text.avr-libc
-                0x00000000000011aa      0x3f6 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
-                0x00000000000011aa                vfprintf
+                0x0000000000000936       0x60 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
+                0x0000000000000936                sprintf
  .text.avr-libc
-                0x00000000000015a0       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen_P.o)
-                0x00000000000015a0                strnlen_P
+                0x0000000000000996      0x3f6 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
+                0x0000000000000996                vfprintf
  .text.avr-libc
-                0x00000000000015b6       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen.o)
-                0x00000000000015b6                strnlen
+                0x0000000000000d8c       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen_P.o)
+                0x0000000000000d8c                strnlen_P
  .text.avr-libc
-                0x00000000000015cc       0x70 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(fputc.o)
-                0x00000000000015cc                fputc
+                0x0000000000000da2       0x16 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen.o)
+                0x0000000000000da2                strnlen
  .text.avr-libc
-                0x000000000000163c       0xbc /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(ultoa_invert.o)
-                0x000000000000163c                __ultoa_invert
-                0x00000000000016f8                . = ALIGN (0x2)
+                0x0000000000000db8       0x70 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(fputc.o)
+                0x0000000000000db8                fputc
+ .text.avr-libc
+                0x0000000000000e28       0xbc /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(ultoa_invert.o)
+                0x0000000000000e28                __ultoa_invert
+                0x0000000000000ee4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000016f8        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x00000000000016f8                exit
-                0x00000000000016f8                _exit
+ .fini9         0x0000000000000ee4        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x0000000000000ee4                exit
+                0x0000000000000ee4                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -659,123 +536,69 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000016f8        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x0000000000000ee4        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000016fc                _etext = .
+                0x0000000000000ee8                _etext = .
 
-.data           0x0000000000800200      0x72a load address 0x00000000000016fc
+.data           0x0000000000800200       0xb2 load address 0x0000000000000ee8
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.lerp_map
-                0x0000000000800200      0x640 main.o
-                0x0000000000800200                lerp_map
- .data.coil23_off
-                0x0000000000800840        0xe main.o
-                0x0000000000800840                coil23_off
- .data.coil23_on
-                0x000000000080084e        0xe main.o
-                0x000000000080084e                coil23_on
- .data.coil14_off
-                0x000000000080085c        0xe main.o
-                0x000000000080085c                coil14_off
- .data.coil14_on
-                0x000000000080086a        0xe main.o
-                0x000000000080086a                coil14_on
- .data.cap5_pos_mask
-                0x0000000000800878        0x3 main.o
-                0x0000000000800878                cap5_pos_mask
- .data.tcnt5_mask
-                0x000000000080087b        0x3 main.o
-                0x000000000080087b                tcnt5_mask
- .data.tcs5     0x000000000080087e        0x3 main.o
-                0x000000000080087e                tcs5
- .data.tcr5     0x0000000000800881        0x8 main.o
-                0x0000000000800881                tcr5
- .data.ovf5     0x0000000000800889        0x8 main.o
-                0x0000000000800889                ovf5
- .data.chc5     0x0000000000800891        0x8 main.o
-                0x0000000000800891                chc5
- .data.chb5     0x0000000000800899        0x8 main.o
-                0x0000000000800899                chb5
- .data.cha5     0x00000000008008a1        0x8 main.o
-                0x00000000008008a1                cha5
- .data.cap5     0x00000000008008a9        0x8 main.o
-                0x00000000008008a9                cap5
- .data.tir5     0x00000000008008b1        0x4 main.o
-                0x00000000008008b1                tir5
- .data.coil_ch1
-                0x00000000008008b5        0xa main.o
-                0x00000000008008b5                coil_ch1
- .data.coil_ch2
-                0x00000000008008bf        0xa main.o
-                0x00000000008008bf                coil_ch2
- .data.coil_ch3
-                0x00000000008008c9        0xa main.o
-                0x00000000008008c9                coil_ch3
+ .data.testoff  0x0000000000800200        0xe main.o
+                0x0000000000800200                testoff
+ .data.teston   0x000000000080020e        0xe main.o
+                0x000000000080020e                teston
+ .data.b7       0x000000000080021c        0x8 main.o
+                0x000000000080021c                b7
  .data.tcnt4_mask
-                0x00000000008008d3        0x3 main.o
-                0x00000000008008d3                tcnt4_mask
- .data.tcs4     0x00000000008008d6        0x3 main.o
-                0x00000000008008d6                tcs4
- .data.tcr4     0x00000000008008d9        0x8 main.o
-                0x00000000008008d9                tcr4
- .data.tir4     0x00000000008008e1        0x4 main.o
-                0x00000000008008e1                tir4
- .data.l1       0x00000000008008e5        0x8 main.o
-                0x00000000008008e5                l1
- .data.b7       0x00000000008008ed        0x8 main.o
-                0x00000000008008ed                b7
- .data.b6       0x00000000008008f5        0x8 main.o
-                0x00000000008008f5                b6
- .data.b5       0x00000000008008fd        0x8 main.o
-                0x00000000008008fd                b5
- .data.b4       0x0000000000800905        0x8 main.o
-                0x0000000000800905                b4
- .data.uart0    0x000000000080090d       0x14 main.o
-                0x000000000080090d                uart0
+                0x0000000000800224        0x3 main.o
+                0x0000000000800224                tcnt4_mask
+ .data.tcs4     0x0000000000800227        0x3 main.o
+                0x0000000000800227                tcs4
+ .data.tcr4     0x000000000080022a        0x8 main.o
+                0x000000000080022a                tcr4
+ .data.t4ch1    0x0000000000800232        0xa main.o
+                0x0000000000800232                t4ch1
+ .data.t4ch2    0x000000000080023c        0xa main.o
+                0x000000000080023c                t4ch2
+ .data.t4ch3    0x0000000000800246        0xa main.o
+                0x0000000000800246                t4ch3
+ .data.tir4     0x0000000000800250        0x4 main.o
+                0x0000000000800250                tir4
+ .data.uart0    0x0000000000800254       0x14 main.o
+                0x0000000000800254                uart0
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x0000000000800921        0x9 main.o
+                0x0000000000800268       0x49 main.o
  *(.gnu.linkonce.d*)
-                0x000000000080092a                . = ALIGN (0x2)
-                0x000000000080092a                _edata = .
-                0x000000000080092a                PROVIDE (__data_end, .)
+                0x00000000008002b2                . = ALIGN (0x2)
+ *fill*         0x00000000008002b1        0x1 
+                0x00000000008002b2                _edata = .
+                0x00000000008002b2                PROVIDE (__data_end, .)
 
-.bss            0x000000000080092a       0x32
-                0x000000000080092a                PROVIDE (__bss_start, .)
+.bss            0x00000000008002b2       0x30
+                0x00000000008002b2                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.tooth_counter_flag
-                0x000000000080092a        0x1 main.o
-                0x000000000080092a                tooth_counter_flag
- .bss.angle_counter
-                0x000000000080092b        0x2 main.o
-                0x000000000080092b                angle_counter
- .bss.capture   0x000000000080092d        0x2 main.o
-                0x000000000080092d                capture
- .bss.emu_tooth
-                0x000000000080092f        0x1 main.o
-                0x000000000080092f                emu_tooth
+ .bss.counter   0x00000000008002b2        0x2 main.o
+                0x00000000008002b2                counter
+ .bss.root      0x00000000008002b4        0xe main.o
+                0x00000000008002b4                root
  *(COMMON)
- COMMON         0x0000000000800930       0x2c main.o
-                0x0000000000800930                off_angle
-                0x0000000000800932                rpm
-                0x0000000000800936                data
-                0x0000000000800954                time
-                0x0000000000800958                coil_state
-                0x000000000080095a                on_angle
-                0x000000000080095c                PROVIDE (__bss_end, .)
-                0x00000000000016fc                __data_load_start = LOADADDR (.data)
-                0x0000000000001e26                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00000000008002c2       0x20 main.o
+                0x00000000008002c2                data
+                0x00000000008002e0                coil_buffer
+                0x00000000008002e2                PROVIDE (__bss_end, .)
+                0x0000000000000ee8                __data_load_start = LOADADDR (.data)
+                0x0000000000000f9a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x000000000080095c        0x0
-                0x000000000080095c                PROVIDE (__noinit_start, .)
+.noinit         0x00000000008002e2        0x0
+                0x00000000008002e2                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x000000000080095c                PROVIDE (__noinit_end, .)
-                0x000000000080095c                _end = .
-                0x000000000080095c                PROVIDE (__heap_start, .)
+                0x00000000008002e2                PROVIDE (__noinit_end, .)
+                0x00000000008002e2                _end = .
+                0x00000000008002e2                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -813,8 +636,9 @@ END GROUP
 
 .comment        0x0000000000000000       0x54
  *(.comment)
- .comment       0x0000000000000000       0x2a main.o
+ .comment       0x0000000000000000       0x2a timers.o
                                          0x2b (size before relaxing)
+ .comment       0x000000000000002a       0x2b main.o
  .comment       0x000000000000002a       0x2b usart.o
  .comment       0x000000000000002a       0x2b coil_handler.o
  .comment       0x000000000000002a       0x2a /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
@@ -896,35 +720,17 @@ __bss_start                                       /usr/lib/gcc/avr/4.9.3/avr6/li
 __data_end                                        /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
 __data_load_start                                 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
 __data_start                                      /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
-__divmodhi4                                       /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
-                                                  main.o
-__divmodsi4                                       /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
-                                                  main.o
 __do_clear_bss                                    /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
                                                   main.o
 __do_copy_data                                    /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
                                                   main.o
 __heap_end                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __init                                            /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__mulsi3                                          /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
-                                                  main.o
-__muluhisi3                                       /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
-                                                  /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_mulsi3.o)
-                                                  main.o
-__negsi2                                          /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_negsi2.o)
-                                                  /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
 __stack                                           /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __udivmodhi4                                      /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                                                  /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
-                                                  coil_handler.o
-                                                  main.o
-__udivmodsi4                                      /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodsi4.o)
-                                                  /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodsi4.o)
                                                   main.o
 __ultoa_invert                                    /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(ultoa_invert.o)
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
-__umulhisi3                                       /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_umulhisi3.o)
-                                                  /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_muluhisi3.o)
 __vector_1                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_10                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_11                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -970,17 +776,12 @@ __vector_43                                       main.o
 __vector_44                                       main.o
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_45                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_46                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_47                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_48                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_49                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_46                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_47                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_48                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_49                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_5                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_50                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_50                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_51                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_52                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_53                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -993,75 +794,76 @@ __vector_8                                        /usr/lib/gcc/avr/4.9.3/../../.
 __vector_9                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_default                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vectors                                         /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-_div                                              /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_divmodhi4.o)
 _exit                                             /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-angle_counter                                     main.o
-b4                                                main.o
-b5                                                main.o
-b6                                                main.o
+action_main_init                                  main.o
 b7                                                main.o
-bilerp                                            main.o
-bilerp_map                                        main.o
 bit_off                                           ports.o
 bit_on                                            ports.o
 bit_toggle                                        ports.o
-cap5                                              main.o
-cap5_pos_mask                                     main.o
-capture                                           main.o
-cha5                                              main.o
-chb5                                              main.o
-chc5                                              main.o
-coil14_off                                        main.o
-coil14_on                                         main.o
-coil23_off                                        main.o
-coil23_on                                         main.o
+coil_act_calc                                     main.o
 coil_act_cut                                      coil_handler.o
+coil_act_handler                                  main.o
 coil_act_insert_next                              coil_handler.o
 coil_act_insert_prev                              coil_handler.o
 coil_act_insertion_sort                           coil_handler.o
-coil_act_main_handler                             coil_handler.o
-                                                  main.o
 coil_act_sort_selected                            coil_handler.o
 coil_act_sorting_insert                           coil_handler.o
                                                   main.o
-coil_ch1                                          main.o
-coil_ch2                                          main.o
-coil_ch3                                          main.o
-coil_state                                        main.o
+coil_buffer                                       main.o
+coil_call_event_once                              coil_handler.o
+                                                  main.o
+coil_event_set                                    coil_handler.o
+                                                  main.o
+counter                                           main.o
 data                                              main.o
 done                                              main.o
-emu_tooth                                         main.o
 exit                                              /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 fputc                                             /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(fputc.o)
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
-l1                                                main.o
-lerp                                              main.o
-lerp_map                                          main.o
 main                                              main.o
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-off_angle                                         main.o
-on_angle                                          main.o
-ovf5                                              main.o
 pin_toggle                                        ports.o
+port_main_init                                    main.o
 port_mask                                         ports.o
-rpm                                               main.o
+root                                              main.o
 sprintf                                           /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(sprintf.o)
+                                                  main.o
+strcpy                                            /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
                                                   main.o
 strnlen                                           /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen.o)
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
 strnlen_P                                         /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strnlen_P.o)
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(vfprintf_std.o)
+t4ch1                                             main.o
+t4ch2                                             main.o
+t4ch3                                             main.o
 tcnt4_mask                                        main.o
-tcnt5_mask                                        main.o
 tcr4                                              main.o
-tcr5                                              main.o
 tcs4                                              main.o
-tcs5                                              main.o
-time                                              main.o
+test_off                                          main.o
+test_on                                           main.o
+testoff                                           main.o
+teston                                            main.o
+timer_main_init                                   main.o
 tir4                                              main.o
-tir5                                              main.o
-tooth_counter_flag                                main.o
+tmr16_capture_setup                               timers.o
+tmr16_counter_set                                 timers.o
+                                                  main.o
+tmr16_event_call                                  timers.o
+                                                  coil_handler.o
+tmr16_event_set                                   timers.o
+                                                  coil_handler.o
+tmr16_int_disable                                 timers.o
+                                                  coil_handler.o
+tmr16_int_enable                                  timers.o
+                                                  coil_handler.o
+tmr16_read_cr                                     timers.o
+tmr16_reset_cs                                    timers.o
+tmr16_set_cs                                      timers.o
+                                                  main.o
+tmr16_write_cr                                    timers.o
+                                                  coil_handler.o
 uart0                                             main.o
 uart_baud_rate                                    usart.o
                                                   main.o
@@ -1069,6 +871,7 @@ uart_character_size                               usart.o
                                                   main.o
 uart_init                                         usart.o
                                                   main.o
+uart_main_init                                    main.o
 uart_parity_mode                                  usart.o
                                                   main.o
 uart_rx                                           usart.o

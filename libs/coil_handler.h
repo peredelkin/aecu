@@ -17,8 +17,8 @@ typedef struct Coil_ch_act {
 } coil_ch_act_t;
 
 typedef struct Coil_act {
-    uint16_t angle_buffer; //new angle
-    uint16_t angle; //old angle
+    uint16_t angle_buffer;
+    uint16_t angle;
     timer_event action;
     uint16_t tooth_angle;
     uint16_t action_angle;
@@ -44,6 +44,11 @@ typedef struct Coil_act {
     .prev = NULL, \
     .tooth_angle = ANGLE - ANGLE%6 \
 }
+
+
+extern void coil_call_event_once(coil_ch_act_t* coil_ch);
+extern void coil_event_set(coil_ch_act_t* ch_head, void (*timer_event) (),uint16_t ocr);
+extern void coil_act_sorting_insert(coil_act_t* head, coil_act_t* tail);
 
 #endif	/* COIL_HANDLER_H */
 
