@@ -58,7 +58,7 @@ void test_off(void) {
 }
 
 coil_act_t root = make_coil_act(NULL, 0);
-coil_act_t teston = make_coil_act(test_on, 1);
+coil_act_t teston = make_coil_act(test_on, 180);
 coil_act_t testoff = make_coil_act(test_off, 182);
 coil_act_t* coil_buffer;
 
@@ -95,35 +95,7 @@ void action_main_init(void) {
     uart_tx(&uart0, data, strlen(data));
 }
 
-void coil_act_calc(coil_act_t* act) {
-    if (act->angle != act->angle_buffer) {
-        act->angle = act->angle_buffer;
-        act->action_angle = act->angle % 6;
-        act->tooth_angle = act->angle - act->action_angle;
-    }
-}
-
 uint16_t counter = 0;
-
-void coil_act_handler(coil_act_t **coil_act, uint16_t capture, uint16_t angle_counter) {
-    tmr16_counter_set(&tcnt4_mask);
-    while ((*coil_act) && ((*coil_act)->tooth_angle) == angle_counter) {
-        if ((*coil_act)->action) {
-            if ((*coil_act)->action_angle == 0) {
-                (*coil_act)->action();
-            } else {
-                coil_event_set(&t4ch1, (*coil_act)->action, (capture * ((*coil_act)->action_angle)) / 6);
-                if (uart_tx_done(&uart0)) {
-                    sprintf(data, "Timer action: %u\n",(*coil_act)->action_angle);
-                    uart_tx(&uart0, data, strlen(data));
-                }
-            }
-        }
-        coil_act_calc((*coil_act));
-        *coil_act = (*coil_act)->next;
-    }
-    if (!(*coil_act)) *coil_act = &root;
-}
 
 int main() {
     sei();
@@ -132,9 +104,12 @@ int main() {
     port_main_init();
     action_main_init();
     while (1) {
-        _delay_ms(25);
-        if (counter >= 360) counter = 0;
-        else counter += 6;
-        coil_act_handler(&coil_buffer, 20000, counter);
+        _delay_ms(5);
+        if (counter >= 359) {
+            counter = 0;
+            if(testoff.angle_buffer >= 360) testoff.angle_buffer = 0;
+            else testoff.angle_buffer++;
+        } else counter += 6;
+        coil_act_handler(&coil_buffer,&root,&t4ch1,&tcnt4_mask,20000,counter);
     }
 }

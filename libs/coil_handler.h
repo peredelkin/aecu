@@ -49,6 +49,7 @@ typedef struct Coil_act {
 extern void coil_call_event_once(coil_ch_act_t* coil_ch);
 extern void coil_event_set(coil_ch_act_t* ch_head, void (*timer_event) (),uint16_t ocr);
 extern void coil_act_sorting_insert(coil_act_t* head, coil_act_t* tail);
+extern void coil_act_sort_selected(coil_act_t* head);
 
 #endif	/* COIL_HANDLER_H */
 

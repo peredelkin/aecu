@@ -79,7 +79,32 @@ void coil_call_event_once(coil_ch_act_t* coil_ch) {
 
 void coil_event_set(coil_ch_act_t* ch_head, void (*timer_event) (),uint16_t ocr) {
     while((ch_head->next) && (ch_head->ch.event)) ch_head = ch_head->next;
-    tmr16_write_cr(&ch_head->ch, ocr);
     tmr16_event_set(&ch_head->ch, timer_event);
+    tmr16_write_cr(&ch_head->ch, ocr);
     tmr16_int_enable(&ch_head->ch);
+}
+
+void coil_act_calc(coil_act_t* act) {
+    if (act->angle != act->angle_buffer) {
+        act->angle = act->angle_buffer;
+        act->action_angle = act->angle % 6;
+        act->tooth_angle = act->angle - act->action_angle;
+        coil_act_sort_selected(act);
+    }
+}
+
+void coil_act_handler(coil_act_t **coil_act,coil_act_t* root,coil_ch_act_t* ch_head,tmr16_ctrl_mask_t* tcnt_mask,uint16_t capture, uint16_t angle_counter) {
+    tmr16_counter_set(tcnt_mask);
+    while ((*coil_act) && ((*coil_act)->tooth_angle) == angle_counter) {
+        if ((*coil_act)->action) {
+            if ((*coil_act)->action_angle == 0) {
+                (*coil_act)->action();
+            } else {
+                coil_event_set(ch_head, (*coil_act)->action, (capture * ((*coil_act)->action_angle)) / 6);
+            }
+        }
+        coil_act_calc((*coil_act));
+        *coil_act = (*coil_act)->next;
+    }
+    if (!(*coil_act)) (*coil_act) = root;
 }
