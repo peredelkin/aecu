@@ -59,7 +59,7 @@ void test_off(void) {
 
 coil_act_t root = make_coil_act(NULL, 0);
 coil_act_t teston = make_coil_act(test_on, 180);
-coil_act_t testoff = make_coil_act(test_off, 182);
+coil_act_t testoff = make_coil_act(test_off, 181);
 coil_act_t* coil_buffer;
 
 void uart_main_init(uart_t* uart) {
