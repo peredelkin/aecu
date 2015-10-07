@@ -17,11 +17,11 @@ typedef struct Coil_ch_act {
 } coil_ch_act_t;
 
 typedef struct Coil_act {
-    uint16_t angle_buffer;
-    uint16_t angle;
+    volatile uint16_t angle_buffer;
+    volatile uint16_t angle;
     timer_event action;
-    uint16_t tooth_angle;
-    uint16_t action_angle;
+    volatile uint16_t tooth_angle;
+    volatile uint16_t action_angle;
     struct Coil_act* next;
     struct Coil_act* prev;
 } coil_act_t;

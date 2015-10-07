@@ -24,7 +24,7 @@ typedef struct {
 typedef struct {
     timer_event event; //
     uint8_t mask; //mask interrupt control
-    bool flag; //interrupt state
+    volatile bool flag; //interrupt state
     tmr16_int_reg_t* ti_register; //interrupt control registers
     volatile uint16_t* cr;
 } tmr16_int_ctrl_t;
