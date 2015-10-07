@@ -14,7 +14,7 @@
 
 //#define TIMER_STATIC //TURBO "BUTTON"
 
-typedef void (*timer_event) ();
+typedef void (*timer_event) (void);
 
 typedef struct {
     volatile uint8_t* tifr; //register of flags

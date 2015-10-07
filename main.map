@@ -15,7 +15,6 @@ Allocating common symbols
 Common symbol       size              file
 
 data                0x1e              main.o
-coil_buffer         0x2               main.o
 
 Discarded input sections
 
@@ -29,7 +28,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
- .text.test_on  0x0000000000000000       0x16 main.o
+ .text.coil23_on
+                0x0000000000000000       0x16 main.o
  .text.current_capture
                 0x0000000000000000       0x48 main.o
  .bss.done      0x0000000000000000        0x1 main.o
@@ -373,18 +373,17 @@ END GROUP
  .text.tmr16_capture_setup
                 0x000000000000020e       0x1a timers.o
                 0x000000000000020e                tmr16_capture_setup
- .text.coil14_on
-                0x0000000000000228       0x16 main.o
-                0x0000000000000228                coil14_on
- .text.coil14_off
+ .text.test_on  0x0000000000000228       0x16 main.o
+                0x0000000000000228                test_on
+ .text.test_off
                 0x000000000000023e       0x18 main.o
-                0x000000000000023e                coil14_off
- .text.coil23_on
+                0x000000000000023e                test_off
+ .text.coil14_on
                 0x0000000000000256       0x16 main.o
-                0x0000000000000256                coil23_on
- .text.coil23_off
+                0x0000000000000256                coil14_on
+ .text.coil14_off
                 0x000000000000026c       0x18 main.o
-                0x000000000000026c                coil23_off
+                0x000000000000026c                coil14_off
  .text.mark_handler
                 0x0000000000000284       0x46 main.o
                 0x0000000000000284                mark_handler
@@ -418,9 +417,9 @@ END GROUP
  .text.__vector_50
                 0x00000000000005d6       0x5c main.o
                 0x00000000000005d6                __vector_50
- .text.test_off
+ .text.coil23_off
                 0x0000000000000632       0x18 main.o
-                0x0000000000000632                test_off
+                0x0000000000000632                coil23_off
  .text.stop_handler
                 0x000000000000064a       0x50 main.o
                 0x000000000000064a                stop_handler
@@ -544,78 +543,80 @@ END GROUP
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
+ .data.coil_buffer
+                0x0000000000800200        0x2 main.o
+                0x0000000000800200                coil_buffer
  .data.coil23off
-                0x0000000000800200        0xe main.o
-                0x0000000000800200                coil23off
+                0x0000000000800202        0xe main.o
+                0x0000000000800202                coil23off
  .data.coil23on
-                0x000000000080020e        0xe main.o
-                0x000000000080020e                coil23on
+                0x0000000000800210        0xe main.o
+                0x0000000000800210                coil23on
  .data.coil14off
-                0x000000000080021c        0xe main.o
-                0x000000000080021c                coil14off
+                0x000000000080021e        0xe main.o
+                0x000000000080021e                coil14off
  .data.coil14on
-                0x000000000080022a        0xe main.o
-                0x000000000080022a                coil14on
- .data.l1       0x0000000000800238        0x8 main.o
-                0x0000000000800238                l1
- .data.b7       0x0000000000800240        0x8 main.o
-                0x0000000000800240                b7
- .data.b6       0x0000000000800248        0x8 main.o
-                0x0000000000800248                b6
- .data.b5       0x0000000000800250        0x8 main.o
-                0x0000000000800250                b5
- .data.b4       0x0000000000800258        0x8 main.o
-                0x0000000000800258                b4
+                0x000000000080022c        0xe main.o
+                0x000000000080022c                coil14on
+ .data.l1       0x000000000080023a        0x8 main.o
+                0x000000000080023a                l1
+ .data.b7       0x0000000000800242        0x8 main.o
+                0x0000000000800242                b7
+ .data.b6       0x000000000080024a        0x8 main.o
+                0x000000000080024a                b6
+ .data.b5       0x0000000000800252        0x8 main.o
+                0x0000000000800252                b5
+ .data.b4       0x000000000080025a        0x8 main.o
+                0x000000000080025a                b4
  .data.cap5_pos_mask
-                0x0000000000800260        0x3 main.o
-                0x0000000000800260                cap5_pos_mask
+                0x0000000000800262        0x3 main.o
+                0x0000000000800262                cap5_pos_mask
  .data.tcnt5_mask
-                0x0000000000800263        0x3 main.o
-                0x0000000000800263                tcnt5_mask
- .data.tcs5     0x0000000000800266        0x3 main.o
-                0x0000000000800266                tcs5
- .data.tcr5     0x0000000000800269        0x8 main.o
-                0x0000000000800269                tcr5
- .data.ovf5     0x0000000000800271        0x8 main.o
-                0x0000000000800271                ovf5
- .data.chc5     0x0000000000800279        0x8 main.o
-                0x0000000000800279                chc5
- .data.chb5     0x0000000000800281        0x8 main.o
-                0x0000000000800281                chb5
- .data.cha5     0x0000000000800289        0x8 main.o
-                0x0000000000800289                cha5
- .data.cap5     0x0000000000800291        0x8 main.o
-                0x0000000000800291                cap5
- .data.tir5     0x0000000000800299        0x4 main.o
-                0x0000000000800299                tir5
+                0x0000000000800265        0x3 main.o
+                0x0000000000800265                tcnt5_mask
+ .data.tcs5     0x0000000000800268        0x3 main.o
+                0x0000000000800268                tcs5
+ .data.tcr5     0x000000000080026b        0x8 main.o
+                0x000000000080026b                tcr5
+ .data.ovf5     0x0000000000800273        0x8 main.o
+                0x0000000000800273                ovf5
+ .data.chc5     0x000000000080027b        0x8 main.o
+                0x000000000080027b                chc5
+ .data.chb5     0x0000000000800283        0x8 main.o
+                0x0000000000800283                chb5
+ .data.cha5     0x000000000080028b        0x8 main.o
+                0x000000000080028b                cha5
+ .data.cap5     0x0000000000800293        0x8 main.o
+                0x0000000000800293                cap5
+ .data.tir5     0x000000000080029b        0x4 main.o
+                0x000000000080029b                tir5
  .data.tcnt4_mask
-                0x000000000080029d        0x3 main.o
-                0x000000000080029d                tcnt4_mask
- .data.tcs4     0x00000000008002a0        0x3 main.o
-                0x00000000008002a0                tcs4
- .data.tcr4     0x00000000008002a3        0x8 main.o
-                0x00000000008002a3                tcr4
- .data.t4ch1    0x00000000008002ab        0xa main.o
-                0x00000000008002ab                t4ch1
- .data.t4ch2    0x00000000008002b5        0xa main.o
-                0x00000000008002b5                t4ch2
- .data.t4ch3    0x00000000008002bf        0xa main.o
-                0x00000000008002bf                t4ch3
- .data.tir4     0x00000000008002c9        0x4 main.o
-                0x00000000008002c9                tir4
- .data.uart0    0x00000000008002cd       0x14 main.o
-                0x00000000008002cd                uart0
+                0x000000000080029f        0x3 main.o
+                0x000000000080029f                tcnt4_mask
+ .data.tcs4     0x00000000008002a2        0x3 main.o
+                0x00000000008002a2                tcs4
+ .data.tcr4     0x00000000008002a5        0x8 main.o
+                0x00000000008002a5                tcr4
+ .data.t4ch1    0x00000000008002ad        0xa main.o
+                0x00000000008002ad                t4ch1
+ .data.t4ch2    0x00000000008002b7        0xa main.o
+                0x00000000008002b7                t4ch2
+ .data.t4ch3    0x00000000008002c1        0xa main.o
+                0x00000000008002c1                t4ch3
+ .data.tir4     0x00000000008002cb        0x4 main.o
+                0x00000000008002cb                tir4
+ .data.uart0    0x00000000008002cf       0x14 main.o
+                0x00000000008002cf                uart0
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00000000008002e1       0x44 main.o
+                0x00000000008002e3       0x43 main.o
  *(.gnu.linkonce.d*)
                 0x0000000000800326                . = ALIGN (0x2)
- *fill*         0x0000000000800325        0x1 
                 0x0000000000800326                _edata = .
                 0x0000000000800326                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800326       0x34
+.bss            0x0000000000800326       0x32
                 0x0000000000800326                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -634,19 +635,18 @@ END GROUP
  .bss.root      0x000000000080032c        0xe main.o
                 0x000000000080032c                root
  *(COMMON)
- COMMON         0x000000000080033a       0x20 main.o
+ COMMON         0x000000000080033a       0x1e main.o
                 0x000000000080033a                data
-                0x0000000000800358                coil_buffer
-                0x000000000080035a                PROVIDE (__bss_end, .)
+                0x0000000000800358                PROVIDE (__bss_end, .)
                 0x0000000000000ee8                __data_load_start = LOADADDR (.data)
                 0x000000000000100e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x000000000080035a        0x0
-                0x000000000080035a                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000800358        0x0
+                0x0000000000800358                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x000000000080035a                PROVIDE (__noinit_end, .)
-                0x000000000080035a                _end = .
-                0x000000000080035a                PROVIDE (__heap_start, .)
+                0x0000000000800358                PROVIDE (__noinit_end, .)
+                0x0000000000800358                _end = .
+                0x0000000000800358                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)

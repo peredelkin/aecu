@@ -113,11 +113,11 @@ void coil23_off(void) {
 }
 
 coil_act_t root = make_coil_act(NULL, 0);
-coil_act_t coil14on = make_coil_act(coil14_on, 1);
-coil_act_t coil14off = make_coil_act(coil14_off,115);
-coil_act_t coil23on = make_coil_act(coil23_on, 181);
-coil_act_t coil23off = make_coil_act(coil23_off, 295);
-coil_act_t* coil_buffer;
+coil_act_t coil14on = make_coil_act(coil14_on, 91);
+coil_act_t coil14off = make_coil_act(coil14_off,181);
+coil_act_t coil23on = make_coil_act(test_on, 92);
+coil_act_t coil23off = make_coil_act(test_off, 182);
+coil_act_t* coil_buffer = &root;
 
 volatile uint16_t timer_capture = 0;
 volatile uint16_t tooth_counter = 0;
@@ -161,7 +161,7 @@ void mark_handler(void) {
     tooth_counter = 0;
     permit_tooth_counter = true;
     if (uart_tx_done(&uart0)) {
-        sprintf(data, "Start\n");
+        sprintf(data, "Mark\n");
         uart_tx(&uart0, data, strlen(data));
     }
 }
@@ -246,9 +246,9 @@ uint8_t emu_tooth = 0;
 
 void emu_sheave(void) {
     if (emu_tooth <= 57) pin_on(&b6);
-    _delay_us(600);
+    _delay_us(800);
     pin_off(&b6);
-    _delay_us(600);
+    _delay_us(800);
     if (emu_tooth <= 58) emu_tooth++;
     else {
         emu_tooth = 0;
