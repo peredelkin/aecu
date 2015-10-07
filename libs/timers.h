@@ -122,6 +122,11 @@ typedef struct {
     .ti_register = &TIR \
 }
 
+#define make_tcnt_mask(MASK, TCR) { \
+    .ctrl_reg = &TCR, \
+    .mask = MASK \
+}
+
 #ifdef TIMER_STATIC
 
 static void tmr16_int_enable(tmr16_int_ctrl_t* tic_type) {

@@ -93,7 +93,9 @@ void coil_act_calc(coil_act_t* act) {
     }
 }
 
-void coil_act_handler(coil_act_t **coil_act,coil_act_t* root,coil_ch_act_t* ch_head,tmr16_ctrl_mask_t* tcnt_mask,uint16_t capture, uint16_t angle_counter) {
+void coil_act_handler(coil_act_t **coil_act,coil_act_t* root,
+        coil_ch_act_t* ch_head,tmr16_ctrl_mask_t* tcnt_mask,
+        uint16_t capture, uint16_t angle_counter) {
     tmr16_counter_set(tcnt_mask);
     while ((*coil_act) && ((*coil_act)->tooth_angle) == angle_counter) {
         if ((*coil_act)->action) {

@@ -120,7 +120,7 @@ ISR(TIMER5_OVF_vect) {
 
 uint16_t capture = 0;
 uint16_t angle_counter = 0;
-bool tooth_counter_flag = 0;
+bool permit_tooth_counter = 0;
 
 static void coil14on(void) {
     pin_on(&b5);
@@ -155,10 +155,10 @@ typedef struct Coil_action {
     .old_angle = ANGLE \
 }
 
-coil_action_t coil14_on = make_coil(0, coil14on);
-coil_action_t coil14_off = make_coil(114, coil14off);
-coil_action_t coil23_on = make_coil(180, coil23on);
-coil_action_t coil23_off = make_coil(294, coil23off);
+//coil_action_t coil14_on = make_coil(0, coil14on);
+//coil_action_t coil14_off = make_coil(114, coil14off);
+//coil_action_t coil23_on = make_coil(180, coil23on);
+//coil_action_t coil23_off = make_coil(294, coil23off);
 
 coil_action_t* coil_state;
 
@@ -194,7 +194,7 @@ static void capture_handler(void) {
     capture = tmr16_read_cr(&cap5);
     tmr16_write_cr(&chc5, ((capture * 2)+(capture / 2))); //mark
     tmr16_int_enable(&chc5);
-    if (tooth_counter_flag == true) {
+    if (permit_tooth_counter == true) {
         main_handler();
         if (angle_counter == 348) { //last tooth 58*6
             tmr16_write_cr(&cha5, capture); //59 tooth
@@ -221,13 +221,13 @@ static void tooth_60_handler(void) {
 
 static void mark_handler(void) {
     angle_counter = 0;
-    tooth_counter_flag = true; //start
+    permit_tooth_counter = true; //start
     test_on();
 }
 
 static void stop_handler(void) {
     angle_counter = 0;
-    tooth_counter_flag = false; //stop
+    permit_tooth_counter = false; //stop
     test_on();
 }
 

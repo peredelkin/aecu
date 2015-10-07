@@ -50,6 +50,9 @@ extern void coil_call_event_once(coil_ch_act_t* coil_ch);
 extern void coil_event_set(coil_ch_act_t* ch_head, void (*timer_event) (),uint16_t ocr);
 extern void coil_act_sorting_insert(coil_act_t* head, coil_act_t* tail);
 extern void coil_act_sort_selected(coil_act_t* head);
+extern void coil_act_handler(coil_act_t **coil_act,coil_act_t* root,
+        coil_ch_act_t* ch_head,tmr16_ctrl_mask_t* tcnt_mask,
+        uint16_t capture, uint16_t angle_counter);
 
 #endif	/* COIL_HANDLER_H */
 
