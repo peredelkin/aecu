@@ -1,38 +1,17 @@
 Archive member included to satisfy reference by file (symbol)
 
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                              coil_handler.o (__udivmodhi4)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o (exit)
 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
-                              main.o (__do_copy_data)
-/usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
-                              main.o (__do_clear_bss)
-/usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
-                              main.o (strcpy)
-
-Allocating common symbols
-Common symbol       size              file
-
-data                0x1e              main.o
+                              uart.o (__do_copy_data)
 
 Discarded input sections
 
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
- .text          0x0000000000000000        0x0 timers.o
- .data          0x0000000000000000        0x0 timers.o
- .bss           0x0000000000000000        0x0 timers.o
- .text.tmr16_reset_cs
-                0x0000000000000000       0x1c timers.o
- .text          0x0000000000000000        0x0 main.o
- .data          0x0000000000000000        0x0 main.o
- .bss           0x0000000000000000        0x0 main.o
- .text.coil23_on
-                0x0000000000000000       0x16 main.o
- .text.current_capture
-                0x0000000000000000       0x48 main.o
- .bss.done      0x0000000000000000        0x1 main.o
+ .text          0x0000000000000000        0x0 uart.o
+ .data          0x0000000000000000        0x0 uart.o
+ .bss           0x0000000000000000        0x0 uart.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
  .bss           0x0000000000000000        0x0 ports.o
@@ -40,38 +19,8 @@ Discarded input sections
  .text.bit_off  0x0000000000000000       0x18 ports.o
  .text.bit_toggle
                 0x0000000000000000       0x16 ports.o
- .text.pin_toggle
-                0x0000000000000000       0x14 ports.o
  .text.port_mask
                 0x0000000000000000       0x34 ports.o
- .comment       0x0000000000000000       0x2b ports.o
- .text          0x0000000000000000        0x0 usart.o
- .data          0x0000000000000000        0x0 usart.o
- .bss           0x0000000000000000        0x0 usart.o
- .text.uart_rx  0x0000000000000000       0x1c usart.o
- .text.uart_rx_count
-                0x0000000000000000        0x6 usart.o
- .text.uart_rx_done
-                0x0000000000000000        0xe usart.o
- .text          0x0000000000000000        0x0 coil_handler.o
- .data          0x0000000000000000        0x0 coil_handler.o
- .bss           0x0000000000000000        0x0 coil_handler.o
- .text.coil_act_insertion_sort
-                0x0000000000000000       0x56 coil_handler.o
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .text.libgcc.mul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
@@ -104,25 +53,6 @@ Discarded input sections
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
  .text.libgcc.fixed
                 0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text.libgcc.mul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text.libgcc.div
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text.libgcc.prologue
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text.libgcc.builtins
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text.libgcc.fmul
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text.libgcc.fixed
-                0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
- .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
 
 Memory Configuration
 
@@ -139,11 +69,8 @@ Linker script and memory map
 
 Address of section .data set to 0x800200
 LOAD /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-LOAD timers.o
-LOAD main.o
+LOAD uart.o
 LOAD ports.o
-LOAD usart.o
-LOAD coil_handler.o
 START GROUP
 LOAD /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a
 LOAD /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libm.a
@@ -240,7 +167,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0xee8
+.text           0x0000000000000000      0x174
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -250,39 +177,37 @@ END GROUP
                 0x00000000000000e4                . = ALIGN (0x2)
                 0x00000000000000e4                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000000000000e4       0x24 linker stubs
+ .trampolines   0x00000000000000e4        0x0 linker stubs
  *(.trampolines*)
-                0x0000000000000108                __trampolines_end = .
+                0x00000000000000e4                __trampolines_end = .
  *(.progmem*)
-                0x0000000000000108                . = ALIGN (0x2)
+                0x00000000000000e4                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000000000000108                __ctors_start = .
+                0x00000000000000e4                __ctors_start = .
  *(.ctors)
-                0x0000000000000108                __ctors_end = .
-                0x0000000000000108                __dtors_start = .
+                0x00000000000000e4                __ctors_end = .
+                0x00000000000000e4                __dtors_start = .
  *(.dtors)
-                0x0000000000000108                __dtors_end = .
+                0x00000000000000e4                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000000000000108        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-                0x0000000000000108                __init
+ .init0         0x00000000000000e4        0x0 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+                0x00000000000000e4                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000000000000108       0x10 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+ .init2         0x00000000000000e4       0x10 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x0000000000000118       0x1a /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
-                0x0000000000000118                __do_copy_data
- .init4         0x0000000000000132       0x10 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
-                0x0000000000000132                __do_clear_bss
+ .init4         0x00000000000000f4       0x1a /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
+                0x00000000000000f4                __do_copy_data
  *(.init4)
  *(.init5)
  *(.init5)
@@ -293,230 +218,80 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000000000000142        0x8 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+ .init9         0x000000000000010e        0x8 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
  *(.init9)
  *(.text)
- .text          0x000000000000014a        0x4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-                0x000000000000014a                __vector_38
-                0x000000000000014a                __vector_22
-                0x000000000000014a                __vector_28
-                0x000000000000014a                __vector_1
-                0x000000000000014a                __vector_32
-                0x000000000000014a                __vector_34
-                0x000000000000014a                __vector_24
-                0x000000000000014a                __vector_12
-                0x000000000000014a                __vector_55
-                0x000000000000014a                __bad_interrupt
-                0x000000000000014a                __vector_6
-                0x000000000000014a                __vector_31
-                0x000000000000014a                __vector_35
-                0x000000000000014a                __vector_39
-                0x000000000000014a                __vector_3
-                0x000000000000014a                __vector_23
-                0x000000000000014a                __vector_30
-                0x000000000000014a                __vector_45
-                0x000000000000014a                __vector_11
-                0x000000000000014a                __vector_54
-                0x000000000000014a                __vector_13
-                0x000000000000014a                __vector_17
-                0x000000000000014a                __vector_19
-                0x000000000000014a                __vector_56
-                0x000000000000014a                __vector_7
-                0x000000000000014a                __vector_41
-                0x000000000000014a                __vector_27
-                0x000000000000014a                __vector_5
-                0x000000000000014a                __vector_33
-                0x000000000000014a                __vector_52
-                0x000000000000014a                __vector_37
-                0x000000000000014a                __vector_4
-                0x000000000000014a                __vector_51
-                0x000000000000014a                __vector_9
-                0x000000000000014a                __vector_2
-                0x000000000000014a                __vector_21
-                0x000000000000014a                __vector_15
-                0x000000000000014a                __vector_36
-                0x000000000000014a                __vector_29
-                0x000000000000014a                __vector_40
-                0x000000000000014a                __vector_8
-                0x000000000000014a                __vector_14
-                0x000000000000014a                __vector_53
-                0x000000000000014a                __vector_10
-                0x000000000000014a                __vector_16
-                0x000000000000014a                __vector_18
-                0x000000000000014a                __vector_20
-                0x000000000000014e                . = ALIGN (0x2)
+ .text          0x0000000000000116        0x4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+                0x0000000000000116                __vector_38
+                0x0000000000000116                __vector_22
+                0x0000000000000116                __vector_28
+                0x0000000000000116                __vector_1
+                0x0000000000000116                __vector_32
+                0x0000000000000116                __vector_34
+                0x0000000000000116                __vector_24
+                0x0000000000000116                __vector_12
+                0x0000000000000116                __vector_55
+                0x0000000000000116                __vector_46
+                0x0000000000000116                __bad_interrupt
+                0x0000000000000116                __vector_6
+                0x0000000000000116                __vector_31
+                0x0000000000000116                __vector_35
+                0x0000000000000116                __vector_39
+                0x0000000000000116                __vector_3
+                0x0000000000000116                __vector_23
+                0x0000000000000116                __vector_30
+                0x0000000000000116                __vector_45
+                0x0000000000000116                __vector_25
+                0x0000000000000116                __vector_11
+                0x0000000000000116                __vector_54
+                0x0000000000000116                __vector_13
+                0x0000000000000116                __vector_17
+                0x0000000000000116                __vector_19
+                0x0000000000000116                __vector_56
+                0x0000000000000116                __vector_7
+                0x0000000000000116                __vector_49
+                0x0000000000000116                __vector_41
+                0x0000000000000116                __vector_43
+                0x0000000000000116                __vector_27
+                0x0000000000000116                __vector_5
+                0x0000000000000116                __vector_33
+                0x0000000000000116                __vector_47
+                0x0000000000000116                __vector_52
+                0x0000000000000116                __vector_37
+                0x0000000000000116                __vector_4
+                0x0000000000000116                __vector_44
+                0x0000000000000116                __vector_51
+                0x0000000000000116                __vector_9
+                0x0000000000000116                __vector_2
+                0x0000000000000116                __vector_21
+                0x0000000000000116                __vector_15
+                0x0000000000000116                __vector_36
+                0x0000000000000116                __vector_29
+                0x0000000000000116                __vector_40
+                0x0000000000000116                __vector_8
+                0x0000000000000116                __vector_26
+                0x0000000000000116                __vector_48
+                0x0000000000000116                __vector_14
+                0x0000000000000116                __vector_53
+                0x0000000000000116                __vector_10
+                0x0000000000000116                __vector_50
+                0x0000000000000116                __vector_16
+                0x0000000000000116                __vector_18
+                0x0000000000000116                __vector_20
+                0x0000000000000116                __vector_42
+                0x000000000000011a                . = ALIGN (0x2)
  *(.text.*)
- .text.tmr16_int_enable
-                0x000000000000014e       0x34 timers.o
-                0x000000000000014e                tmr16_int_enable
- .text.tmr16_int_disable
-                0x0000000000000182       0x22 timers.o
-                0x0000000000000182                tmr16_int_disable
- .text.tmr16_event_set
-                0x00000000000001a4        0x8 timers.o
-                0x00000000000001a4                tmr16_event_set
- .text.tmr16_event_call
-                0x00000000000001ac        0xe timers.o
-                0x00000000000001ac                tmr16_event_call
- .text.tmr16_read_cr
-                0x00000000000001ba       0x10 timers.o
-                0x00000000000001ba                tmr16_read_cr
- .text.tmr16_write_cr
-                0x00000000000001ca       0x10 timers.o
-                0x00000000000001ca                tmr16_write_cr
- .text.tmr16_set_cs
-                0x00000000000001da       0x1a timers.o
-                0x00000000000001da                tmr16_set_cs
- .text.tmr16_counter_set
-                0x00000000000001f4       0x1a timers.o
-                0x00000000000001f4                tmr16_counter_set
- .text.tmr16_capture_setup
-                0x000000000000020e       0x1a timers.o
-                0x000000000000020e                tmr16_capture_setup
- .text.test_on  0x0000000000000228       0x16 main.o
-                0x0000000000000228                test_on
- .text.test_off
-                0x000000000000023e       0x18 main.o
-                0x000000000000023e                test_off
- .text.coil14_on
-                0x0000000000000256       0x16 main.o
-                0x0000000000000256                coil14_on
- .text.coil14_off
-                0x000000000000026c       0x18 main.o
-                0x000000000000026c                coil14_off
- .text.mark_handler
-                0x0000000000000284       0x46 main.o
-                0x0000000000000284                mark_handler
- .text.__vector_26
-                0x00000000000002ca       0x54 main.o
-                0x00000000000002ca                __vector_26
- .text.__vector_25
-                0x000000000000031e       0x54 main.o
-                0x000000000000031e                __vector_25
- .text.__vector_42
-                0x0000000000000372       0x54 main.o
-                0x0000000000000372                __vector_42
- .text.__vector_43
-                0x00000000000003c6       0x54 main.o
-                0x00000000000003c6                __vector_43
- .text.__vector_44
-                0x000000000000041a       0x54 main.o
-                0x000000000000041a                __vector_44
- .text.__vector_46
-                0x000000000000046e       0x54 main.o
-                0x000000000000046e                __vector_46
- .text.__vector_47
-                0x00000000000004c2       0x5c main.o
-                0x00000000000004c2                __vector_47
- .text.__vector_48
-                0x000000000000051e       0x5c main.o
-                0x000000000000051e                __vector_48
- .text.__vector_49
-                0x000000000000057a       0x5c main.o
-                0x000000000000057a                __vector_49
- .text.__vector_50
-                0x00000000000005d6       0x5c main.o
-                0x00000000000005d6                __vector_50
- .text.coil23_off
-                0x0000000000000632       0x18 main.o
-                0x0000000000000632                coil23_off
- .text.stop_handler
-                0x000000000000064a       0x50 main.o
-                0x000000000000064a                stop_handler
- .text.main_handler
-                0x000000000000069a       0x48 main.o
-                0x000000000000069a                main_handler
- .text.capture_handler
-                0x00000000000006e2       0x9c main.o
-                0x00000000000006e2                capture_handler
- .text.tooth_59_handler
-                0x000000000000077e        0xc main.o
-                0x000000000000077e                tooth_59_handler
- .text.tooth_60_handler
-                0x000000000000078a       0x1e main.o
-                0x000000000000078a                tooth_60_handler
- .text.uart_main_init
-                0x00000000000007a8       0x62 main.o
-                0x00000000000007a8                uart_main_init
- .text.timer_main_init
-                0x000000000000080a       0x9a main.o
-                0x000000000000080a                timer_main_init
- .text.port_main_init
-                0x00000000000008a4       0xf4 main.o
-                0x00000000000008a4                port_main_init
- .text.action_main_init
-                0x0000000000000998       0x66 main.o
-                0x0000000000000998                action_main_init
- .text.emu_sheave
-                0x00000000000009fe       0x5c main.o
-                0x00000000000009fe                emu_sheave
  .text.startup.main
-                0x0000000000000a5a       0x1c main.o
-                0x0000000000000a5a                main
- .text.uart_init
-                0x0000000000000a76       0x12 usart.o
-                0x0000000000000a76                uart_init
- .text.uart_baud_rate
-                0x0000000000000a88       0x18 usart.o
-                0x0000000000000a88                uart_baud_rate
- .text.uart_character_size
-                0x0000000000000aa0       0x48 usart.o
-                0x0000000000000aa0                uart_character_size
- .text.uart_parity_mode
-                0x0000000000000ae8       0x28 usart.o
-                0x0000000000000ae8                uart_parity_mode
- .text.uart_stop_bit
-                0x0000000000000b10       0x1a usart.o
-                0x0000000000000b10                uart_stop_bit
- .text.uart_tx  0x0000000000000b2a       0x1c usart.o
-                0x0000000000000b2a                uart_tx
- .text.uart_udre_handler
-                0x0000000000000b46       0x38 usart.o
-                0x0000000000000b46                uart_udre_handler
- .text.uart_rx_handler
-                0x0000000000000b7e       0x30 usart.o
-                0x0000000000000b7e                uart_rx_handler
- .text.uart_tx_done
-                0x0000000000000bae        0xe usart.o
-                0x0000000000000bae                uart_tx_done
- .text.coil_act_insert_next
-                0x0000000000000bbc       0x2e coil_handler.o
-                0x0000000000000bbc                coil_act_insert_next
- .text.coil_act_insert_prev
-                0x0000000000000bea       0x2e coil_handler.o
-                0x0000000000000bea                coil_act_insert_prev
- .text.coil_act_cut
-                0x0000000000000c18       0x36 coil_handler.o
-                0x0000000000000c18                coil_act_cut
- .text.coil_act_sorting_insert
-                0x0000000000000c4e       0x68 coil_handler.o
-                0x0000000000000c4e                coil_act_sorting_insert
- .text.coil_act_sort_selected
-                0x0000000000000cb6       0x9c coil_handler.o
-                0x0000000000000cb6                coil_act_sort_selected
- .text.coil_call_event_once
-                0x0000000000000d52       0x22 coil_handler.o
-                0x0000000000000d52                coil_call_event_once
- .text.coil_event_set
-                0x0000000000000d74       0x44 coil_handler.o
-                0x0000000000000d74                coil_event_set
- .text.coil_act_calc
-                0x0000000000000db8       0x40 coil_handler.o
-                0x0000000000000db8                coil_act_calc
- .text.coil_act_handler
-                0x0000000000000df8       0xb6 coil_handler.o
-                0x0000000000000df8                coil_act_handler
- .text.libgcc.div
-                0x0000000000000eae       0x28 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                0x0000000000000eae                __udivmodhi4
- .text.avr-libc
-                0x0000000000000ed6        0xe /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
-                0x0000000000000ed6                strcpy
-                0x0000000000000ee4                . = ALIGN (0x2)
+                0x000000000000011a       0x42 uart.o
+                0x000000000000011a                main
+ .text.pin_toggle
+                0x000000000000015c       0x14 ports.o
+                0x000000000000015c                pin_toggle
+                0x0000000000000170                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000ee4        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x0000000000000ee4                exit
-                0x0000000000000ee4                _exit
+ .fini9         0x0000000000000170        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x0000000000000170                exit
+                0x0000000000000170                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -535,118 +310,38 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000ee4        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x0000000000000170        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000000ee8                _etext = .
+                0x0000000000000174                _etext = .
 
-.data           0x0000000000800200      0x126 load address 0x0000000000000ee8
+.data           0x0000000000800200        0x8 load address 0x0000000000000174
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.coil_buffer
-                0x0000000000800200        0x2 main.o
-                0x0000000000800200                coil_buffer
- .data.coil23off
-                0x0000000000800202        0xe main.o
-                0x0000000000800202                coil23off
- .data.coil23on
-                0x0000000000800210        0xe main.o
-                0x0000000000800210                coil23on
- .data.coil14off
-                0x000000000080021e        0xe main.o
-                0x000000000080021e                coil14off
- .data.coil14on
-                0x000000000080022c        0xe main.o
-                0x000000000080022c                coil14on
- .data.l1       0x000000000080023a        0x8 main.o
-                0x000000000080023a                l1
- .data.b7       0x0000000000800242        0x8 main.o
-                0x0000000000800242                b7
- .data.b6       0x000000000080024a        0x8 main.o
-                0x000000000080024a                b6
- .data.b5       0x0000000000800252        0x8 main.o
-                0x0000000000800252                b5
- .data.b4       0x000000000080025a        0x8 main.o
-                0x000000000080025a                b4
- .data.cap5_pos_mask
-                0x0000000000800262        0x3 main.o
-                0x0000000000800262                cap5_pos_mask
- .data.tcnt5_mask
-                0x0000000000800265        0x3 main.o
-                0x0000000000800265                tcnt5_mask
- .data.tcs5     0x0000000000800268        0x3 main.o
-                0x0000000000800268                tcs5
- .data.tcr5     0x000000000080026b        0x8 main.o
-                0x000000000080026b                tcr5
- .data.ovf5     0x0000000000800273        0x8 main.o
-                0x0000000000800273                ovf5
- .data.chc5     0x000000000080027b        0x8 main.o
-                0x000000000080027b                chc5
- .data.chb5     0x0000000000800283        0x8 main.o
-                0x0000000000800283                chb5
- .data.cha5     0x000000000080028b        0x8 main.o
-                0x000000000080028b                cha5
- .data.cap5     0x0000000000800293        0x8 main.o
-                0x0000000000800293                cap5
- .data.tir5     0x000000000080029b        0x4 main.o
-                0x000000000080029b                tir5
- .data.tcnt4_mask
-                0x000000000080029f        0x3 main.o
-                0x000000000080029f                tcnt4_mask
- .data.tcs4     0x00000000008002a2        0x3 main.o
-                0x00000000008002a2                tcs4
- .data.tcr4     0x00000000008002a5        0x8 main.o
-                0x00000000008002a5                tcr4
- .data.t4ch1    0x00000000008002ad        0xa main.o
-                0x00000000008002ad                t4ch1
- .data.t4ch2    0x00000000008002b7        0xa main.o
-                0x00000000008002b7                t4ch2
- .data.t4ch3    0x00000000008002c1        0xa main.o
-                0x00000000008002c1                t4ch3
- .data.tir4     0x00000000008002cb        0x4 main.o
-                0x00000000008002cb                tir4
- .data.uart0    0x00000000008002cf       0x14 main.o
-                0x00000000008002cf                uart0
+ .data.led      0x0000000000800200        0x8 uart.o
+                0x0000000000800200                led
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x00000000008002e3       0x43 main.o
  *(.gnu.linkonce.d*)
-                0x0000000000800326                . = ALIGN (0x2)
-                0x0000000000800326                _edata = .
-                0x0000000000800326                PROVIDE (__data_end, .)
+                0x0000000000800208                . = ALIGN (0x2)
+                0x0000000000800208                _edata = .
+                0x0000000000800208                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800326       0x32
-                0x0000000000800326                PROVIDE (__bss_start, .)
+.bss            0x0000000000800208        0x0
+                [!provide]                        PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.emu_tooth
-                0x0000000000800326        0x1 main.o
-                0x0000000000800326                emu_tooth
- .bss.permit_tooth_counter
-                0x0000000000800327        0x1 main.o
-                0x0000000000800327                permit_tooth_counter
- .bss.tooth_counter
-                0x0000000000800328        0x2 main.o
-                0x0000000000800328                tooth_counter
- .bss.timer_capture
-                0x000000000080032a        0x2 main.o
-                0x000000000080032a                timer_capture
- .bss.root      0x000000000080032c        0xe main.o
-                0x000000000080032c                root
  *(COMMON)
- COMMON         0x000000000080033a       0x1e main.o
-                0x000000000080033a                data
-                0x0000000000800358                PROVIDE (__bss_end, .)
-                0x0000000000000ee8                __data_load_start = LOADADDR (.data)
-                0x000000000000100e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                [!provide]                        PROVIDE (__bss_end, .)
+                0x0000000000000174                __data_load_start = LOADADDR (.data)
+                0x000000000000017c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800358        0x0
-                0x0000000000800358                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000800208        0x0
+                [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0000000000800358                PROVIDE (__noinit_end, .)
-                0x0000000000800358                _end = .
-                0x0000000000800358                PROVIDE (__heap_start, .)
+                [!provide]                        PROVIDE (__noinit_end, .)
+                0x0000000000800208                _end = .
+                [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -684,11 +379,9 @@ END GROUP
 
 .comment        0x0000000000000000       0x2a
  *(.comment)
- .comment       0x0000000000000000       0x2a timers.o
+ .comment       0x0000000000000000       0x2a uart.o
                                          0x2b (size before relaxing)
- .comment       0x000000000000002a       0x2b main.o
- .comment       0x000000000000002a       0x2b usart.o
- .comment       0x000000000000002a       0x2b coil_handler.o
+ .comment       0x000000000000002a       0x2b ports.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -759,20 +452,14 @@ Cross Reference Table
 
 Symbol                                            File
 __bad_interrupt                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__bss_end                                         /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
-__bss_start                                       /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
 __data_end                                        /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
 __data_load_start                                 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
 __data_start                                      /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
-__do_clear_bss                                    /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_clear_bss.o)
-                                                  main.o
 __do_copy_data                                    /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_copy_data.o)
-                                                  main.o
+                                                  uart.o
 __heap_end                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __init                                            /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __stack                                           /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__udivmodhi4                                      /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_udivmodhi4.o)
-                                                  coil_handler.o
 __vector_1                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_10                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_11                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -790,10 +477,8 @@ __vector_21                                       /usr/lib/gcc/avr/4.9.3/../../.
 __vector_22                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_23                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_24                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_25                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_26                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_25                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_26                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_27                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_28                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_29                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -811,24 +496,16 @@ __vector_39                                       /usr/lib/gcc/avr/4.9.3/../../.
 __vector_4                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_40                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_41                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_42                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_43                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_44                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_42                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_43                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_44                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_45                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_46                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_47                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_48                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_49                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_46                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_47                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_48                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_49                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_5                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_50                                       main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_50                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_51                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_52                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_53                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -842,126 +519,14 @@ __vector_9                                        /usr/lib/gcc/avr/4.9.3/../../.
 __vector_default                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vectors                                         /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 _exit                                             /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-action_main_init                                  main.o
-b4                                                main.o
-b5                                                main.o
-b6                                                main.o
-b7                                                main.o
 bit_off                                           ports.o
 bit_on                                            ports.o
 bit_toggle                                        ports.o
-cap5                                              main.o
-cap5_pos_mask                                     main.o
-capture_handler                                   main.o
-cha5                                              main.o
-chb5                                              main.o
-chc5                                              main.o
-coil14_off                                        main.o
-coil14_on                                         main.o
-coil14off                                         main.o
-coil14on                                          main.o
-coil23_off                                        main.o
-coil23_on                                         main.o
-coil23off                                         main.o
-coil23on                                          main.o
-coil_act_calc                                     coil_handler.o
-coil_act_cut                                      coil_handler.o
-coil_act_handler                                  coil_handler.o
-                                                  main.o
-coil_act_insert_next                              coil_handler.o
-coil_act_insert_prev                              coil_handler.o
-coil_act_insertion_sort                           coil_handler.o
-coil_act_sort_selected                            coil_handler.o
-coil_act_sorting_insert                           coil_handler.o
-                                                  main.o
-coil_buffer                                       main.o
-coil_call_event_once                              coil_handler.o
-                                                  main.o
-coil_event_set                                    coil_handler.o
-current_capture                                   main.o
-data                                              main.o
-done                                              main.o
-emu_sheave                                        main.o
-emu_tooth                                         main.o
 exit                                              /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-l1                                                main.o
-main                                              main.o
+led                                               uart.o
+main                                              uart.o
                                                   /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-main_handler                                      main.o
-mark_handler                                      main.o
-ovf5                                              main.o
-permit_tooth_counter                              main.o
 pin_toggle                                        ports.o
-port_main_init                                    main.o
+                                                  uart.o
 port_mask                                         ports.o
-root                                              main.o
-stop_handler                                      main.o
-strcpy                                            /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libc.a(strcpy.o)
-                                                  main.o
-t4ch1                                             main.o
-t4ch2                                             main.o
-t4ch3                                             main.o
-tcnt4_mask                                        main.o
-tcnt5_mask                                        main.o
-tcr4                                              main.o
-tcr5                                              main.o
-tcs4                                              main.o
-tcs5                                              main.o
-test_off                                          main.o
-test_on                                           main.o
-timer_capture                                     main.o
-timer_main_init                                   main.o
-tir4                                              main.o
-tir5                                              main.o
-tmr16_capture_setup                               timers.o
-                                                  main.o
-tmr16_counter_set                                 timers.o
-                                                  coil_handler.o
-                                                  main.o
-tmr16_event_call                                  timers.o
-                                                  coil_handler.o
-                                                  main.o
-tmr16_event_set                                   timers.o
-                                                  coil_handler.o
-                                                  main.o
-tmr16_int_disable                                 timers.o
-                                                  coil_handler.o
-                                                  main.o
-tmr16_int_enable                                  timers.o
-                                                  coil_handler.o
-                                                  main.o
-tmr16_read_cr                                     timers.o
-                                                  main.o
-tmr16_reset_cs                                    timers.o
-tmr16_set_cs                                      timers.o
-                                                  main.o
-tmr16_write_cr                                    timers.o
-                                                  coil_handler.o
-                                                  main.o
-tooth_59_handler                                  main.o
-tooth_60_handler                                  main.o
-tooth_counter                                     main.o
-uart0                                             main.o
-uart_baud_rate                                    usart.o
-                                                  main.o
-uart_character_size                               usart.o
-                                                  main.o
-uart_init                                         usart.o
-                                                  main.o
-uart_main_init                                    main.o
-uart_parity_mode                                  usart.o
-                                                  main.o
-uart_rx                                           usart.o
-uart_rx_count                                     usart.o
-uart_rx_done                                      usart.o
-uart_rx_handler                                   usart.o
-                                                  main.o
-uart_stop_bit                                     usart.o
-                                                  main.o
-uart_tx                                           usart.o
-                                                  main.o
-uart_tx_done                                      usart.o
-                                                  main.o
-uart_udre_handler                                 usart.o
-                                                  main.o

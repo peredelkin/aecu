@@ -64,6 +64,7 @@
       </df>
       <in>main.c</in>
       <in>timer.c</in>
+      <in>uart.c</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

@@ -6,7 +6,7 @@
 #include "libs/usart.h"
 #include <string.h>
 
-#define UART_BAUD 57600
+#define UART_BAUD 460800
 #define UART_UBRR_VALUE (F_CPU / 16 / UART_BAUD - 1)
 
 uart_t uart0 = UART_init(0);
@@ -48,14 +48,26 @@ tmr16_ctrl_mask_t cap5_pos_mask = {
 
 ISR(TIMER4_COMPA_vect) { //coil interrupt
     coil_call_event_once(&t4ch1);
+    if (uart_tx_done(&uart0)) {
+        sprintf(data, "TC4A\n");
+        uart_tx(&uart0, data, strlen(data));
+    }
 }
 
 ISR(TIMER4_COMPB_vect) { //coil interrupt
     coil_call_event_once(&t4ch2);
+    if (uart_tx_done(&uart0)) {
+        sprintf(data, "TC4B\n");
+        uart_tx(&uart0, data, strlen(data));
+    }
 }
 
 ISR(TIMER4_COMPC_vect) { //coil interrupt
     coil_call_event_once(&t4ch3);
+    if (uart_tx_done(&uart0)) {
+        sprintf(data, "TC4C\n");
+        uart_tx(&uart0, data, strlen(data));
+    }
 }
 
 ISR(TIMER5_CAPT_vect) { //capture main handler interrupt
@@ -113,10 +125,10 @@ void coil23_off(void) {
 }
 
 coil_act_t root = make_coil_act(NULL, 0);
-coil_act_t coil14on = make_coil_act(coil14_on, 91);
-coil_act_t coil14off = make_coil_act(coil14_off,181);
-coil_act_t coil23on = make_coil_act(test_on, 92);
-coil_act_t coil23off = make_coil_act(test_off, 182);
+coil_act_t coil14on = make_coil_act(coil14_on, 1);
+coil_act_t coil14off = make_coil_act(coil14_off, 5);
+coil_act_t coil23on = make_coil_act(coil23_on, 181);
+coil_act_t coil23off = make_coil_act(coil23_off, 185);
 coil_act_t* coil_buffer = &root;
 
 volatile uint16_t timer_capture = 0;
@@ -126,6 +138,22 @@ volatile bool permit_tooth_counter = 0;
 void main_handler(void) {
     coil_act_handler(&coil_buffer, &root, &t4ch1, &tcnt4_mask, timer_capture, tooth_counter);
     tooth_counter += 6;
+}
+
+uint16_t current_capture(uint16_t penult_capture, uint16_t last_capture) {
+    int32_t penult = (int32_t) penult_capture,
+            last = (int32_t) last_capture,
+            current;
+    current = last * 2 - penult;
+    if (current <= 0) {
+        return 0;
+    } else {
+        if (current >= 0xffff) {
+            return 0xffff;
+        } else {
+            return (uint16_t) current;
+        }
+    }
 }
 
 void capture_handler(void) {
@@ -146,15 +174,15 @@ void capture_handler(void) {
 }
 
 void tooth_59_handler(void) {
-    tmr16_counter_set(&tcnt4_mask);
     main_handler();
+    test_on();
 }
 
 void tooth_60_handler(void) {
     tmr16_counter_set(&tcnt5_mask);
-    tmr16_counter_set(&tcnt4_mask);
     main_handler();
     tooth_counter = 0;
+    test_off();
 }
 
 void mark_handler(void) {
@@ -226,29 +254,13 @@ void action_main_init(void) {
     uart_tx(&uart0, data, strlen(data));
 }
 
-uint16_t current_capture(uint16_t penult_capture, uint16_t last_capture) {
-    int32_t penult = (int32_t) penult_capture,
-            last = (int32_t) last_capture,
-            current;
-    current = last * 2 - penult;
-    if (current <= 0) {
-        return 0;
-    } else {
-        if (current >= 0xffff) {
-            return 0xffff;
-        } else {
-            return (uint16_t) current;
-        }
-    }
-}
-
 uint8_t emu_tooth = 0;
 
 void emu_sheave(void) {
     if (emu_tooth <= 57) pin_on(&b6);
-    _delay_us(800);
+    _delay_us(600);
     pin_off(&b6);
-    _delay_us(800);
+    _delay_us(600);
     if (emu_tooth <= 58) emu_tooth++;
     else {
         emu_tooth = 0;
@@ -263,5 +275,8 @@ int main() {
     action_main_init();
     while (1) {
         emu_sheave();
+        if(uart_rx_done(&uart0)) {
+            
+        }
     }
 }

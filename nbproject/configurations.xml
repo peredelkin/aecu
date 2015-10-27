@@ -27,6 +27,7 @@
       </df>
       <in>main.c</in>
       <in>timer.c</in>
+      <in>uart.c</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Важные файлы"
@@ -64,7 +65,7 @@
       </item>
       <item path="libs/adc.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="libs/coil_handler.c" ex="false" tool="0" flavor2="0">
+      <item path="libs/coil_handler.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
@@ -155,7 +156,7 @@
       </item>
       <item path="libs/spi.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="libs/timers.c" ex="false" tool="0" flavor2="0">
+      <item path="libs/timers.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
           <incDir>
             <pElem>.</pElem>
@@ -192,6 +193,14 @@
         </cTool>
       </item>
       <item path="timer.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
+      <item path="uart.c" ex="false" tool="0" flavor2="0">
         <cTool flags="0">
           <preprocessorList>
             <Elem>F_CPU=16000000UL</Elem>
