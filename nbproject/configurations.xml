@@ -21,13 +21,15 @@
         <in>spi.c</in>
         <in>timers.c</in>
         <in>two_wire.c</in>
+        <in>uart.c</in>
         <in>usart.c</in>
         <in>vfd128x64.c</in>
         <in>vfd_graphics.c</in>
       </df>
+      <in>fan.c</in>
       <in>main.c</in>
       <in>timer.c</in>
-      <in>uart.c</in>
+      <in>uart_main.c</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Важные файлы"
@@ -61,6 +63,14 @@
           <executablePath></executablePath>
         </makeTool>
       </makefileType>
+      <item path="fan.c" ex="false" tool="0" flavor2="2">
+        <cTool flags="0">
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
       <item path="libs/44780.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="libs/adc.c" ex="false" tool="0" flavor2="2">
@@ -169,6 +179,17 @@
       </item>
       <item path="libs/two_wire.c" ex="false" tool="0" flavor2="2">
       </item>
+      <item path="libs/uart.c" ex="false" tool="0" flavor2="0">
+        <cTool flags="0">
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>F_CPU=16000000UL</Elem>
+            <Elem>__AVR_ATmega2560__</Elem>
+          </preprocessorList>
+        </cTool>
+      </item>
       <item path="libs/usart.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
           <incDir>
@@ -200,7 +221,7 @@
           </preprocessorList>
         </cTool>
       </item>
-      <item path="uart.c" ex="false" tool="0" flavor2="0">
+      <item path="uart_main.c" ex="false" tool="0" flavor2="2">
         <cTool flags="0">
           <preprocessorList>
             <Elem>F_CPU=16000000UL</Elem>

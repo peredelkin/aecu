@@ -54,6 +54,8 @@
         <in>timers.h</in>
         <in>two_wire.c</in>
         <in>two_wire.h</in>
+        <in>uart.c</in>
+        <in>uart.h</in>
         <in>usart.c</in>
         <in>usart.h</in>
         <in>utils.h</in>
@@ -62,9 +64,10 @@
         <in>vfd_graphics.c</in>
         <in>vfd_graphics.h</in>
       </df>
+      <in>fan.c</in>
       <in>main.c</in>
       <in>timer.c</in>
-      <in>uart.c</in>
+      <in>uart_main.c</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
