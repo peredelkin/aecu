@@ -45,6 +45,28 @@
     .uart = UART\
 }
 
+#define set_TXEN(N) (1<<UART_CONCAT_2(TXEN,N))
+#define set_RXEN(N) (1<<UART_CONCAT_2(RXEN,N))
+#define set_TRXEN(N) (1<<UART_CONCAT_2(TXEN,N))|(1<<UART_CONCAT_2(RXEN,N))
+
+#define set_UMSEL_ASYNC 0
+#define set_UMSEL_SYNC(N) (1<<UART_CONCAT_3(UMSEL,N,0))
+#define set_UMSEL_SPI(N) (1<<UART_CONCAT_3(UMSEL,N,1))|(1<<UART_CONCAT_3(UMSEL,N,0))
+
+#define set_UPM_DIS 0
+#define set_UPM_EVEN(N) (1<<UART_CONCAT_3(UPM,N,1))
+#define set_UPM_ODD(N) (1<<UART_CONCAT_3(UPM,N,1))|(1<<UART_CONCAT_3(UPM,N,0))
+
+#define set_USBS_1BIT 0
+#define set_USBS_2BIT (1<<UART_CONCAT_2(USBS,N))
+
+#define set_UCSZ_8BIT(N) (1<<UART_CONCAT_3(UCSZ,N,1))|(1<<UART_CONCAT_3(UCSZ,N,0))
+
+#define set_UCPOL_RF 0
+#define set_UCPOL_FR(N) (1<<UART_CONCAT_2(UCPOL,N))
+
+#define set_UBRR_VALUE(BAUD) (F_CPU / 16 / BAUD - 1)
+
 typedef struct {
     volatile uint8_t *reg;
     uint8_t mask;
