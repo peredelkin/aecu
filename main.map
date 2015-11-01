@@ -13,15 +13,9 @@ Discarded input sections
  .data          0x0000000000000000        0x0 uart_main.o
  .bss           0x0000000000000000        0x0 uart_main.o
  .data.udrie0   0x0000000000000000        0x4 uart_main.o
- .data.rxcie0   0x0000000000000000        0x4 uart_main.o
  .data.txcie0   0x0000000000000000        0x4 uart_main.o
- .text          0x0000000000000000        0x0 uart.o
- .data          0x0000000000000000        0x0 uart.o
- .bss           0x0000000000000000        0x0 uart.o
- .text.uart_interrupt_enable
-                0x0000000000000000       0x36 uart.o
- .text.uart_interrupt_disable
-                0x0000000000000000       0x22 uart.o
+ .data.rxcie0   0x0000000000000000        0x4 uart_main.o
+ .data.uart0    0x0000000000000000        0xf uart_main.o
  .text          0x0000000000000000        0x0 ports.o
  .data          0x0000000000000000        0x0 ports.o
  .bss           0x0000000000000000        0x0 ports.o
@@ -31,6 +25,32 @@ Discarded input sections
                 0x0000000000000000       0x16 ports.o
  .text.port_mask
                 0x0000000000000000       0x34 ports.o
+ .text          0x0000000000000000        0x0 uart.o
+ .data          0x0000000000000000        0x0 uart.o
+ .bss           0x0000000000000000        0x0 uart.o
+ .text.uart_trx_set
+                0x0000000000000000        0xa uart.o
+ .text.uart_mode_set
+                0x0000000000000000        0xa uart.o
+ .text.uart_parity_set
+                0x0000000000000000        0xa uart.o
+ .text.uart_stop_set
+                0x0000000000000000        0xa uart.o
+ .text.uart_char_set
+                0x0000000000000000        0xa uart.o
+ .text.uart_pol_set
+                0x0000000000000000        0xa uart.o
+ .text.uart_baud_set
+                0x0000000000000000       0x10 uart.o
+ .text.uart_setup
+                0x0000000000000000       0x38 uart.o
+ .text.uart_init
+                0x0000000000000000       0x2a uart.o
+ .text.uart_int_enable
+                0x0000000000000000       0x36 uart.o
+ .text.uart_int_disable
+                0x0000000000000000       0x22 uart.o
+ .comment       0x0000000000000000       0x2b uart.o
  .text          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
@@ -80,8 +100,8 @@ Linker script and memory map
 Address of section .data set to 0x800200
 LOAD /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 LOAD uart_main.o
-LOAD uart.o
 LOAD ports.o
+LOAD uart.o
 START GROUP
 LOAD /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a
 LOAD /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/libm.a
@@ -178,7 +198,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x26a
+.text           0x0000000000000000      0x176
  *(.vectors)
  .vectors       0x0000000000000000       0xe4 /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
                 0x0000000000000000                __vectors
@@ -252,6 +272,7 @@ END GROUP
                 0x0000000000000116                __vector_23
                 0x0000000000000116                __vector_30
                 0x0000000000000116                __vector_45
+                0x0000000000000116                __vector_25
                 0x0000000000000116                __vector_11
                 0x0000000000000116                __vector_54
                 0x0000000000000116                __vector_13
@@ -262,6 +283,7 @@ END GROUP
                 0x0000000000000116                __vector_49
                 0x0000000000000116                __vector_41
                 0x0000000000000116                __vector_43
+                0x0000000000000116                __vector_27
                 0x0000000000000116                __vector_5
                 0x0000000000000116                __vector_33
                 0x0000000000000116                __vector_47
@@ -278,6 +300,7 @@ END GROUP
                 0x0000000000000116                __vector_29
                 0x0000000000000116                __vector_40
                 0x0000000000000116                __vector_8
+                0x0000000000000116                __vector_26
                 0x0000000000000116                __vector_48
                 0x0000000000000116                __vector_14
                 0x0000000000000116                __vector_53
@@ -289,35 +312,17 @@ END GROUP
                 0x0000000000000116                __vector_42
                 0x000000000000011a                . = ALIGN (0x2)
  *(.text.*)
- .text.uart_main_init
-                0x000000000000011a       0x38 uart_main.o
-                0x000000000000011a                uart_main_init
- .text.__vector_25
-                0x0000000000000152       0x14 uart_main.o
-                0x0000000000000152                __vector_25
- .text.__vector_27
-                0x0000000000000166       0x14 uart_main.o
-                0x0000000000000166                __vector_27
- .text.__vector_26
-                0x000000000000017a       0x14 uart_main.o
-                0x000000000000017a                __vector_26
  .text.startup.main
-                0x000000000000018e       0x48 uart_main.o
-                0x000000000000018e                main
- .text.uart_init_settings
-                0x00000000000001d6       0x3c uart.o
-                0x00000000000001d6                uart_init_settings
- .text.uart_init
-                0x0000000000000212       0x40 uart.o
-                0x0000000000000212                uart_init
+                0x000000000000011a       0x44 uart_main.o
+                0x000000000000011a                main
  .text.pin_toggle
-                0x0000000000000252       0x14 ports.o
-                0x0000000000000252                pin_toggle
-                0x0000000000000266                . = ALIGN (0x2)
+                0x000000000000015e       0x14 ports.o
+                0x000000000000015e                pin_toggle
+                0x0000000000000172                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000266        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
-                0x0000000000000266                exit
-                0x0000000000000266                _exit
+ .fini9         0x0000000000000172        0x0 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+                0x0000000000000172                exit
+                0x0000000000000172                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -336,40 +341,37 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000266        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
+ .fini0         0x0000000000000172        0x4 /usr/lib/gcc/avr/4.9.3/avr6/libgcc.a(_exit.o)
  *(.fini0)
-                0x000000000000026a                _etext = .
+                0x0000000000000176                _etext = .
 
-.data           0x0000000000800200       0x18 load address 0x000000000000026a
+.data           0x0000000000800200        0x8 load address 0x0000000000000176
                 0x0000000000800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  .data.led      0x0000000000800200        0x8 uart_main.o
                 0x0000000000800200                led
- .data.uart0    0x0000000000800208        0xf uart_main.o
-                0x0000000000800208                uart0
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x0000000000800218                . = ALIGN (0x2)
- *fill*         0x0000000000800217        0x1 
-                0x0000000000800218                _edata = .
-                0x0000000000800218                PROVIDE (__data_end, .)
+                0x0000000000800208                . = ALIGN (0x2)
+                0x0000000000800208                _edata = .
+                0x0000000000800208                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800218        0x0
+.bss            0x0000000000800208        0x0
                 [!provide]                        PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                        PROVIDE (__bss_end, .)
-                0x000000000000026a                __data_load_start = LOADADDR (.data)
-                0x0000000000000282                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000000176                __data_load_start = LOADADDR (.data)
+                0x000000000000017e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800218        0x0
+.noinit         0x0000000000800208        0x0
                 [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end, .)
-                0x0000000000800218                _end = .
+                0x0000000000800208                _end = .
                 [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
@@ -410,7 +412,6 @@ END GROUP
  *(.comment)
  .comment       0x0000000000000000       0x2a uart_main.o
                                          0x2b (size before relaxing)
- .comment       0x000000000000002a       0x2b uart.o
  .comment       0x000000000000002a       0x2b ports.o
 
 .note.gnu.build-id
@@ -507,12 +508,9 @@ __vector_21                                       /usr/lib/gcc/avr/4.9.3/../../.
 __vector_22                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_23                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_24                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_25                                       uart_main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_26                                       uart_main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_27                                       uart_main.o
-                                                  /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_25                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_26                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
+__vector_27                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_28                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_29                                       /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
 __vector_3                                        /usr/lib/gcc/avr/4.9.3/../../../../avr/lib/avr6/crtm2560.o
@@ -566,11 +564,15 @@ port_mask                                         ports.o
 rxcie0                                            uart_main.o
 txcie0                                            uart_main.o
 uart0                                             uart_main.o
+uart_baud_set                                     uart.o
+uart_char_set                                     uart.o
 uart_init                                         uart.o
-                                                  uart_main.o
-uart_init_settings                                uart.o
-                                                  uart_main.o
-uart_interrupt_disable                            uart.o
-uart_interrupt_enable                             uart.o
-uart_main_init                                    uart_main.o
+uart_int_disable                                  uart.o
+uart_int_enable                                   uart.o
+uart_mode_set                                     uart.o
+uart_parity_set                                   uart.o
+uart_pol_set                                      uart.o
+uart_setup                                        uart.o
+uart_stop_set                                     uart.o
+uart_trx_set                                      uart.o
 udrie0                                            uart_main.o
