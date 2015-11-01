@@ -69,7 +69,17 @@ typedef struct {
     volatile bool flag; //interrupt state
 } uart_int_ctrl_t;
 
-
+extern void uart_trx_set(uart_t* uart,uint8_t trxen);
+extern void uart_mode_set(uart_t* uart,uint8_t umsel);
+extern void uart_parity_set(uart_t* uart,uint8_t upm);
+extern void uart_stop_set(uart_t* uart,uint8_t usbs);
+extern void uart_char_set(uart_t* uart,uint8_t ucsz);
+extern void uart_pol_set(uart_t* uart,uint8_t ucpol);
+extern void uart_baud_set(uart_t* uart,uint16_t baud);
+extern void uart_setup(uart_t* uart,uint8_t trx,uint8_t umsel,uint8_t upm,uint8_t usbs,uint8_t ucsz,uint8_t ucpol,uint16_t baud);
+extern void uart_init(uart_t* uart);
+extern void uart_int_enable(uart_int_ctrl_t* int_ctrl);
+extern void uart_int_disable(uart_int_ctrl_t* int_ctrl);
 
 #endif	/* UART_H */
 
